@@ -20,6 +20,8 @@ const apiMethods = {
     createPaymentLinkAndSend: '/external/payment-links/send',
     adminSendInvitation: `${a}/invitations`,
     adminRegister: `${a}/invitations/accept`,
+    adminCurrentAuth: `${a}/administrators/current`,
+    adminRoles: `${a}/administrator-roles`,
 
     availabilitySearchOptions: (agencyId) => `${a}/agencies/${agencyId}/system-settings/availability-search`,
 
