@@ -1,22 +1,37 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { Loader } from 'matsumoto/src/components/simple';
 import { CachedForm, FieldText } from 'matsumoto/src/components/form';
 import FormAgentData from 'matsumoto/src/parts/form-agent-data';
+import PermissionsSelectorElement from 'matsumoto/src/pages/cabinet/agency/parts/permission-selector-element';
 import { registrationAgentValidatorWithEmail } from 'matsumoto/src/components/form/validation';
+import $auth from 'stores/auth';
 
-const inviteAdminPage = () => {
+const inviteAdminPage = observer(() => {
     const [success, setSuccess] = useState(false);
 
-    const submit = (body) => {
+    const submit = (values) => {
         setSuccess(null);
         API.post({
             url: apiMethods.adminSendInvitation,
-            body,
+            body: {
+                registrationInfo: {
+                    title: values.title,
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    position: values.position,
+                    email: values.email
+                },
+                roleIds: Object
+                    .keys(values.roleIds)
+                    .map((key) => values.roleIds[key] ? parseInt(key) : false)
+                    .filter((item) => item)
+            },
             success: () => {setSuccess(true)},
         });
-    }
+    };
 
     return (
         <div className="settings block page-content-no-tabs">
@@ -45,6 +60,12 @@ const inviteAdminPage = () => {
                                 />
                             </div>
                             <FormAgentData formik={formik} t={(x)=>x}/>
+                            <div className="cabinet">
+                                <PermissionsSelectorElement
+                                    formik={formik}
+                                    rolesList={$auth.rolesCompleteList}
+                                />
+                            </div>
                             <div className="row submit-holder">
                                 <div className="field">
                                     <div className="inner">
@@ -60,6 +81,6 @@ const inviteAdminPage = () => {
             />}
         </div>
     );
-}
+});
 
 export default inviteAdminPage;
