@@ -6,11 +6,11 @@ const SideBar = () => {
         <nav className="side-bar">
             <div className="content">
                 <Link to="/counterparties">
-                <div className="sidebar-item">
-                    <i className="icon icon-counterparty"/>
-                    <span>Counterparties</span>
-                </div>
-            </Link>
+                    <div className="sidebar-item">
+                        <i className="icon icon-counterparty"/>
+                        <span>Counterparties</span>
+                    </div>
+                </Link>
                 <Link to="/paymentlinks">
                     <div className="sidebar-item">
                         <i className="icon icon-payment-links"/>
