@@ -14,12 +14,12 @@ const duplicatesListPage = () => {
     }, [])
 
     return (
-        <div className="block">
+        <div className="block page-content-no-tabs duplicates-list">
             <h1>Duplicates list</h1>
-            <div style={{ marginTop: '-90px' }}>
+            <div className="inner-table">
                 <Table
                     list={list}
-                    columns={ [
+                    columns={[
                         {
                             header: 'ID',
                             cell: 'id',

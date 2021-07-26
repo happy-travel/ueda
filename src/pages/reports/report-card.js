@@ -50,13 +50,13 @@ const ReportCard = ({ children }) => {
                             <button type="submit"><i className="icon icon-download"/></button>
                         </div>
                         <FieldDatepicker
-                            className="size-one"
-                            required
-                            formik={ formik }
-                            id="dates"
-                            first="start"
-                            second="end"
-                            placeholder="Dates"
+                        className="size-one"
+                        required
+                        formik={formik}
+                        id="dates"
+                        first="start"
+                        second="end"
+                        placeholder="Dates"
                         />
                     </div>
                 )}/>

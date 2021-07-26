@@ -22,7 +22,7 @@ const CounterpartiesList = () => {
         <div className="block counterparties-list page-content-no-tabs">
             <div>
                 <h1>Counterparties</h1>
-                <div className="counterparties-table">
+                <div className="inner-table">
                     <Table
                         list={list}
                         columns={ [

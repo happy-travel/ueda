@@ -16,7 +16,7 @@ $header-element-margin: 15px 0 15px 0
     .button
         padding: 0 20px
         margin-right: 20px
-.counterparties-table
+.inner-table
     margin-top: -90px
 .block.counterparties-list
     margin: 0 auto
@@ -28,7 +28,9 @@ $header-element-margin: 15px 0 15px 0
                 td:nth-child(#{$id})
                     min-width: $col !important
                     max-width: $col !important
-
+.block.duplicates-list
+    margin: 0 auto
+    padding: 0 30px
 .vertical-table
     .equal, .title
         color: $color-text-light
@@ -73,25 +75,31 @@ $header-element-margin: 15px 0 15px 0
                 bottom: 0
                 left: 0
 .side-bar
+    .content
+        height: 400px
+        padding-left: 50px
+        background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 0.62%, $background-color 42.75%)
     padding-top: 150px
     width: 17%
     min-width: 329px
     top: 72px
-    background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 0.62%, $background-color 42.75%)
+    background: $background-color
 
 .sidebar-item
     display: flex
+    align-items: center
     //min-width: 40px
     font-size: 14px
-    margin-bottom: 20px
-    margin-left: 60px
-    padding-top: 8px
+    //padding-bottom: 20px
+    padding-left: 10px
+    line-height: 50px
+    //padding-top: 20px
     span
-        margin: 7px 0 1px 10px
+        margin-left: 10px
         white-space: nowrap
 .sidebar-item:hover
     width: 230px
-    background: $background-color
+    background: white
     border-radius: 40px
 .page-content
     margin-left: 70px
@@ -147,16 +155,16 @@ $header-element-margin: 15px 0 15px 0
 .tool-bar
     padding-top: 40px
 .section-slim
-    width: 300px
+    width: 400px
 .report-card
     margin: 0 20px 0 20px
     width: 300px
-    //height: 380px
     background: #F7F8FC
     border-radius: 8px
     padding: 20px 15px 10px 15px
 .report-header
     display: flex
+    height: 65px
     padding-bottom: 30px
     justify-content: space-between
 .report-action
@@ -165,7 +173,11 @@ $header-element-margin: 15px 0 15px 0
     font-weight: bold
     color: $primary-color
 .report-period
+    .icon-wrap
+        float: left
     input
+        width: 176px
+        padding-left: 5px
         border: none
         background-color: inherit
 .reports-list

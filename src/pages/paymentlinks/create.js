@@ -79,13 +79,18 @@ const CreatePaymentLinkPage = () => {
                     render={(formik) => (
                         <div className="form section-slim">
                             <div className="row">
-                                <FieldText formik={formik} id="amount" label="Amount" numeric required/>
+                                <FieldText formik={formik}
+                                           placeholder="Please enter amount" id="amount"
+                                           label="Amount" numeric required/>
                             </div>
                             <div className="row">
-                                <FieldText formik={formik} id="email" label="Email" required/>
+                                <FieldText formik={formik} placeholder="Please enter email"
+                                           id="email"
+                                           label="Email" required/>
                             </div>
                             <div className="row">
                                 <FieldSelect formik={formik}
+                                             placeholder="Please choose the type of a service"
                                              id="serviceType"
                                              label="Service Type"
                                              options={[
@@ -95,8 +100,9 @@ const CreatePaymentLinkPage = () => {
                                              ]}
                                 />
                             </div>
-                            <div className="currency">
+                            <div className="row currency">
                                 <FieldSelect formik={formik}
+                                             placeholder="Please choose currency"
                                              id="currency"
                                              label="Currency"
                                              options={[
@@ -109,6 +115,7 @@ const CreatePaymentLinkPage = () => {
                             </div>
                             <div className="row">
                                 <FieldTextarea formik={formik}
+                                               placeholder="Please enter commentary"
                                                id="comment"
                                                label="Commentary"
                                                required
