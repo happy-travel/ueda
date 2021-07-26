@@ -52,7 +52,7 @@ const ReportCard = ({ children }) => {
                         <FieldDatepicker
                             className="size-one"
                             required
-                            formik={formik}
+                            formik={ formik }
                             id="dates"
                             first="start"
                             second="end"
