@@ -26,6 +26,13 @@ const CounterpartyHeader = ({ id }) => {
         });
     }, [])
 
+    const statusChange = () => {
+        if (counterparty?.isActive) {
+            return activate();
+        }
+        return deactivate();
+    }
+
     const activate = () => {
         let reason = prompt('Enter a reason');
         API.post({
@@ -59,12 +66,11 @@ const CounterpartyHeader = ({ id }) => {
                     <div className="row">
                         <FieldSwitch
                             formik={formik}
+                            onChange={statusChange}
                             value={counterparty?.isActive}/>
                     </div>
                 )}/>
-            {counterparty?.isActive ?
-                <button className="button" onClick={deactivate}>Deactivate</button> :
-                <button className="button" onClick={activate}>Activate</button>}
+
         </div>
     )
 }

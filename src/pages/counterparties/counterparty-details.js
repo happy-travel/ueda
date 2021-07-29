@@ -89,7 +89,7 @@ const CounterpartyDetails = ({ match }) => {
                                 <FieldText formik={formik} id="billingEmail" label="Billing Email"
                                                             readOnly={!isPendingVerification}/>
                             </div>
-                            <div className="row submit-holder">
+                            <div className="row wide submit-holder">
                                 {!isFullAccess && <div className="field">
                                     <div className="inner">
                                         <button type="submit" className="button">

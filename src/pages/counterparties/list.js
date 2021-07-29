@@ -19,10 +19,10 @@ const CounterpartiesList = () => {
     }, [])
 
     return (
-        <div className="block counterparties-list page-content-no-tabs">
+        <div className="block list page-content-no-tabs">
             <div>
                 <h1>Counterparties</h1>
-                <div className="counterparties-table">
+                <div className="table-wrapper">
                     <Table
                         list={list}
                         columns={ [
@@ -55,7 +55,7 @@ const CounterpartiesList = () => {
                                 cell: (cell) => cell.markupFormula || 'None'
                             }
                         ]}
-                        onRowClick={(item) => redirect(`/counterparties/${item.id}`)}
+                        onRowClick={(item) => redirect(`/counterparties/${item.id}/details`)}
                         textEmptyResult="No counterparties found"
                         textEmptyList="No counterparties found (empty)"
                         searches={(v) => [String(v.id), v.name, v.city, v.countryName, v.address, v.verificationState, v.isActive ? 'Active' : 'Inactive']}

@@ -14,9 +14,9 @@ const duplicatesListPage = () => {
     }, [])
 
     return (
-        <div className="block">
+        <div className="block list page-content-no-tabs">
             <h1>Duplicates list</h1>
-            <div style={{ marginTop: '-90px' }}>
+            <div className="table-wrapper">
                 <Table
                     list={list}
                     columns={ [

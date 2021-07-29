@@ -39,11 +39,11 @@ const CounterpartyVerification = ({ match }) => {
         <div className="page-content">
             <CounterpartyNavigation match={match}/>
             <div className="buttons" style={{ marginBottom: '10px' }}>
-                {counterparty?.verificationState !== 'FullAccess' &&
+                {counterparty && counterparty.verificationState !== 'FullAccess' &&
                 <div className="vertical-toolbar-element">
                     <button className="button" onClick={verifyReadonly}>Verify Readonly</button>
                 </div>}
-                {counterparty?.verificationState === 'ReadOnly' &&
+                {counterparty && counterparty.verificationState === 'ReadOnly' &&
                 <div className="vertical-toolbar-element">
                     <button className="button" onClick={() => verify('CashPayments')}>Verify Cash Payments</button>
                     <button className="button" onClick={() => verify('CreditPayments')}>Verify Virtual Account Payments

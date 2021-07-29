@@ -20,9 +20,9 @@ const CounterpartyTransferBalanceInfo = ({ match }) => {
     return (
         <div className="page-content">
             <CounterpartyNavigation match={match}/>
-            <CounterpartyTransferBalanceNavigation
+            {accounts?.[0] && <CounterpartyTransferBalanceNavigation
                 match={match}
-                accountId={accounts?.[0].id} />
+                accountId={accounts[0].id} />}
         </div>
     )
 }
