@@ -20,7 +20,7 @@ const duplicatesListPage = () => {
     return (
         <div className="block duplicates list page-content-no-tabs">
             {!err ?
-                <>
+                <div>
                     <h1>Duplicates list</h1>
                     <div className="table-wrapper">
                         <Table
@@ -39,7 +39,7 @@ const duplicatesListPage = () => {
                                     cell: (cell) => date.format.a(cell.created),
                                 },
                                 {
-                                    header: 'Creator',
+                                    header: 'Editor',
                                     cell: 'agentName',
                                 },
                                 {
@@ -52,8 +52,8 @@ const duplicatesListPage = () => {
                                 },
                             ]}
                             onRowClick={(item) => redirect(`/duplicates/${item.id}`)}
-                            textEmptyResult="No duplicates reports found"
-                            textEmptyList="No duplicates reports found (empty)"
+                            textEmptyResult="No duplicate reports found"
+                            textEmptyList="No duplicate reports found (empty)"
                             searches={(v) => [
                                 String(v.id), v.state, v.agentName, v.countryName,
                                 v.accommodations?.[0].supplier,
@@ -63,9 +63,9 @@ const duplicatesListPage = () => {
                             ]}
                         />
                     </div>
-                </> :
+                </div> :
             <NoteCard>
-                Sorry this page isn't available for a while
+                Sorry, this page isn't available for a while
             </NoteCard>}
         </div>
     );
