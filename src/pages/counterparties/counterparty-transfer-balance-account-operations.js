@@ -7,6 +7,7 @@ import NoteCard from '../../parts/note';
 import { API } from 'matsumoto/src/core';
 import { FormGetFormat } from 'core/service/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import FormAmount from '../../components/form/form-amount';
 
 const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     const [accounts, setAccounts] = useState(null);
@@ -77,13 +78,14 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                 </div>
                                 <div className="row-group">
                                     <div className="row middle-wide">
-                                        <FieldText
-                                            formik={formik}
-                                            id="amount"
-                                            label="Amount"
-                                            placeholder="Amount"
-                                            numeric
-                                        />
+                                        <FormAmount formik={formik} />
+                                        {/*<FieldText*/}
+                                        {/*    formik={formik}*/}
+                                        {/*    id="amount"*/}
+                                        {/*    label="Amount"*/}
+                                        {/*    placeholder="Amount"*/}
+                                        {/*    numeric*/}
+                                        {/*/>*/}
                                     </div>
                                     <div className="row slim">
                                         <FieldSelect
@@ -109,7 +111,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                     />
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className="button m">
+                                    <button type="submit" className="button size-medium">
                                         Transfer
                                     </button>
                                 </div>

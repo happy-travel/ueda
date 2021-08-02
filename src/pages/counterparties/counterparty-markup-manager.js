@@ -3,7 +3,7 @@ import CounterpartyNavigation from './counterparty-navigation';
 import Markups from 'matsumoto/src/parts/markups/markups';
 import apiMethods from 'core/methods';
 
-const CounterPartyMarkupManager = ({ match }) => (
+const CounterpartyMarkupManager = ({ match }) => (
     <div className="page-content">
         <CounterpartyNavigation match={match}/>
             <Markups
@@ -15,5 +15,5 @@ const CounterPartyMarkupManager = ({ match }) => (
     </div>
 )
 
-export default CounterPartyMarkupManager;
+export default CounterpartyMarkupManager;
 

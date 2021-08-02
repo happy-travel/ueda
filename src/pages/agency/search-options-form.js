@@ -138,7 +138,7 @@ const SearchOptionsForm = ({ id }) => {
                             >
                             <div className="field">
                                 <div className="inner">
-                                    <button type="submit" className="button m">
+                                    <button type="submit" className="button size-medium">
                                         Save
                                     </button>
                                 </div>

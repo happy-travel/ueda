@@ -17,7 +17,7 @@ const BookingsList = ({ bookings }) => {
         );
 
     return (
-        <div className="block">
+        <div className="block list">
             <h1 style={{ paddingLeft: '40px' }}>Bookings</h1>
 
             <div style={{ marginTop: '-100px' }}>
