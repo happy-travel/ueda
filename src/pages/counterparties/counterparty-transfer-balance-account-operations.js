@@ -79,13 +79,6 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                 <div className="row-group">
                                     <div className="row middle-wide">
                                         <FormAmount formik={formik} />
-                                        {/*<FieldText*/}
-                                        {/*    formik={formik}*/}
-                                        {/*    id="amount"*/}
-                                        {/*    label="Amount"*/}
-                                        {/*    placeholder="Amount"*/}
-                                        {/*    numeric*/}
-                                        {/*/>*/}
                                     </div>
                                     <div className="row slim">
                                         <FieldSelect
