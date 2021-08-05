@@ -7,8 +7,8 @@ const SideBar = observer(() => {
     return (
         <nav className="side-bar">
             {($auth.permitted('CounterpartyBalanceObservation') ||
-              $auth.permitted('CounterpartyBalanceReplenishAndSubtract')) ||
-              $auth.permitted('CounterpartyToAgencyTransfer' ||
+              $auth.permitted('CounterpartyBalanceReplenishAndSubtract') ||
+              $auth.permitted('CounterpartyToAgencyTransfer') ||
               $auth.permitted('CounterpartyManagement')) &&
               <Link to="/counterparties">
                   <div className="sidebar-item">
