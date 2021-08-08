@@ -11,7 +11,7 @@ import agencyBalancePage from 'pages/agency/agency-balance';
 import agencySettingsPage from 'pages/agency/agency-settings';
 import agencyListPage from 'pages/agency/list';
 import agencyBookingPage from 'pages/agency/agency-bookings';
-import agentPage from 'pages/agency/agent';
+import agentPage from 'pages/agents/agent';
 import createPaymentLinkPage from 'pages/paymentlinks/create';
 import inviteAdminPage from 'pages/admins/invite';
 import duplicatesListPage from 'pages/duplicates/list';
