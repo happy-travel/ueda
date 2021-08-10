@@ -47,7 +47,7 @@ const Routes = () => (
         <Route exact path="/counterparties/agencies/:id/agents" component={agencyListPage} />
         <Route exact path="/counterparties/agencies/:id/bookings" component={agencyBookingPage} />
         <Route exact path="/counterparties/agencies/:id" component={agencyPage} />
-        <Route exact path="/counterparties/agencies/:id/agents/:agentId" component={agentPage} />
+        <Route path="/counterparties/agencies/:id/agents/:agentId" component={agentPage} />
         <Route exact path="/paymentlinks" component={createPaymentLinkPage} />
         <Route exact path="/admins" component={inviteAdminPage} />
         <Route exact path="/duplicates/:id" component={duplicatePage} />

@@ -42,7 +42,7 @@ const AgentsList = ( { id }) => {
                             cell: 'markupSettings'
                         }
                     ]}
-                    onRowClick={(item) => redirect(`/counterparties/agencies/${id}/agents/${item.agentId}`)}
+                    onRowClick={(item) => redirect(`/counterparties/agencies/${id}/agents/${item.agentId}/bookings`)}
                     textEmptyResult="No agents found"
                     textEmptyList="No agents found (empty)"
                     searches={(v) => [String(v.agentId), v.name]}
