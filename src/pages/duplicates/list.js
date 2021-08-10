@@ -19,7 +19,7 @@ const duplicatesListPage = () => {
             <div className="table-wrapper">
                 <Table
                     list={list}
-                    columns={ [
+                    columns={[
                         {
                             header: 'ID',
                             cell: 'id',
