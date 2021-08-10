@@ -5,6 +5,7 @@ import apiMethods from 'core/methods';
 import { FormGetFormat } from 'core/service/form';
 import CounterpartyNavigation from './counterparty-navigation';
 import CounterpartyTransferBalanceNavigation from './counterparty-transfer-balance-navigation';
+import FormAmount from '../../components/form/form-amount';
 
 const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
@@ -104,13 +105,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                                 </div>
                                 <div className="row-group">
                                     <div className="row middle-wide">
-                                        <FieldText
-                                            formik={formik}
-                                            id="amount"
-                                            label="Amount"
-                                            placeholder="Amount"
-                                            numeric
-                                        />
+                                        <FormAmount formik={formik} />
                                     </div>
                                     <div className="row slim">
                                         <FieldSelect
@@ -128,7 +123,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className="button m">
+                                    <button type="submit" className="button size-medium">
                                         Transfer
                                     </button>
                                 </div>

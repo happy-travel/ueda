@@ -31,6 +31,7 @@ const BookingsPage = () => {
                         }}>
                             <div className="row">
                                 <FieldText formik={formik}
+                                           placeholder="HTL-AA-12345-6789"
                                            id="refCode"
                                            label="Reference code"
                                 />

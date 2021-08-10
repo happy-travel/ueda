@@ -60,7 +60,7 @@ const CounterpartyContract = ({ match }) => {
                     <div className="buttons tool-bar">
                         <div className="vertical-toolbar-element">
                             <form id="formElem" onSubmit={uploadContract}>
-                                <label className="button l file-upload">
+                                <label className="button size-large file-upload">
                                     {counterparty?.isContractUploaded ? 'Upload Another Contract' : 'Upload Contract'}
                                     <input type="file" name="file" accept="application/pdf"
                                            onChange={uploadContract}/>
@@ -69,7 +69,7 @@ const CounterpartyContract = ({ match }) => {
                         </div>
                         <div className="vertical-toolbar-element">
                             {counterparty?.isContractUploaded &&
-                            <button className="button l file-upload" onClick={downloadContract}>
+                            <button className="button size-large file-upload" onClick={downloadContract}>
                                 Download Contract
                             </button>}
                         </div>
