@@ -22,7 +22,7 @@ const AgencyNavigation = observer(({ match }) => {
 
 
     return (
-        <div className="counterparty-tabs-navigation">
+        <div className="tabs-navigation">
             {$auth.permitted('AgentManagement') &&
             <NavLink to={`/counterparties/agencies/${id}/agents`}>
                 Agents List
