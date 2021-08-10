@@ -3,7 +3,7 @@ import { API } from 'matsumoto/src/core';
 import { date } from 'matsumoto/src/simple';
 import { CachedForm, FieldText } from 'matsumoto/src/components/form';
 import apiMethods from 'core/methods';
-import SearchOptionsForm from './search-options-form';
+import SearchOptionsForm from '../agency/search-options-form';
 import Bookings from 'parts/bookings/bookings';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 
@@ -64,15 +64,16 @@ const AgencyPage = ({ match }) => {
                 <h3>{agent.isActive ? 'Active' : 'Inactive'}</h3>
             </section>
             <section>
-                <h1>Availability Search Options</h1>
-                <SearchOptionsForm
+                <h2>Availability Search Options</h2>
+                {availabilitySearchOptions ?
+                    <SearchOptionsForm
                     initialValues={availabilitySearchOptions}
                     onSubmit={submitAvailabilitySearchOptions}
-                />
+                    /> :
+                <h3>No options found (empty)</h3>}
             </section>
             <section>
-                <h1>Change Agency</h1>
-
+                <h2>Change Agency</h2>
                 <CachedForm
                     enableReinitialize
                     onSubmit={changeAgency}

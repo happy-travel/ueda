@@ -34,7 +34,7 @@ const CounterpartyAgencies = ({ match }) => {
                             cell: 'name'
                         },
                     ]}
-                    onRowClick={(item) => redirect(`/counterparties/agencies/${item.id}`)}
+                    onRowClick={(item) => redirect(`/counterparties/agencies/${item.id}/agents`)}
                     textEmptyResult="No agencies"
                     textEmptyList="No agencies"
                     searches={(v) => [v.id, v.name]}

@@ -5,8 +5,10 @@ import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
 import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import { observer } from 'mobx-react';
+import $auth from 'stores/auth';
 
-const CounterpartyHeader = ({ id }) => {
+const CounterpartyHeader = observer(({ id }) => {
 
     let [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
@@ -61,6 +63,7 @@ const CounterpartyHeader = ({ id }) => {
             }
             <h3>Status: {counterparty?.isActive ? 'Active' : 'Inactive'}</h3>
             <h3 style={{ marginBottom: '30px' }}>State: {remapStatus(counterparty?.verificationState)}</h3>
+            {$auth.permitted('CounterpartyVerification') &&
             <CachedForm
                 render={(formik) => (
                     <div className="row">
@@ -70,9 +73,9 @@ const CounterpartyHeader = ({ id }) => {
                             value={counterparty?.isActive}/>
                     </div>
                 )}/>
-
+            }
         </div>
     )
-}
+});
 
 export default CounterpartyHeader;

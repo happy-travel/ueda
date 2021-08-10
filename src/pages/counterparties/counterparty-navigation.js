@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import CounterpartyHeader from './counterparty-header';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
+import $auth from 'stores/auth';
 
 
-const CounterpartyNavigation = ({ match }) => {
+const CounterpartyNavigation = observer(({ match }) => {
 
     const { id } = match.params
 
@@ -31,30 +33,37 @@ const CounterpartyNavigation = ({ match }) => {
         <div>
             <CounterpartyHeader id={id} />
             <div className="counterparty-tabs-navigation">
+                {$auth.permitted('CounterpartyManagement') &&
                 <NavLink to={`/counterparties/${id}/details`}>
                     Counterparty Details
-                </NavLink>
+                </NavLink>}
+                {$auth.permitted('CounterpartyManagement') &&
                 <NavLink to={`/counterparties/${id}/contract`}>
                     Contract
-                </NavLink>
+                </NavLink>}
                 <NavLink to={`/counterparties/${id}/agencies`}>
                     Agencies
                 </NavLink>
+                {$auth.permitted('MarkupManagement') &&
                 <NavLink to={`/counterparties/${id}/markup-manager`}>
                     Markup Management
-                </NavLink>
-                {accounts && accounts[0] &&
+                </NavLink>}
+                {($auth.permitted('CounterpartyBalanceObservation') &&
+                  accounts &&
+                  accounts[0]) &&
                 <NavLink to={`/counterparties/${id}/transfer-balance/account-operations`}>
                     Balance
                 </NavLink>}
-                {counterparty && counterparty.verificationState !== 'FullAccess' &&
+                {($auth.permitted('CounterpartyVerification') &&
+                  counterparty &&
+                  counterparty.verificationState !== 'FullAccess') &&
                 <NavLink to={`/counterparties/${id}/verification`}>
                     Verification
                 </NavLink>}
             </div>
         </div>
     )
-}
+});
 
 export default CounterpartyNavigation;
 
