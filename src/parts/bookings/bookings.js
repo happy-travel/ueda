@@ -18,9 +18,8 @@ const BookingsList = ({ bookings }) => {
 
     return (
         <div className="block list">
-            <h1 style={{ paddingLeft: '40px' }}>Bookings</h1>
-
-            <div style={{ marginTop: '-100px' }}>
+            <h1>Bookings</h1>
+            <div className="table-wrapper">
                 <Table
                     list={bookings}
                     columns={ [

@@ -3,6 +3,7 @@ import AgencyNavigation from './agency-navigation';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import AgencyHeader from './agency-header';
+import NoteCard from 'parts/note';
 
 const AgencyBalance = ({ match }) => {
     const [agencyAccounts, setAgencyAccounts] = useState(null);
@@ -15,9 +16,12 @@ const AgencyBalance = ({ match }) => {
     }, [])
 
     return (
-        <div className="page-content">
+        <div className="agency-balance page-content">
             <AgencyHeader id={match.params.id}/>
             <AgencyNavigation match={match}/>
+            <NoteCard>
+                Sorry, this page isn't available for a while
+            </NoteCard>
         </div>
     )
 }

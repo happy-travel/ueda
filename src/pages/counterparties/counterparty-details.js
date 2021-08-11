@@ -32,6 +32,7 @@ const CounterpartyDetails = ({ match }) => {
 
     const isPendingVerification = counterparty?.verificationState === 'PendingVerification';
     const isFullAccess = counterparty?.verificationState === 'FullAccess';
+
     return (
         <div className="page-content">
             <CounterpartyNavigation match={match}/>
@@ -61,12 +62,15 @@ const CounterpartyDetails = ({ match }) => {
                                 <div className="row"><FieldText formik={formik} id="phone" label="Phone"
                                                                 readOnly={!isPendingVerification}/></div>
                                 <div className="row"><FieldText formik={formik} id="fax" label="Fax"
+                                                                placeholder="+1 323 555 1234"
                                                                 readOnly={!isPendingVerification}/></div>
                             </div>
                             <div className="row-group">
                                 <div className="row"><FieldText formik={formik} id="postalCode" label="Postal Code"
+                                                                placeholder="12345-1234"
                                                                 readOnly={!isPendingVerification}/></div>
                                 <div className="row"><FieldText formik={formik} id="website" label="Website"
+                                                                placeholder="google.com"
                                                                 readOnly={!isPendingVerification}/></div>
                             </div>
                             <div className="row-group">
@@ -83,10 +87,12 @@ const CounterpartyDetails = ({ match }) => {
                                     />
                                 </div>
                                 <div className="row"><FieldText formik={formik} id="vatNumber" label="VAT Number"
+                                                                placeholder="12345678X"
                                                                 readOnly={!isPendingVerification}/></div>
                             </div>
                             <div className="row wide">
                                 <FieldText formik={formik} id="billingEmail" label="Billing Email"
+                                                            placeholder="test@gmail.com"
                                                             readOnly={!isPendingVerification}/>
                             </div>
                             <div className="row wide submit-holder">
