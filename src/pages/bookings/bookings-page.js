@@ -24,7 +24,7 @@ const BookingsPage = () => {
                              width: '500px'
                          }}>
                         <div>
-                            <h2>Find booking</h2>
+                            <h1>Find booking</h1>
                         </div>
                         <div style={{
                             paddingTop: '30px'
