@@ -50,7 +50,7 @@ const inviteAdminPage = observer(() => {
                 onSubmit={submit}
                 render={(formik) => (
                     <React.Fragment>
-                        <div className="form">
+                        <div className="form section-slim">
                             <div className="row">
                                 <FieldText formik={formik}
                                            id="email"

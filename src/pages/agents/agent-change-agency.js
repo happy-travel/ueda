@@ -22,10 +22,11 @@ const AgentChangeAgency = ({ id, agentId }) => {
                 enableReinitialize
                 onSubmit={changeAgency}
                 render={(formik) => (
-                    <div className="form">
+                    <div className="form section-slim">
                         <div className="row">
                             <FieldText formik={formik}
                                        id="newAgencyId"
+                                       placeholder="000"
                                        label="New Agency ID"
                                        numeric
                             />

@@ -55,25 +55,27 @@ const CounterpartyHeader = observer(({ id }) => {
 
     return (
         <div className="counterparty-header">
-            <h1>{counterparty?.name}</h1>
-            {Boolean(balance) &&
+            <div className="header-info">
+                <h1>{counterparty?.name}</h1>
+                {Boolean(balance) &&
                 <h4>
                     Balance: {price(balance.currency, balance.balance)}
                 </h4>
-            }
-            <h3>Status: {counterparty?.isActive ? 'Active' : 'Inactive'}</h3>
-            <h3 style={{ marginBottom: '30px' }}>State: {remapStatus(counterparty?.verificationState)}</h3>
-            {$auth.permitted('CounterpartyVerification') &&
-            <CachedForm
-                render={(formik) => (
-                    <div className="row">
-                        <FieldSwitch
-                            formik={formik}
-                            onChange={statusChange}
-                            value={counterparty?.isActive}/>
-                    </div>
-                )}/>
-            }
+                }
+                <h3>Status: {counterparty?.isActive ? 'Active' : 'Inactive'}</h3>
+                <h3 style={{ marginBottom: '30px' }}>State: {remapStatus(counterparty?.verificationState)}</h3>
+                {$auth.permitted('CounterpartyVerification') &&
+                <CachedForm
+                    render={(formik) => (
+                        <div className="row">
+                            <FieldSwitch
+                                formik={formik}
+                                onChange={statusChange}
+                                value={counterparty?.isActive}/>
+                        </div>
+                    )}/>
+                }
+            </div>
         </div>
     )
 });
