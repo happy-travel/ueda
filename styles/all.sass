@@ -1,7 +1,8 @@
 $background-color: #F7F8FC
 $primary-color: #FCB700
 $header-element-margin: 15px 0 15px 0
-
+.block-wrapper
+    box-sizing: unset
 .block
     margin-bottom: 100px
     h1
@@ -77,24 +78,24 @@ $header-element-margin: 15px 0 15px 0
                 left: 0
 .side-bar
     .content
-        height: 400px
+        height: 535px
         padding-left: 50px
-        background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 0.62%, $background-color 42.75%)
-    padding-top: 150px
+        padding-top: 150px
+        background: white
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), $background-color)
+    display: flex
+    background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 500px, $background-color 500px)
+    flex-direction: column
+    justify-content: flex-start
     width: 440px
     min-width: 329px
     top: 72px
-    background: $background-color
-
 .sidebar-item
     display: flex
     align-items: center
-    //min-width: 40px
     font-size: 14px
-    //padding-bottom: 20px
     padding-left: 10px
     line-height: 50px
-    //padding-top: 20px
     span
         margin-left: 10px
         white-space: nowrap
