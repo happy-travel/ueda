@@ -111,6 +111,7 @@ const duplicatesListPage = () => {
                 Sorry, this page isn't available for a while
             </NoteCard>}
         </div>
+        </div>
     );
 };
 
