@@ -18,11 +18,12 @@ const CounterpartyAgencies = ({ match }) => {
     }, [])
 
     return (
-        <div className="page-content">
+        <div className="block list page-content">
             <CounterpartyNavigation match={match}/>
             <div className="admin-tab-element-wrapper block">
                 <h2>Agencies</h2>
-                <Table
+                <div className="table-wrapper">
+                    <Table
                     list={agencies}
                     columns={[
                         {
@@ -39,6 +40,7 @@ const CounterpartyAgencies = ({ match }) => {
                     textEmptyList="No agencies"
                     searches={(v) => [v.id, v.name]}
                 />
+                </div>
             </div>
         </div>
     )

@@ -26,7 +26,7 @@ const AgentChangeAgency = ({ id, agentId }) => {
                         <div className="row">
                             <FieldText formik={formik}
                                        id="newAgencyId"
-                                       placeholder="000"
+                                       placeholder="New Agency ID"
                                        label="New Agency ID"
                                        numeric
                             />

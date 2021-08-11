@@ -15,13 +15,19 @@ const AgencyHeader = ({ id }) => {
     }, [])
 
     return (
-        <div className="counterparty-header">
-        <h1>Agency #{id}</h1>
-            {Boolean(agencyAccounts) &&
-            <h4>
-                Balance: {price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount)}
-            </h4>
-            }
+        <div className="settings block">
+            <div className="header-info">
+                <h1>Agency #{id}</h1>
+                <div className="text">
+                    {Boolean(agencyAccounts) &&
+                    <div className="text-row">
+                        <h3 className="key">Balance:</h3>
+                        <h3 className="status Success value">{price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount)}
+                        </h3>
+                    </div>
+                    }
+                </div>
+            </div>
     </div>)
 }
 

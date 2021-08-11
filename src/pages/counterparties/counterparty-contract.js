@@ -52,16 +52,13 @@ const CounterpartyContract = ({ match }) => {
                 <h2>Contract</h2>
                 <div className="section-slim">
                     <NoteCard>
-                    Lorem Ipsum is simply dummy text of the ' +
-                    'printing and typesetting industry. Lorem Ipsum has been the industry\'s' +
-                    ' standard dummy text ever since the 1500s, when an unknown printer took a ' +
-                    'galley of type and scrambled it to make a type specime
+                    Here you can Upload or Re-upload your Counterparty Contract
                     </NoteCard>
                     <div className="buttons tool-bar">
                         <div className="vertical-toolbar-element">
                             <form id="formElem" onSubmit={uploadContract}>
                                 <label className="button size-large file-upload">
-                                    {counterparty?.isContractUploaded ? 'Upload Another Contract' : 'Upload Contract'}
+                                    {counterparty?.isContractUploaded ? 'Re-upload Contract' : 'Upload Contract'}
                                     <input type="file" name="file" accept="application/pdf"
                                            onChange={uploadContract}/>
                                 </label>

@@ -3,10 +3,10 @@ $primary-color: #FCB700
 $header-element-margin: 15px 0 15px 0
 .block-wrapper
     box-sizing: unset
-.block
     margin-bottom: 100px
+.block
     h1
-        margin: 19px 0 30px
+        margin: 19px 0 10px
 
     h2
         margin: 40px 0 20px
@@ -20,8 +20,9 @@ $header-element-margin: 15px 0 15px 0
         margin-right: 20px
 .table-wrapper
     margin-top: -90px
+.block.list.booking
+    margin: 0
 .block.list
-    margin: 40px 0 0 50px
     padding-right: 30px
     .the-table
         tr
@@ -87,9 +88,15 @@ $header-element-margin: 15px 0 15px 0
     background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 500px, $background-color 500px)
     flex-direction: column
     justify-content: flex-start
-    width: 440px
+    width: 370px
     min-width: 329px
     top: 72px
+.selected
+    .sidebar-item
+        width: 230px
+        background: white
+        color: $primary-color
+        border-radius: 40px
 .sidebar-item
     display: flex
     align-items: center
@@ -109,14 +116,12 @@ $header-element-margin: 15px 0 15px 0
     margin: 40px 0 0 50px
 .counterparty-header
     .header-info
-        h1
-            margin-bottom: 15px
         display: flex
         flex-direction: column
         justify-content: space-between
         height: 150px
-    margin-top: 21px
-    height: 216px
+    margin: 0
+    height: 170px
     h4
         margin: $header-element-margin
     button
@@ -132,9 +137,6 @@ $header-element-margin: 15px 0 15px 0
     width: 447px
 .row.slim
     width: 213px
-.admin-tab-element-wrapper
-    .form .row
-        margin-bottom: 40px
 .admin-app-header
     display: flex
     justify-content: center
@@ -205,9 +207,18 @@ $header-element-margin: 15px 0 15px 0
         margin-right: 10px !important
 .duplicates
     .note-wrapper
-        width: 500px
-        margin: 150px 35% 320px
+        width: 355px
 .agency-balance
     .note-wrapper
         width: 370px
         margin: 0 0 320px
+.text
+    .key
+        color: grey
+    .value
+        padding-left: 5px
+    .text-row
+        display: flex
+        padding-bottom: 10px
+    h3
+        font-size: 14px

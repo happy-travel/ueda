@@ -110,6 +110,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                                     <div className="row slim">
                                         <FieldSelect
                                             formik={formik}
+                                            placeholder="Currency"
                                             id="currency"
                                             label="Currency"
                                             required

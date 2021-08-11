@@ -39,17 +39,37 @@ const AgencyPage = ({ match }) => {
     }
 
     return (
-        <div className="settings block page-content-no-tabs">
-            <section>
-                <div>
-                    <h1>Agent #{match.params.agentId} (Agency #{match.params.id})</h1>
-                    <h3>Name: {agent.name}</h3>
-                    <h3>Created: {date.format.a(agent.created * 1000)}</h3>
-                    <h3>Markup: {agent.markupSettings}</h3>
-                    <h3>{agent.isActive ? 'Active' : 'Inactive'}</h3>
-                    <AgentNavigation id={match.params.id} agentId={match.params.agentId} />
+        <div className="settings block page-content">
+            <div className="header-info">
+                <h1>Agent #{match.params.agentId} (Agency #{match.params.id})</h1>
+                <div className="text">
+                    <div className="text-row">
+                        <h3 className="key">Name:</h3>
+                        <h3 className="value">{agent.name}</h3>
+                    </div>
+                    <div className="text-row">
+                        {/*<h3 className="key">Created: <h3>{date.format.a(agent.created * 1000)}</h3></h3>*/}
+                        <h3 className="key">Created:</h3>
+                        <h3 className="value">{date.format.a(agent.created * 1000)}</h3>
+                    </div>
+                    {agent.markupSettings &&
+                    <div className="text-row">
+                        <h3 className="key">Markup:</h3>
+                        <h3 className="value">{agent.markupSettings}</h3>
+                    </div>}
+                    {agent.isActive &&
+                    <div className="text-row">
+                        <h3 className="key">Status:</h3>
+                        <h3 className="status Success value">Active</h3>
+                    </div>}
+                    {agent?.isActive === false &&
+                    <div className="text-row">
+                        <h3 className="key">Status:</h3>
+                        <h3 className="status Success value">Inactive</h3>
+                    </div>}
                 </div>
-            </section>
+                <AgentNavigation id={match.params.id} agentId={match.params.agentId} />
+            </div>
             <Switch>
                 <Route path={'/counterparties/agencies/:id/agents/:agentId/change-agency'}
                        render={() => <AgentChangeAgency id={match.params.id} agentId={match.params.agentId} />}/>
