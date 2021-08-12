@@ -15,19 +15,19 @@ const ReportsPage = () => (
         <h1>Download report</h1>
         <ReportCard>
             {urlMethods.supplier}
-            <h3>Direct connectivity supplier wise report</h3>
+            <h3>Direct Connectivity Supplier Wise Report</h3>
         </ReportCard>
         <ReportCard>
             {urlMethods.agency}
-            <h3>Direct connectivity agency wise report</h3>
+            <h3>Direct Connectivity Agency Wise Report</h3>
         </ReportCard>
         <ReportCard>
             {urlMethods.agencyProductivity}
-            <h3>Agencies productivity report</h3>
+            <h3>Agencies Productivity Report</h3>
         </ReportCard>
         <ReportCard>
             {urlMethods.fullBooking}
-            <h3>Full bookings report</h3>
+            <h3>Full Bookings Report</h3>
         </ReportCard>
     </div>
 )

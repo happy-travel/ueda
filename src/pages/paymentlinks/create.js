@@ -80,17 +80,17 @@ const CreatePaymentLinkPage = () => {
                         <div className="form section-slim">
                             <div className="row">
                                 <FieldText formik={formik}
-                                           placeholder="Please enter amount" id="amount"
+                                           placeholder="Please Enter Amount" id="amount"
                                            label="Amount" numeric required/>
                             </div>
                             <div className="row">
-                                <FieldText formik={formik} placeholder="Please enter email"
+                                <FieldText formik={formik} placeholder="Please Enter Email"
                                            id="email"
                                            label="Email" required/>
                             </div>
                             <div className="row">
                                 <FieldSelect formik={formik}
-                                             placeholder="Please choose the type of a service"
+                                             placeholder="Please Choose the Type of a Service"
                                              id="serviceType"
                                              label="Service Type"
                                              options={[
@@ -102,7 +102,7 @@ const CreatePaymentLinkPage = () => {
                             </div>
                             <div className="row currency">
                                 <FieldSelect formik={formik}
-                                             placeholder="Please choose currency"
+                                             placeholder="Please Choose Currency"
                                              id="currency"
                                              label="Currency"
                                              options={[
@@ -115,7 +115,7 @@ const CreatePaymentLinkPage = () => {
                             </div>
                             <div className="row">
                                 <FieldTextarea formik={formik}
-                                               placeholder="Please enter commentary"
+                                               placeholder="Please Enter Commentary"
                                                id="comment"
                                                label="Commentary"
                                                required

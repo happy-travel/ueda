@@ -54,27 +54,42 @@ const CounterpartyHeader = observer(({ id }) => {
     }
 
     return (
-        <div className="counterparty-header">
+        <div className="settings block counterparty-header">
             <div className="header-info">
                 <h1>{counterparty?.name}</h1>
-                {Boolean(balance) &&
-                <h4>
-                    Balance: {price(balance.currency, balance.balance)}
-                </h4>
-                }
-                <h3>Status: {counterparty?.isActive ? 'Active' : 'Inactive'}</h3>
-                <h3 style={{ marginBottom: '30px' }}>State: {remapStatus(counterparty?.verificationState)}</h3>
-                {$auth.permitted('CounterpartyVerification') &&
-                <CachedForm
-                    render={(formik) => (
-                        <div className="row">
-                            <FieldSwitch
-                                formik={formik}
-                                onChange={statusChange}
-                                value={counterparty?.isActive}/>
-                        </div>
-                    )}/>
-                }
+                <div className="text">
+                    {Boolean(balance) &&
+                    <div className="text-row">
+                        <h3 className="key">Balance:</h3>
+                        <h3 className="status Success value">{price(balance.currency, balance.balance)}</h3>
+                    </div>
+                    }
+                    {counterparty?.isActive &&
+                    <div className="text-row">
+                        <h3 className="key">Status:</h3>
+                        <h3 className="status Success value">Active</h3>
+                    </div>}
+                    {counterparty?.isActive === false &&
+                    <div className="text-row">
+                        <h3 className="key">Status:</h3>
+                        <h3 className="status Success value">Inactive</h3>
+                    </div>}
+                    <div className="text-row">
+                        <h3 className="key">State:</h3>
+                        <h3 className="value">{remapStatus(counterparty?.verificationState)}</h3>
+                    </div>
+                    {$auth.permitted('CounterpartyVerification') &&
+                    <CachedForm
+                        render={(formik) => (
+                            <div className="row">
+                                <FieldSwitch
+                                    formik={formik}
+                                    onChange={statusChange}
+                                    value={counterparty?.isActive}/>
+                            </div>
+                        )}/>
+                    }
+                </div>
             </div>
         </div>
     )

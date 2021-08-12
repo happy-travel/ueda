@@ -17,7 +17,7 @@ const BookingsList = ({ bookings }) => {
         );
 
     return (
-        <div className="block list">
+        <div className="block list booking">
             <h1>Bookings</h1>
             <div className="table-wrapper">
                 <Table

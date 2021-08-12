@@ -8,12 +8,14 @@ const SearchOptionsForm = ({ id }) => {
     const [defaultSettings, setDefaultSettings] = useState(true);
 
     useEffect(() => {
-        API.get({
-            url: apiMethods.availabilitySearchOptions(id),
-            success: (settings) => {
-                setSettings(settings);
-            }
-        });
+        if (id) {
+            API.get({
+                url: apiMethods.availabilitySearchOptions(id),
+                success: (settings) => {
+                    setSettings(settings);
+                }
+            });
+        }
     }, [])
 
     const submitSettings = (values) => {

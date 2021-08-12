@@ -32,15 +32,13 @@ const AgentSearchOptions = ({ id, agentId }) => {
 
     return (
         <div>
-            <section>
-                <h2>Availability Search Options</h2>
-                {availabilitySearchOptions ?
-                    <SearchOptionsForm
-                        initialValues={availabilitySearchOptions}
-                        onSubmit={submitAvailabilitySearchOptions}
-                    /> :
-                    <h3>No options found (empty)</h3>}
-            </section>
+            <h2>Availability Search Options</h2>
+            {availabilitySearchOptions ?
+                <SearchOptionsForm
+                    initialValues={availabilitySearchOptions}
+                    onSubmit={submitAvailabilitySearchOptions}
+                /> :
+                <h3>No options found (empty)</h3>}
         </div>
     )
 }

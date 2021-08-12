@@ -46,20 +46,25 @@ const CounterpartyDetails = ({ match }) => {
                         <div className="form">
                             <div className="row wide">
                                 <FieldText formik={formik} id="name" label="Name"
-                                                            readOnly={!isPendingVerification}/>
+                                           placeholder="Name"
+                                           readOnly={!isPendingVerification}/>
                             </div>
                             <div className="row wide">
                                 <FieldText formik={formik} id="address" label="Address"
-                                                            readOnly={!isPendingVerification}/>
+                                           placeholder="Address"
+                                           readOnly={!isPendingVerification}/>
                             </div>
                             <div className="row-group">
                                 <div className="row"><FieldText formik={formik} id="countryCode" label="Country Code"
+                                                                placeholder="Country Code"
                                                                 readOnly={!isPendingVerification}/></div>
                                 <div className="row"><FieldText formik={formik} id="city" label="City"
+                                                                placeholder="City"
                                                                 readOnly={!isPendingVerification}/></div>
                             </div>
                             <div className="row-group">
                                 <div className="row"><FieldText formik={formik} id="phone" label="Phone"
+                                                                placeholder="Phone"
                                                                 readOnly={!isPendingVerification}/></div>
                                 <div className="row"><FieldText formik={formik} id="fax" label="Fax"
                                                                 placeholder="+1 323 555 1234"

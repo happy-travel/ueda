@@ -8,10 +8,10 @@ const AgentNavigation = ({ id, agentId }) => {
                 Bookings
             </NavLink>
             <NavLink to={`/counterparties/agencies/${id}/agents/${agentId}/change-agency`}>
-                Change agency
+                Change Agency
             </NavLink>
             <NavLink to={`/counterparties/agencies/${id}/agents/${agentId}/search-options`}>
-                Agent search options
+                Agent Search Options
             </NavLink>
         </div>
     )

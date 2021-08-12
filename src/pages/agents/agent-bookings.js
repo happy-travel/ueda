@@ -15,11 +15,9 @@ const AgentBookings = ({ agentId }) => {
 
 
     return(
-        <section>
-            <Bookings
-                bookings={bookings}
-            />
-        </section>
+        <Bookings
+            bookings={bookings}
+        />
     );
 }
 

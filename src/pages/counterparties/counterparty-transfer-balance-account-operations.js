@@ -60,10 +60,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                 </div>
                                 <div className="row wide">
                                     <NoteCard>
-                                        Lorem Ipsum is simply dummy text of the ' +
-                                        'printing and typesetting industry. Lorem Ipsum has been the industry\'s' +
-                                        ' standard dummy text ever since the 1500s, when an unknown printer took a ' +
-                                        'galley of type and scrambled it to make a type specime
+                                        Replenish and Subtract is about real transfers occurred. Manual operations is for correction of mistakes only.
                                     </NoteCard>
                                 </div>
                                 <div className="row wide">
@@ -83,6 +80,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                     <div className="row slim">
                                         <FieldSelect
                                             formik={formik}
+                                            placeholder="Currency"
                                             id="currency"
                                             label="Currency"
                                             required
@@ -97,6 +95,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                 </div>
                                 <div className="row wide">
                                     <FieldText
+                                        placeholder="Reason"
                                         formik={formik}
                                         id="reason"
                                         label="Reason"
