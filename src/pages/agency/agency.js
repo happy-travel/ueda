@@ -5,6 +5,7 @@ import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import AgencyHeader from './agency-header';
 
+
 const AgencyPage = ({ match }) => {
     const [bookings, setBookings] = useState(null);
     const [availabilitySearchOptions, setAvailabilitySearchOptions] = useState(null);
@@ -78,7 +79,7 @@ const AgencyPage = ({ match }) => {
         });
     }
     return (
-        <div className="page-content">
+        <div>
             <AgencyHeader id={match.params.id}/>
             <AgencyNavigation match={match} />
         </div>

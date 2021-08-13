@@ -24,19 +24,19 @@ const AgencyNavigation = observer(({ match }) => {
     return (
         <div className="tabs-navigation">
             {$auth.permitted('AgentManagement') &&
-            <NavLink to={`/counterparties/agencies/${id}/agents`}>
+            <NavLink to={`/agency/${id}/agents`}>
                 Agents List
             </NavLink>}
             {$auth.permitted('BalanceManualCorrection') &&
-            <NavLink to={`/counterparties/agencies/${id}/transfer-balance`}>
+            <NavLink to={`/agency/${id}/transfer-balance`}>
                 Balance
             </NavLink>}
             {availabilitySearchOptions &&
-            <NavLink to={`/counterparties/agencies/${id}/settings`}>
+            <NavLink to={`/agency/${id}/settings`}>
                 Agency Settings
             </NavLink>}
             {$auth.permitted('BookingManagement') &&
-            <NavLink to={`/counterparties/agencies/${id}/bookings`}>
+            <NavLink to={`/agency/${id}/bookings`}>
                 Bookings
             </NavLink>}
         </div>
