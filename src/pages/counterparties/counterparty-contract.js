@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import CounterpartyNavigation from './counterparty-navigation';
 import NoteCard from 'parts/note';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
@@ -46,30 +45,27 @@ const CounterpartyContract = ({ match }) => {
     }
 
     return (
-        <div className="page-content">
-            <CounterpartyNavigation match={match}/>
-            <div className="admin-tab-element-wrapper block">
-                <h2>Contract</h2>
-                <div className="section-slim">
-                    <NoteCard>
-                    Here you can Upload or Re-upload your Counterparty Contract
-                    </NoteCard>
-                    <div className="buttons tool-bar">
-                        <div className="vertical-toolbar-element">
-                            <form id="formElem" onSubmit={uploadContract}>
-                                <label className="button size-large file-upload">
-                                    {counterparty?.isContractUploaded ? 'Re-upload Contract' : 'Upload Contract'}
-                                    <input type="file" name="file" accept="application/pdf"
-                                           onChange={uploadContract}/>
-                                </label>
-                            </form>
-                        </div>
-                        <div className="vertical-toolbar-element">
-                            {counterparty?.isContractUploaded &&
-                            <button className="button size-large file-upload" onClick={downloadContract}>
-                                Download Contract
-                            </button>}
-                        </div>
+        <div className="admin-tab-element-wrapper block">
+            <h2>Contract</h2>
+            <div className="section-slim">
+                <NoteCard>
+                Here you can Upload or Re-upload your Counterparty Contract
+                </NoteCard>
+                <div className="buttons tool-bar">
+                    <div className="vertical-toolbar-element">
+                        <form id="formElem" onSubmit={uploadContract}>
+                            <label className="button size-large file-upload">
+                                {counterparty?.isContractUploaded ? 'Re-upload Contract' : 'Upload Contract'}
+                                <input type="file" name="file" accept="application/pdf"
+                                       onChange={uploadContract}/>
+                            </label>
+                        </form>
+                    </div>
+                    <div className="vertical-toolbar-element">
+                        {counterparty?.isContractUploaded &&
+                        <button className="button size-large file-upload" onClick={downloadContract}>
+                            Download Contract
+                        </button>}
                     </div>
                 </div>
             </div>

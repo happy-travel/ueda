@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import apiMethods from 'core/methods';
-import CounterpartyNavigation from './counterparty-navigation';
 import CounterpartyTransferBalanceNavigation from './counterparty-transfer-balance-navigation';
 import { CachedForm, FieldSelect, FieldText } from 'matsumoto/src/components/form';
 import NoteCard from '../../parts/note';
@@ -33,8 +32,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     }
 
     return (
-        <div className="page-content">
-            <CounterpartyNavigation match={match}/>
+        <div>
             <CounterpartyTransferBalanceNavigation match={match} />
             <div className="block">
                 <div>

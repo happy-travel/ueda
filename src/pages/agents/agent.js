@@ -71,13 +71,12 @@ const AgencyPage = ({ match }) => {
                 <AgentNavigation id={match.params.id} agentId={match.params.agentId} />
             </div>
             <Switch>
-                <Route path={'/counterparties/agencies/:id/agents/:agentId/change-agency'}
+                <Route path={'/agency/:id/agents/:agentId/change-agency'}
                        render={() => <AgentChangeAgency id={match.params.id} agentId={match.params.agentId} />}/>
-                <Route path={'/counterparties/agencies/:id/agents/:agentId/bookings'}
+                <Route path={'/agency/:id/agents/:agentId/bookings'}
                        render={() => <AgentBookings agentId={match.params.agentId} />}/>
-                <Route path={'/counterparties/agencies/:id/agents/:agentId/search-options'}
+                <Route path={'/agency/:id/agents/:agentId/search-options'}
                        render={() => <AgentSearchOptions id={match.params.id} agentId={match.params.agentId} />}/>
-
             </Switch>
         </div>
     );
