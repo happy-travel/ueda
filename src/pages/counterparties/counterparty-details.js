@@ -4,6 +4,8 @@ import { API, redirect } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { PAYMENT_METHODS } from 'matsumoto/src/enum';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import confirmationModal from 'components/confirmation-modal';
+import confirmation from '../../components/confirms/confirmation';
 
 const CounterpartyDetails = ({ match }) => {
 
@@ -19,14 +21,18 @@ const CounterpartyDetails = ({ match }) => {
     }, []);
 
     const submit = (body) => {
-        API.put({
-            url: apiMethods.counterparty(match.params.id),
-            body,
-            success: () => redirect(`/counterparties/${match.params.id}`),
-            error: ({ errors }) => {
-                Notifications.addNotification(errors.Name.toString(), null, 'warning');
+        confirmationModal(confirmation).then(
+            () => {
+                API.put({
+                    url: apiMethods.counterparty(match.params.id),
+                    body,
+                    success: () => redirect(`/counterparties/${match.params.id}`),
+                    error: ({ errors }) => {
+                        Notifications.addNotification(errors.Name.toString(), null, 'warning');
+                    }
+                });
             }
-        });
+        )
     };
 
     const isPendingVerification = counterparty?.verificationState === 'PendingVerification';

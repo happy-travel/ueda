@@ -25,21 +25,6 @@ const SideBar = observer(() => {
                     <i className="icon icon-counterparty" />
                     <span>Counterparties</span>
                 </SideBarItem>}
-                {/*{($auth.permitted('CounterpartyBalanceObservation') ||*/}
-                {/*    $auth.permitted('CounterpartyBalanceReplenishAndSubtract') ||*/}
-                {/*    $auth.permitted('CounterpartyToAgencyTransfer') ||*/}
-                {/*    $auth.permitted('CounterpartyManagement')) &&*/}
-                {/*    <SideBarItem>*/}
-                {/*        <i className="icon icon-counterparty" />*/}
-                {/*        <span>Counterparties</span>*/}
-                {/*        */}
-                {/*    </SideBarItem>*/}
-                {/*<NavLink to="/counterparties">*/}
-                {/*    <div className={'sidebar-item' + `${select ? ' active' : ''}`} onClick={selectHandler}>*/}
-                {/*        <i className="icon icon-counterparty" />*/}
-                {/*        <span>Counterparties</span>*/}
-                {/*    </div>*/}
-                {/*</NavLink>}*/}
                 {$auth.permitted('PaymentLinkGeneration') &&
                 <SideBarItem url={'/paymentlinks'}>
                     <i className="icon icon-payment-links" />
@@ -62,13 +47,9 @@ const SideBar = observer(() => {
                 </SideBarItem>}
                 {($auth.permitted('BookingReportGeneration') ||
                     $auth.permitted('AccountsReportGeneration') ||
+                    $auth.permitted('BookingManagement') ||
                     $auth.permitted('CompanyReportGeneration')) &&
                 <SideBarItem url={'/reports'}>
-                    <i className="icon icon-reports" />
-                    <span>Reports</span>
-                </SideBarItem>}
-                {$auth.permitted('BookingManagement') &&
-                <SideBarItem url={'/bookings'}>
                     <i className="icon icon-reports" />
                     <span>Reports</span>
                 </SideBarItem>}

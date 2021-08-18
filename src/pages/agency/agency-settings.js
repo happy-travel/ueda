@@ -26,21 +26,6 @@ const AgencySettings = ({ match }) => {
         })
     }, []);
 
-    const submitAvailabilitySearchOptions = (values) => {
-        API.put({
-            url: apiMethods.availabilitySearchOptions(match.params.id),
-            body: {
-                values,
-                enabledSuppliers: values
-                    .enabledSuppliers
-                    .keys()
-                    .map((item) => values.enabledSuppliers[item] && item)
-                    .filter((item) => item)
-            },
-            success: () => Notifications.addNotification('Saved', null, 'success')
-        });
-    }
-
     return (
         <div className="page-content">
             <AgencyHeader id={match.params.id}/>

@@ -4,6 +4,8 @@ import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
+import confirmationModal from 'components/confirmation-modal';
+import confirmation from '../../components/confirms/confirmation';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
@@ -17,36 +19,48 @@ const Booking = ({ match }) => {
        });
    }, [])
 
-    // const loadBooking = async() => {
-    //     const booking = await A
-    //
-    // }
     const bookingCancel = () => {
-        API.post({
-            url: apiMethods.bookingCancel(booking.bookingId),
-            success: () => Notifications.addNotification('Cancelled', null, 'success')
-        });
+        confirmationModal(confirmation).then(
+            () => {
+                API.post({
+                    url: apiMethods.bookingCancel(booking.bookingId),
+                    success: () => Notifications.addNotification('Cancelled', null, 'success')
+                });
+            }
+        )
     }
 
     const bookingDiscard = () => {
-        API.post({
-            url: apiMethods.bookingDiscard(this.state.booking.bookingId),
-            success: () => Notifications.addNotification('Discarded', null, 'success')
-        });
+        confirmationModal(confirmation).then(
+            () => {
+                API.post({
+                    url: apiMethods.bookingDiscard(this.state.booking.bookingId),
+                    success: () => Notifications.addNotification('Discarded', null, 'success')
+                });
+            }
+        )
     }
 
     const bookingPaymentCompleteManually = () => {
-        API.post({
-            url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
-            success: () => Notifications.addNotification('Success', null, 'success'),
-        });
+        confirmationModal(confirmation).then(
+            () => {
+                API.post({
+                    url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
+                    success: () => Notifications.addNotification('Success', null, 'success'),
+                });
+            }
+        )
     }
 
     const paymentConfirm = () => {
-        API.post({
-            url: apiMethods.paymentConfirm(this.state.booking.bookingId),
-            success: () => Notifications.addNotification('Success', null, 'success'),
-        });
+        confirmationModal(confirmation).then(
+            () => {
+                API.post({
+                    url: apiMethods.paymentConfirm(this.state.booking.bookingId),
+                    success: () => Notifications.addNotification('Success', null, 'success'),
+                });
+            }
+        )
     }
 
     return (

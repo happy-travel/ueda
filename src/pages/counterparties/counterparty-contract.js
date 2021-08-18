@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import NoteCard from 'parts/note';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
+import confirmationModal from 'components/confirmation-modal';
+import confirmation from '../../components/confirms/confirmation'
+
 
 const CounterpartyContract = ({ match }) => {
     let [counterparty, setCounterparty] = useState(null);
@@ -16,13 +19,17 @@ const CounterpartyContract = ({ match }) => {
     }, []);
 
     const uploadContract = (e) => {
-        e.preventDefault();
-        API.put({
-            url: apiMethods.contractFile(match.params.id),
-            formDataBody: new FormData(document.getElementById('formElem')),
-            success: () => setCounterparty({ ...counterparty,
-                isContractUploaded: true })
-        });
+        confirmationModal(confirmation).then(
+            () => {
+                e.preventDefault();
+                API.put({
+                    url: apiMethods.contractFile(match.params.id),
+                    formDataBody: new FormData(document.getElementById('formElem')),
+                    success: () => setCounterparty({ ...counterparty,
+                        isContractUploaded: true })
+                });
+            }
+        );
     }
 
     const downloadContract = () => {

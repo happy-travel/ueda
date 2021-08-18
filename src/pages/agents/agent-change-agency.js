@@ -3,20 +3,26 @@ import { CachedForm, FieldText } from 'matsumoto/src/components/form';
 import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import confirmationModal from 'components/confirmation-modal';
+import confirmation from '../../components/confirms/confirmation';
 
 
 const AgentChangeAgency = ({ id, agentId }) => {
 
     const changeAgency = (values) => {
-        API.post({
-            url: apiMethods.agentChangeAgency(id, agentId),
-            body: values.newAgencyId,
-            success: () => Notifications.addNotification('Changed', null, 'success')
-        })
+        confirmationModal(confirmation).then(
+            () => {
+                API.post({
+                    url: apiMethods.agentChangeAgency(id, agentId),
+                    body: values.newAgencyId,
+                    success: () => Notifications.addNotification('Changed', null, 'success')
+                })
+            }
+        )
     }
 
     return (
-        <section>
+        <div className="page-content">
             <h2>Change Agency</h2>
             <CachedForm
                 enableReinitialize
@@ -43,7 +49,7 @@ const AgentChangeAgency = ({ id, agentId }) => {
                     </div>
                 )}
             />
-        </section>
+        </div>
     )
 }
 
