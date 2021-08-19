@@ -4,7 +4,7 @@ const Confirmation = ({ yes, no }) => {
     return (
         <div className="confirmation-modal">
             <h3>Are you sure?</h3>
-            <div>Manual operations is for correction of mistakes only</div>
+            <div>Manual operations are is for correction of mistakes only</div>
             <div className="confirm-actions">
                 <div onClick={no}>Cancel</div>
                 <div className="accept" onClick={yes}>Confirm</div>
