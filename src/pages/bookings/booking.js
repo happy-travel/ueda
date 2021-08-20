@@ -31,7 +31,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingDiscard = () => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.bookingDiscard(this.state.booking.bookingId),
@@ -42,7 +42,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingPaymentCompleteManually = () => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
@@ -53,7 +53,7 @@ const Booking = ({ match }) => {
     }
 
     const paymentConfirm = () => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.paymentConfirm(this.state.booking.bookingId),
