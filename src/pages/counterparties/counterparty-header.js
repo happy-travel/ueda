@@ -7,7 +7,7 @@ import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import { observer } from 'mobx-react';
 import $auth from 'stores/auth';
-import confirmationModal from 'components/confirmation-modal';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import confirmation from '../../components/confirms/confirmation-medium'
 
 const CounterpartyHeader = observer(({ id }) => {

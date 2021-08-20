@@ -8,7 +8,7 @@ import FormAgentData from 'matsumoto/src/parts/form-agent-data';
 import PermissionsSelectorElement from 'matsumoto/src/pages/cabinet/agency/parts/permission-selector-element';
 import { registrationAgentValidatorWithEmail } from 'matsumoto/src/components/form/validation';
 import $auth from 'stores/auth';
-import confirmationModal from 'components/confirmation-modal';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import confirmation from '../../components/confirms/confirmation-medium';
 
 const inviteAdminPage = observer(() => {

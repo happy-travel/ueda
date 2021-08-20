@@ -5,7 +5,7 @@ import FieldDatepicker from 'matsumoto/src/components/form/field-datepicker/fiel
 import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
-import confirmationModal from 'components/confirmation-modal';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import confirm from '../../components/confirms/confirmation-medium';
 
 const initialDateValues = {

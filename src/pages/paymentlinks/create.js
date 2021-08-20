@@ -4,7 +4,7 @@ import { CachedForm, FieldText, FieldSelect, FieldTextarea } from 'matsumoto/src
 import apiMethods from 'core/methods';
 import { copyToClipboard } from 'matsumoto/src/simple/logic';
 import { ValidatorPaymentLink } from 'components/form/validation/validator-payment-link';
-import confirmationModal from 'components/confirmation-modal';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import confirm from '../../components/confirms/confirmation-medium';
 
 const CreatePaymentLinkPage = () => {
