@@ -6,6 +6,8 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import Verticaltable from '../vertical-table/vertical-table';
 import HotelStars from 'matsumoto/src/components/accommodation/hotel-stars';
 import ReactJson from 'react-json-view';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
+import confirmCancel from '../../components/confirms/confirmation-medium';
 
 class DuplicatePage extends React.Component {
     constructor(props) {
@@ -23,17 +25,25 @@ class DuplicatePage extends React.Component {
     }
 
     approve = () => {
-        API.post({
-            url: apiMethods.duplicateApprove(this.props.match.params.id),
-            success: () => Notifications.addNotification('Approved', null, 'success'),
-        });
+        confirmationModal(confirmCancel).then(
+            () => {
+                API.post({
+                    url: apiMethods.duplicateApprove(this.props.match.params.id),
+                    success: () => Notifications.addNotification('Approved', null, 'success'),
+                });
+            }
+        )
     }
 
     disapprove = () => {
-        API.post({
-            url: apiMethods.duplicateDisapprove(this.props.match.params.id),
-            success: () => Notifications.addNotification('Disapproved', null, 'success'),
-        });
+        confirmationModal(confirmCancel).then(
+            () => {
+                API.post({
+                    url: apiMethods.duplicateApprove(this.props.match.params.id),
+                    success: () => Notifications.addNotification('Approved', null, 'success'),
+                });
+            }
+        )
     }
 
     render() {

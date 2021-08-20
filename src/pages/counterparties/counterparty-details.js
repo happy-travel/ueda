@@ -4,8 +4,8 @@ import { API, redirect } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { PAYMENT_METHODS } from 'matsumoto/src/enum';
 import Notifications from 'matsumoto/src/stores/notifications-store';
-import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 const CounterpartyDetails = ({ match }) => {
 
@@ -21,7 +21,7 @@ const CounterpartyDetails = ({ match }) => {
     }, []);
 
     const submit = (body) => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.put({
                     url: apiMethods.counterparty(match.params.id),

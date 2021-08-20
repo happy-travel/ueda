@@ -4,8 +4,8 @@ import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
-import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
@@ -20,7 +20,7 @@ const Booking = ({ match }) => {
    }, [])
 
     const bookingCancel = () => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),
@@ -65,22 +65,20 @@ const Booking = ({ match }) => {
 
     return (
         <div className="confirmation block page-content-no-tabs">
-            <section>
-                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '50px 0 30px' }}>
-                    <div className="buttons">
-                        <button className="button" onClick={bookingCancel}>Cancel</button>
-                        <button className="button" onClick={bookingDiscard}>Discard</button>
-                        <button className="button" onClick={bookingPaymentCompleteManually}>
-                            Manually Complete Payment
-                        </button>
-                        <button className="button" onClick={paymentConfirm}>Confirm Payment</button>
-                    </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '50px 0 30px' }}>
+                <div className="buttons">
+                    <button className="button" onClick={bookingCancel}>Cancel</button>
+                    <button className="button" onClick={bookingDiscard}>Discard</button>
+                    <button className="button" onClick={bookingPaymentCompleteManually}>
+                        Manually Complete Payment
+                    </button>
+                    <button className="button" onClick={paymentConfirm}>Confirm Payment</button>
                 </div>
-                <Breadcrumbs
-                    backText="Back"
-                />
-                {booking && <BookingConfirmationView referenceCode={match.params.refCode} /> }
-            </section>
+            </div>
+            <Breadcrumbs
+                backText="Back"
+            />
+            {booking && <BookingConfirmationView referenceCode={match.params.refCode} /> }
         </div>
     );
 }

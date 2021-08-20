@@ -237,18 +237,33 @@ $header-element-margin: 15px 0 15px 0
 .welcome-block
     margin-bottom: 30px
 .confirmation-modal
-    width: 357px
-    height: 100px
+    display: flex
+    width: 480px
+    height: 120px
     padding-left: 10px
     padding-top: 25px
+    .icon-wrapper
+        height: 80px
+        box-shadow: .5px 0 0 $color-shadow-border
+        margin-right: 30px
+    i
+        padding-right: 65px
+        padding-top: 35px
     h3
         font-weight: 600
-        padding-bottom: 5px
+        padding-bottom: 7px
     .confirm-actions
         display: flex
         justify-content: space-around
-        padding-top: 10px
+        padding-top: 15px
         padding-left: 100px
         div
             &:hover
                 color: $primary-color
+.confirmation-modal.confirm
+    width: 350px
+    h3
+        padding-top: 10px
+    .confirm-actions
+        display: flex
+        justify-content: flex-end
