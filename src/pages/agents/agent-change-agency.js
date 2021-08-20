@@ -4,13 +4,13 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation-medium';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 
 const AgentChangeAgency = ({ id, agentId }) => {
 
     const changeAgency = (values) => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.agentChangeAgency(id, agentId),

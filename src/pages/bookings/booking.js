@@ -5,7 +5,7 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation-medium';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
@@ -20,7 +20,7 @@ const Booking = ({ match }) => {
    }, [])
 
     const bookingCancel = () => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),

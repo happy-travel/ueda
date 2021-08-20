@@ -9,13 +9,13 @@ import PermissionsSelectorElement from 'matsumoto/src/pages/cabinet/agency/parts
 import { registrationAgentValidatorWithEmail } from 'matsumoto/src/components/form/validation';
 import $auth from 'stores/auth';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation-medium';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 const inviteAdminPage = observer(() => {
     const [success, setSuccess] = useState(false);
 
     const submit = (values) => {
-        confirmationModal(confirmation).then(
+        confirmationModal(ConfirmationMedium).then(
             () => {
                 setSuccess(null);
                 API.post({

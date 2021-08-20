@@ -5,7 +5,7 @@ import apiMethods from 'core/methods';
 import { copyToClipboard } from 'matsumoto/src/simple/logic';
 import { ValidatorPaymentLink } from 'components/form/validation/validator-payment-link';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import confirm from '../../components/confirms/confirmation-medium';
+import ConfirmationSmall from '../../components/confirms/confirmation-small';
 
 const CreatePaymentLinkPage = () => {
     const [result, setResult] = useState(null);
@@ -24,7 +24,7 @@ const CreatePaymentLinkPage = () => {
     }
 
     const submitButtonClick = (event, send, formik) => {
-        confirmationModal(confirm).then(
+        confirmationModal(ConfirmationSmall).then(
             () => {
                 event.preventDefault();
                 formik.setFieldValue('send', send);

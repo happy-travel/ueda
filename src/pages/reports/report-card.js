@@ -6,7 +6,7 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import confirm from '../../components/confirms/confirmation-medium';
+import ConfirmationSmall from '../../components/confirms/confirmation-small';
 
 const initialDateValues = {
     start: date.addMonth(new Date(), -1),
@@ -33,7 +33,7 @@ const ReportCard = ({ children }) => {
     }
 
     const downloadReport = (values) => {
-        confirmationModal(confirm).then(
+        confirmationModal(ConfirmationSmall).then(
             () => {
                 API.get({
                     url: apiMethods[children[0]](values.start.toISOString(), values.end.toISOString()),
