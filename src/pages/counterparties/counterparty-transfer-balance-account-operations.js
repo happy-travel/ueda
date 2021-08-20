@@ -8,7 +8,7 @@ import { FormGetFormat } from 'core/service/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import FormAmount from '../../components/form/form-amount';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation';
+import Confirmation from '../../components/confirms/confirmation';
 
 const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     const [accounts, setAccounts] = useState(null);
@@ -22,9 +22,13 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
         });
     }, []);
 
+    const balanceOperationConfirm = () => {
+        return <Confirmation>Manual operations are for correction of mistakes only</Confirmation>
+    }
+
     const submitTransfer = (values) => {
         const { amount, currency, reason, operation } = values
-        confirmationModal(confirmation).then(
+        confirmationModal(balanceOperationConfirm).then(
             () => {
                 API.post({
                     url: apiMethods.accountOperation(accounts[0].id, operation),
