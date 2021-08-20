@@ -7,6 +7,8 @@ import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import { observer } from 'mobx-react';
 import $auth from 'stores/auth';
+import confirmationModal from 'components/confirmation-modal';
+import confirmation from '../../components/confirms/confirmation'
 
 const CounterpartyHeader = observer(({ id }) => {
 
@@ -29,10 +31,14 @@ const CounterpartyHeader = observer(({ id }) => {
     }, [])
 
     const statusChange = () => {
-        if (counterparty?.isActive) {
-            return activate();
-        }
-        return deactivate();
+        confirmationModal(confirmation).then(
+            () => {
+                if (counterparty?.isActive) {
+                    return activate();
+                }
+                return deactivate();
+            }
+        )
     }
 
     const activate = () => {

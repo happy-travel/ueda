@@ -45,7 +45,8 @@ const Routes = () => (
         <Route exact path="/reports" component={reportsPage} />
         <Route exact path={[
             '/counterparties/agencies/booking/:refCode',
-            '/counterparties/agencies/:id/booking/:refCode'
+            '/counterparties/agencies/:id/booking/:refCode',
+            '/agency/:id/booking/:refCode'
         ]} component={bookingPage} />
         <Route exact path="/bookings" component={bookingsPage} />
         <Route component={notFoundPage} />
