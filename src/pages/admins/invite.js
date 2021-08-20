@@ -9,7 +9,7 @@ import PermissionsSelectorElement from 'matsumoto/src/pages/cabinet/agency/parts
 import { registrationAgentValidatorWithEmail } from 'matsumoto/src/components/form/validation';
 import $auth from 'stores/auth';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirm-cancel';
+import confirmation from '../../components/confirms/confirmation-medium';
 
 const inviteAdminPage = observer(() => {
     const [success, setSuccess] = useState(false);

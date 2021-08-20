@@ -7,7 +7,7 @@ import Verticaltable from '../vertical-table/vertical-table';
 import HotelStars from 'matsumoto/src/components/accommodation/hotel-stars';
 import ReactJson from 'react-json-view';
 import confirmationModal from 'components/confirmation-modal';
-import confirmCancel from '../../components/confirms/confirm-cancel';
+import confirmCancel from '../../components/confirms/confirmation-medium';
 
 class DuplicatePage extends React.Component {
     constructor(props) {

@@ -5,7 +5,7 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirm-cancel';
+import confirmation from '../../components/confirms/confirmation-medium';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);

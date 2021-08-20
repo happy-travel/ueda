@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Confirm = ({ yes, children }) => {
+const ConfirmationSmall = ({ yes, children }) => {
     return (
         <div className="confirmation-modal confirm">
             <div>
@@ -14,4 +14,4 @@ const Confirm = ({ yes, children }) => {
     )
 }
 
-export default Confirm;
+export default ConfirmationSmall;

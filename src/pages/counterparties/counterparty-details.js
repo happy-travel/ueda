@@ -5,7 +5,7 @@ import apiMethods from 'core/methods';
 import { PAYMENT_METHODS } from 'matsumoto/src/enum';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirm-cancel';
+import confirmation from '../../components/confirms/confirmation-medium';
 
 const CounterpartyDetails = ({ match }) => {
 

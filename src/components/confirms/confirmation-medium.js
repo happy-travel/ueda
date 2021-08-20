@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ConfirmCancel = ({ yes, no, children }) => {
+const ConfirmationMedium = ({ yes, no, children }) => {
     return (
         <div className="confirmation-modal confirm-cancel">
             <div className="icon-wrapper">
@@ -18,4 +18,4 @@ const ConfirmCancel = ({ yes, no, children }) => {
     )
 }
 
-export default ConfirmCancel;
+export default ConfirmationMedium;
