@@ -3,7 +3,7 @@ import NoteCard from 'parts/note';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation'
+import confirmCancel from '../../components/confirms/confirm-cancel';
 
 
 const CounterpartyContract = ({ match }) => {
@@ -19,7 +19,7 @@ const CounterpartyContract = ({ match }) => {
     }, []);
 
     const uploadContract = (e) => {
-        confirmationModal(confirmation).then(
+        confirmationModal(confirmCancel).then(
             () => {
                 e.preventDefault();
                 API.put({

@@ -4,7 +4,7 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'components/confirmation-modal';
-import confirmation from '../../components/confirms/confirmation';
+import confirmation from '../../components/confirms/confirm-cancel';
 
 
 const AgentChangeAgency = ({ id, agentId }) => {
