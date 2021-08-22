@@ -238,8 +238,6 @@ $header-element-margin: 15px 0 15px 0
     margin-bottom: 30px
 .confirmation-modal
     display: flex
-    width: 480px
-    height: 120px
     padding-left: 10px
     padding-top: 25px
     .icon-wrapper
@@ -260,10 +258,44 @@ $header-element-margin: 15px 0 15px 0
         div
             &:hover
                 color: $primary-color
-.confirmation-modal.confirm
+.confirmation-modal.confirm-small
     width: 350px
     h3
         padding-top: 10px
     .confirm-actions
         display: flex
         justify-content: flex-end
+.confirmation-modal.confirm-medium
+    width: 480px
+    height: 120px
+    .confirm-content
+        width: 320px
+    .confirm-actions
+        width: 370px
+.confirmation-modal.confirm-large
+    padding-left: 0
+    .confirm-content
+        width: 480px
+        .header-wrapper
+            box-shadow: 0 .5px 0 $color-shadow-border
+        h2
+            display: flex
+            justify-content: center
+            font-weight: 600
+            padding-bottom: 15px
+        .confirm-text
+            padding: 10px 15px 30px 15px
+            box-shadow: 0 .5px 0 $color-shadow-border
+        .confirm-actions
+            padding: 12px 0 10px 0
+            div
+                font-weight: 600
+                width: 220px
+                height: 30px
+                text-align: center
+                padding-top: 5px
+            div:first-child
+                box-shadow: .5px 0 0 $color-shadow-border
+
+
+
