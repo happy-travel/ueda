@@ -6,9 +6,39 @@ import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import ConfirmationLarge from '../../components/confirms/confirmation-large';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
+
+    const ConfirmCancelBooking = () => {
+        return (
+            <ConfirmationLarge>
+                You are about to cancel a booking.
+                This action *cannot* be undone. This will will request a cancellation on supplier's side
+                and permanently cancel the booking *ref_code* in the system in case of success.
+            </ConfirmationLarge>
+        )
+    }
+
+    const ConfirmCompletePaymentManually = () => {
+        return (
+            <ConfirmationLarge>
+                This action *cannot* be undone. This will mark a payment for the booking *ref_code*
+                as *paid* in the system.
+            </ConfirmationLarge>
+        )
+    }
+
+    const ConfirmCreditCardPayment = () => {
+        return (
+            <ConfirmationLarge>
+                This action *cannot* be undone. This will mark a payment for the booking *ref_code* as *paid*
+                in the system.
+                Before executing this action, make sure the payment was fulfilled by a corresponding payment processor.
+            </ConfirmationLarge>
+        )
+    }
 
    useEffect(() => {
        API.get({
@@ -20,7 +50,7 @@ const Booking = ({ match }) => {
    }, [])
 
     const bookingCancel = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCancelBooking).then(
             () => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),
@@ -42,7 +72,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingPaymentCompleteManually = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCompletePaymentManually).then(
             () => {
                 API.post({
                     url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
@@ -53,7 +83,7 @@ const Booking = ({ match }) => {
     }
 
     const paymentConfirm = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCreditCardPayment).then(
             () => {
                 API.post({
                     url: apiMethods.paymentConfirm(this.state.booking.bookingId),
