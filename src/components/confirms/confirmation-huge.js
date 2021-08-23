@@ -7,11 +7,11 @@ const ConfirmationHuge = ({ yes, no, children, validationText, submitText, input
     const submitConfirm = (values) => {
         console.log(values, submitText, validationText)
         if ( values.confirmation.toLowerCase().trim() === validationText) {
-            yes()
+            yes();
         } else {
-            no()
+            no();
         }
-    }
+    };
 
     return (
         <Formik initialValues={{}} onSubmit={submitConfirm}>
@@ -38,7 +38,6 @@ const ConfirmationHuge = ({ yes, no, children, validationText, submitText, input
                 </form>
             )}
         </Formik>
-
     )
 }
 
