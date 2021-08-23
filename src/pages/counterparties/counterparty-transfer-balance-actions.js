@@ -3,7 +3,6 @@ import { CachedForm, FieldSelect, FieldText } from 'matsumoto/src/components/for
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { FormGetFormat } from 'core/service/form';
-import CounterpartyNavigation from './counterparty-navigation';
 import CounterpartyTransferBalanceNavigation from './counterparty-transfer-balance-navigation';
 import FormAmount from '../../components/form/form-amount';
 
@@ -62,8 +61,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
     }
 
     return (
-        <div className="page-content">
-            <CounterpartyNavigation match={id}/>
+        <div>
             <CounterpartyTransferBalanceNavigation match={id} />
             <div className="block">
                 <div>
