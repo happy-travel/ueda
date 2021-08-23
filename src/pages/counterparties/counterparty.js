@@ -7,9 +7,8 @@ import CounterpartyContract from './counterparty-contract';
 import CounterpartyAgencies from './counterparty-agencies';
 import CounterpartyMarkupManager from './counterparty-markup-manager';
 import CounterpartyTransferBalanceAccountOperations from './counterparty-transfer-balance-account-operations';
+import CounterpartyTransferBalanceActions from './counterparty-transfer-balance-actions';
 import CounterpartyVerification from './counterparty-verification';
-import Routes from '../../core/routes';
-import agencyPage from '../agency/agency';
 
 const CounterpartyPage = ({ match }) => {
 
@@ -28,6 +27,8 @@ const CounterpartyPage = ({ match }) => {
                        render={() => <CounterpartyMarkupManager match={match}/>}/>
                 <Route path={'/counterparties/:id/transfer-balance/account-operations'}
                        render={() => <CounterpartyTransferBalanceAccountOperations match={match}/>}/>
+                <Route path={'/counterparties/:id/transfer-balance/actions'}
+                       render={() => <CounterpartyTransferBalanceActions match={match}/>}/>
                 <Route path={'/counterparties/:id/verification'}
                        render={() => <CounterpartyVerification match={match}/>}/>
             </Switch>
