@@ -11,7 +11,7 @@ import ConfirmationLarge from '../../components/confirms/confirmation-large';
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
 
-    const confirmCancelBooking = () => {
+    const ConfirmCancelBooking = () => {
         return (
             <ConfirmationLarge>
                 You are about to cancel a booking.
@@ -21,7 +21,7 @@ const Booking = ({ match }) => {
         )
     }
 
-    const confirmCompletePaymentManually = () => {
+    const ConfirmCompletePaymentManually = () => {
         return (
             <ConfirmationLarge>
                 This action *cannot* be undone. This will mark a payment for the booking *ref_code*
@@ -30,7 +30,7 @@ const Booking = ({ match }) => {
         )
     }
 
-    const confirmCreditCardPayment = () => {
+    const ConfirmCreditCardPayment = () => {
         return (
             <ConfirmationLarge>
                 This action *cannot* be undone. This will mark a payment for the booking *ref_code* as *paid*
@@ -50,7 +50,7 @@ const Booking = ({ match }) => {
    }, [])
 
     const bookingCancel = () => {
-        confirmationModal(confirmCancelBooking).then(
+        confirmationModal(ConfirmCancelBooking).then(
             () => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),
@@ -72,7 +72,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingPaymentCompleteManually = () => {
-        confirmationModal(confirmCompletePaymentManually).then(
+        confirmationModal(ConfirmCompletePaymentManually).then(
             () => {
                 API.post({
                     url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
@@ -83,7 +83,7 @@ const Booking = ({ match }) => {
     }
 
     const paymentConfirm = () => {
-        confirmationModal(confirmCreditCardPayment).then(
+        confirmationModal(ConfirmCreditCardPayment).then(
             () => {
                 API.post({
                     url: apiMethods.paymentConfirm(this.state.booking.bookingId),
