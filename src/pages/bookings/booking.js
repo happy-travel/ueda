@@ -7,6 +7,7 @@ import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 import ConfirmationLarge from '../../components/confirms/confirmation-large';
+import ConfirmationHuge from '../../components/confirms/confirmation-huge';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
@@ -39,6 +40,18 @@ const Booking = ({ match }) => {
             </ConfirmationLarge>
         )
     }
+    const ConfirmationDiscard = () => {
+        return (
+            <ConfirmationHuge
+                submitText="I understand the consequences, discard this booking"
+                headerText="You are about to discard a booking"
+                validationText={match.params.refCode}
+                inputPlaceholder={`Please type ${match.params.refCode} to discard`}>
+                This action *cannot* be undone. This will permanently close the booking *ref_code* in the system.
+                Use the discard feature only when you absolutely sure the booking has cancelled on a suppliers's side.
+            </ConfirmationHuge>
+        )
+    }
 
    useEffect(() => {
        API.get({
@@ -61,7 +74,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingDiscard = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmationDiscard).then(
             () => {
                 API.post({
                     url: apiMethods.bookingDiscard(this.state.booking.bookingId),
