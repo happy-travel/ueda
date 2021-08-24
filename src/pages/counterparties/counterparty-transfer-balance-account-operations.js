@@ -119,7 +119,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                     />
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className="button size-medium">
+                                    <button type="submit" className={`button size-medium ${!formik.isValid && 'disabled'}`}>
                                         Transfer
                                     </button>
                                 </div>
