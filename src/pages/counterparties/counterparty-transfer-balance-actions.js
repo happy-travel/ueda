@@ -5,6 +5,7 @@ import apiMethods from 'core/methods';
 import { FormGetFormat } from 'core/service/form';
 import CounterpartyTransferBalanceNavigation from './counterparty-transfer-balance-navigation';
 import FormAmount from '../../components/form/form-amount';
+import Notifications from 'matsumoto/src/stores/notifications-store';
 
 const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
@@ -37,7 +38,9 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
     const submitTransfer = (values) => {
         API.post({
             url: apiMethods.transferFromCounterpartyToAgency(values.counterpartyAccountId),
-            body: values
+            body: values,
+            success: () => Notifications.addNotification('Done', null, 'success'),
+            error: () => Notifications.addNotification('Error', null, 'warning')
         })
     }
 
