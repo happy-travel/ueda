@@ -12,12 +12,15 @@ import ConfirmationHuge from '../../components/confirms/confirmation-huge';
 
 const CounterpartyHeader = observer(({ id }) => {
 
-    let [counterparty, setCounterparty] = useState(null);
+    const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
 
-    const ConfirmationActivate = () => {
+
+    const ConfirmationActivate = ({ yes, no }) => {
         return (
             <ConfirmationHuge
+                yes={yes}
+                no={no}
                 submitText="I understand the consequences, deactivate this counterparty"
                 validationText="deactivate"
                 headerText="You are about to deactivate a counterparty access"
@@ -47,9 +50,9 @@ const CounterpartyHeader = observer(({ id }) => {
         confirmationModal(ConfirmationActivate).then(
             () => {
                 if (counterparty?.isActive) {
-                    return activate();
+                    return deactivate();
                 }
-                return deactivate();
+                return activate();
             }
         )
     }

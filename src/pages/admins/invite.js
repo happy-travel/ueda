@@ -8,35 +8,28 @@ import FormAgentData from 'matsumoto/src/parts/form-agent-data';
 import PermissionsSelectorElement from 'matsumoto/src/pages/cabinet/agency/parts/permission-selector-element';
 import { registrationAgentValidatorWithEmail } from 'matsumoto/src/components/form/validation';
 import $auth from 'stores/auth';
-import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 
 const inviteAdminPage = observer(() => {
     const [success, setSuccess] = useState(false);
 
     const submit = (values) => {
-        confirmationModal(ConfirmationMedium).then(
-            () => {
-                setSuccess(null);
-                API.post({
-                    url: apiMethods.adminSendInvitation,
-                    body: {
-                        registrationInfo: {
-                            title: values.title,
-                            firstName: values.firstName,
-                            lastName: values.lastName,
-                            position: values.position,
-                            email: values.email
-                        },
-                        roleIds: Object
-                            .keys(values.roleIds)
-                            .map((key) => values.roleIds[key] ? parseInt(key) : false)
-                            .filter((item) => item)
-                    },
-                    success: () => {setSuccess(true)},
-                });
-            }
-        )
+        API.post({
+            url: apiMethods.adminSendInvitation,
+            body: {
+                registrationInfo: {
+                    title: values.title,
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    position: values.position,
+                    email: values.email
+                },
+                roleIds: Object
+                    .keys(values.roleIds)
+                    .map((key) => values.roleIds[key] ? parseInt(key) : false)
+                    .filter((item) => item)
+            },
+            success: () => {setSuccess(true)},
+        });
     };
 
     return (

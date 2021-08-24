@@ -4,8 +4,6 @@ import { CachedForm, FieldText, FieldSelect, FieldTextarea } from 'matsumoto/src
 import apiMethods from 'core/methods';
 import { copyToClipboard } from 'matsumoto/src/simple/logic';
 import { ValidatorPaymentLink } from 'components/form/validation/validator-payment-link';
-import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationSmall from '../../components/confirms/confirmation-small';
 
 const CreatePaymentLinkPage = () => {
     const [result, setResult] = useState(null);
@@ -24,13 +22,9 @@ const CreatePaymentLinkPage = () => {
     }
 
     const submitButtonClick = (event, send, formik) => {
-        confirmationModal(ConfirmationSmall).then(
-            () => {
-                event.preventDefault();
-                formik.setFieldValue('send', send);
-                formik.handleSubmit();
-            }
-        )
+        event.preventDefault();
+        formik.setFieldValue('send', send);
+        formik.handleSubmit();
     }
 
 

@@ -22,13 +22,13 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
         });
     }, []);
 
-    const balanceOperationConfirm = () => {
-        return <ConfirmationMedium>Manual operations are for correction of mistakes only</ConfirmationMedium>
+    const BalanceOperationConfirm = ({ yes, no }) => {
+        return <ConfirmationMedium yes={yes} no={no}>Manual operations are for correction of mistakes only</ConfirmationMedium>
     }
 
     const submitTransfer = (values) => {
         const { amount, currency, reason, operation } = values
-        confirmationModal(balanceOperationConfirm).then(
+        confirmationModal(BalanceOperationConfirm).then(
             () => {
                 API.post({
                     url: apiMethods.accountOperation(accounts[0].id, operation),
