@@ -8,7 +8,7 @@ import FormAmount from '../../components/form/form-amount';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
-import { ValidatorTransferBalance } from '../../components/form/validation/validator-transfer-balance';
+import { ValidatorTransferBalanceActions } from '../../components/form/validation/validator-transfer-balance-actions';
 
 const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
@@ -87,7 +87,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                 <div>
                     <h2>Transfer Balance</h2>
                     <CachedForm
-                        validationSchema={ValidatorTransferBalance}
+                        validationSchema={ValidatorTransferBalanceActions}
                         onSubmit={submitTransfer}
                         render={(formik) => (
                             <div className="form">

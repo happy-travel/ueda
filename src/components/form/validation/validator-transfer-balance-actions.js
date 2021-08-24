@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 
-export const ValidatorTransferBalance = Yup.object().shape({
+export const ValidatorTransferBalanceActions = Yup.object().shape({
     amount: Yup.string()
         .required('*'),
-    reason: Yup.string()
+    counterpartyAccountId: Yup.string()
         .required('*'),
-    operation: Yup.string()
+    agency: Yup.string()
         .required('*'),
-    account: Yup.string()
+    agencyAccount: Yup.string()
         .required('*'),
     currency: Yup.string()
         .required('*'),
