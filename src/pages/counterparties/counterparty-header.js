@@ -15,7 +15,6 @@ const CounterpartyHeader = observer(({ id }) => {
     const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
 
-
     const ConfirmationActivate = ({ yes, no }) => {
         return (
             <ConfirmationHuge
