@@ -23,7 +23,13 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     }, []);
 
     const BalanceOperationConfirm = ({ yes, no }) => {
-        return <ConfirmationMedium yes={yes} no={no}>Manual operations are for correction of mistakes only</ConfirmationMedium>
+        return (
+            <ConfirmationMedium
+                yes={yes}
+                no={no}>
+                Manual operations are for correction of mistakes only
+            </ConfirmationMedium>
+        )
     }
 
     const submitTransfer = (values) => {
