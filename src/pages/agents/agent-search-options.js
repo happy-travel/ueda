@@ -38,7 +38,7 @@ const AgentSearchOptions = ({ id, agentId }) => {
                     initialValues={availabilitySearchOptions}
                     onSubmit={submitAvailabilitySearchOptions}
                 /> :
-                <h3>No options found (empty)</h3>}
+                <h3>No options found</h3>}
         </div>
     )
 }

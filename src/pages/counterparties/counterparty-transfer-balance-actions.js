@@ -3,9 +3,12 @@ import { CachedForm, FieldSelect, FieldText } from 'matsumoto/src/components/for
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { FormGetFormat } from 'core/service/form';
-import CounterpartyNavigation from './counterparty-navigation';
 import CounterpartyTransferBalanceNavigation from './counterparty-transfer-balance-navigation';
 import FormAmount from '../../components/form/form-amount';
+import Notifications from 'matsumoto/src/stores/notifications-store';
+import confirmationModal from 'matsumoto/src/components/confirmation-modal';
+import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import { ValidatorTransferBalanceActions } from '../../components/form/validation/validator-transfer-balance-actions';
 
 const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
@@ -35,11 +38,27 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
         })
     }, [])
 
+    const BalanceActionConfirm = ({ yes, no }) => {
+        return (
+            <ConfirmationMedium
+                yes={yes}
+                no={no}>
+                Manual operations are for correction of mistakes only
+            </ConfirmationMedium>
+        )
+    }
+
     const submitTransfer = (values) => {
-        API.post({
-            url: apiMethods.transferFromCounterpartyToAgency(values.counterpartyAccountId),
-            body: values
-        })
+        confirmationModal(BalanceActionConfirm).then(
+            () => {
+                API.post({
+                    url: apiMethods.transferFromCounterpartyToAgency(values.counterpartyAccountId),
+                    body: values,
+                    success: () => Notifications.addNotification('Done', null, 'success'),
+                    error: () => Notifications.addNotification('Error', null, 'warning')
+                })
+            }
+        )
     }
 
 
@@ -62,13 +81,13 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
     }
 
     return (
-        <div className="page-content">
-            <CounterpartyNavigation match={id}/>
+        <div>
             <CounterpartyTransferBalanceNavigation match={id} />
             <div className="block">
                 <div>
                     <h2>Transfer Balance</h2>
                     <CachedForm
+                        validationSchema={ValidatorTransferBalanceActions}
                         onSubmit={submitTransfer}
                         render={(formik) => (
                             <div className="form">
@@ -124,7 +143,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className="button size-medium">
+                                    <button type="submit" className={`button size-medium ${!formik.isValid && 'disabled'}`}>
                                         Transfer
                                     </button>
                                 </div>

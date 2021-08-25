@@ -9,7 +9,7 @@ $header-element-margin: 15px 0 15px 0
         margin: 19px 0 10px
 
     h2
-        margin: 40px 0 20px
+        margin: 19px 0 45px
 
 .box
     display: inline-block
@@ -20,6 +20,8 @@ $header-element-margin: 15px 0 15px 0
         margin-right: 20px
 .table-wrapper
     margin-top: -90px
+.table-wrapper-tabs
+    margin-top: -123px
 .block.list.booking
     margin: 0
 .block.list
@@ -43,7 +45,9 @@ $header-element-margin: 15px 0 15px 0
     margin: 0 300px 0 0
 .global-markups
     h2
-        margin-bottom: 25px
+        margin-bottom: 45px
+        font-size: 30px
+        line-height: 32px
 
 .tabs-navigation
     box-shadow: 0 .5px 0 $color-shadow-border
@@ -113,15 +117,19 @@ $header-element-margin: 15px 0 15px 0
 .page-content
     margin-left: 70px
 .page-content-no-tabs
-    margin: 40px 0 0 50px
+    margin: 40px 0 0 70px
+    .no-tabs-header
+        padding-bottom: 35px
 .counterparty-header
     .header-info
         display: flex
         flex-direction: column
         justify-content: space-between
-        height: 150px
+        min-height: 225px
+        h1
+            padding-bottom: 30px
+            padding-top: 17px
     margin: 0
-    height: 170px
     h4
         margin: $header-element-margin
     button
@@ -168,6 +176,8 @@ $header-element-margin: 15px 0 15px 0
     padding-top: 40px
 .section-slim
     width: 400px
+    .permissions
+        width: 700px
 .report-card
     margin: 20px 20px 20px 0
     width: 300px
@@ -192,9 +202,6 @@ $header-element-margin: 15px 0 15px 0
         padding-left: 5px
         border: none
         background-color: inherit
-.reports-list
-    h1
-        margin-bottom: 20px
     display: flex
     flex-direction: column
     margin-top: 20px
@@ -238,8 +245,6 @@ $header-element-margin: 15px 0 15px 0
     margin-bottom: 30px
 .confirmation-modal
     display: flex
-    width: 480px
-    height: 120px
     padding-left: 10px
     padding-top: 25px
     .icon-wrapper
@@ -258,12 +263,65 @@ $header-element-margin: 15px 0 15px 0
         padding-top: 15px
         padding-left: 100px
         div
+            cursor: pointer
             &:hover
                 color: $primary-color
-.confirmation-modal.confirm
+.confirmation-modal.confirm-small
+    padding-top: 10px
     width: 350px
+    .confirm-content
+        padding-top: 10px
     h3
         padding-top: 10px
     .confirm-actions
         display: flex
-        justify-content: flex-end
+        padding-left: 220px
+        padding-bottom: 15px
+.confirmation-modal.confirm-medium
+    width: 480px
+    height: 120px
+    .confirm-content
+        width: 320px
+    .confirm-actions
+        width: 370px
+.confirmation-modal.confirm-large
+    padding-left: 0
+    .confirm-content
+        width: 480px
+        .header-wrapper
+            box-shadow: 0 .5px 0 $color-shadow-border
+        h2
+            display: flex
+            justify-content: center
+            font-weight: 600
+            padding-bottom: 15px
+        .confirm-text
+            padding: 10px 15px 30px 15px
+            box-shadow: 0 .5px 0 $color-shadow-border
+        .confirm-actions
+            padding: 12px 0 10px 0
+            div
+                font-weight: 600
+                width: 220px
+                height: 30px
+                text-align: center
+                padding-top: 5px
+            div:first-child
+                box-shadow: .5px 0 0 $color-shadow-border
+.confirm-huge
+    .confirm-text
+        box-shadow: none !important
+    .form
+        .field
+            width: 450px
+            margin: -10px 0 0 15px
+    .button
+        margin: 15px 0 15px 15px
+        width: 450px
+        border-radius: 5px
+        background-color: $background-color
+        border: none
+    .footnote
+        font-size: 11px
+        margin-left: 42px
+        margin-bottom: 15px

@@ -8,12 +8,27 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import { observer } from 'mobx-react';
 import $auth from 'stores/auth';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationMedium from '../../components/confirms/confirmation-medium'
+import ConfirmationHuge from '../../components/confirms/confirmation-huge';
 
 const CounterpartyHeader = observer(({ id }) => {
 
-    let [counterparty, setCounterparty] = useState(null);
+    const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
+
+    const ConfirmationActivate = ({ yes, no }) => {
+        return (
+            <ConfirmationHuge
+                yes={yes}
+                no={no}
+                submitText="I understand the consequences, deactivate this counterparty"
+                validationText="deactivate"
+                headerText="You are about to deactivate a counterparty access"
+                inputPlaceholder="Please type deactivate">
+                All its agents loose an ability to use the system until the counterparty will be re-activated.
+                Please enter a reason to deactivate.
+            </ConfirmationHuge>
+        )
+    }
 
     useEffect(() => {
         API.get({
@@ -31,12 +46,12 @@ const CounterpartyHeader = observer(({ id }) => {
     }, [])
 
     const statusChange = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmationActivate).then(
             () => {
                 if (counterparty?.isActive) {
-                    return activate();
+                    return deactivate();
                 }
-                return deactivate();
+                return activate();
             }
         )
     }
@@ -67,7 +82,7 @@ const CounterpartyHeader = observer(({ id }) => {
                     {Boolean(balance) &&
                     <div className="text-row">
                         <h3 className="key">Balance:</h3>
-                        <h3 className="status Success value">{price(balance.currency, balance.balance)}</h3>
+                        <h3 className="status Success value">{price(balance[0]?.currency, balance[0]?.balance)}</h3>
                     </div>
                     }
                     {counterparty?.isActive &&

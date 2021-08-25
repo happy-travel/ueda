@@ -6,9 +6,57 @@ import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import ConfirmationLarge from '../../components/confirms/confirmation-large';
+import ConfirmationHuge from '../../components/confirms/confirmation-huge';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
+
+    const ConfirmCancelBooking = ({ yes, no }) => {
+        return (
+            <ConfirmationLarge yes={yes}
+                               no={no}>
+                You are about to cancel a booking.
+                This action *cannot* be undone. This will will request a cancellation on supplier's side
+                and permanently cancel the booking *ref_code* in the system in case of success.
+            </ConfirmationLarge>
+        )
+    }
+
+    const ConfirmCompletePaymentManually = ({ yes, no }) => {
+        return (
+            <ConfirmationLarge yes={yes}
+                               no={no}>
+                This action *cannot* be undone. This will mark a payment for the booking *ref_code*
+                as *paid* in the system.
+            </ConfirmationLarge>
+        )
+    }
+
+    const ConfirmCreditCardPayment = ({ yes, no }) => {
+        return (
+            <ConfirmationLarge yes={yes}
+                               no={no}>
+                This action *cannot* be undone. This will mark a payment for the booking *ref_code* as *paid*
+                in the system.
+                Before executing this action, make sure the payment was fulfilled by a corresponding payment processor.
+            </ConfirmationLarge>
+        )
+    }
+    const ConfirmationDiscard = ({ yes, no }) => {
+        return (
+            <ConfirmationHuge
+                yes={yes}
+                no={no}
+                submitText="I understand the consequences, discard this booking"
+                headerText="You are about to discard a booking"
+                validationText={match.params.refCode}
+                inputPlaceholder={`Please type ${match.params.refCode} to discard`}>
+                This action *cannot* be undone. This will permanently close the booking *ref_code* in the system.
+                Use the discard feature only when you absolutely sure the booking has cancelled on a suppliers's side.
+            </ConfirmationHuge>
+        )
+    }
 
    useEffect(() => {
        API.get({
@@ -20,7 +68,7 @@ const Booking = ({ match }) => {
    }, [])
 
     const bookingCancel = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCancelBooking).then(
             () => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),
@@ -31,7 +79,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingDiscard = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmationDiscard).then(
             () => {
                 API.post({
                     url: apiMethods.bookingDiscard(this.state.booking.bookingId),
@@ -42,7 +90,7 @@ const Booking = ({ match }) => {
     }
 
     const bookingPaymentCompleteManually = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCompletePaymentManually).then(
             () => {
                 API.post({
                     url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
@@ -53,7 +101,7 @@ const Booking = ({ match }) => {
     }
 
     const paymentConfirm = () => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmCreditCardPayment).then(
             () => {
                 API.post({
                     url: apiMethods.paymentConfirm(this.state.booking.bookingId),

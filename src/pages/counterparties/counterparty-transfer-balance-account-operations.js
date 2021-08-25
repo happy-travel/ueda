@@ -9,6 +9,7 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import FormAmount from '../../components/form/form-amount';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import { ValidatorTransferBalance } from '../../components/form/validation/validator-transfer-balance';
 
 const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     const [accounts, setAccounts] = useState(null);
@@ -22,13 +23,19 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
         });
     }, []);
 
-    const balanceOperationConfirm = () => {
-        return <ConfirmationMedium>Manual operations are for correction of mistakes only</ConfirmationMedium>
+    const BalanceOperationConfirm = ({ yes, no }) => {
+        return (
+            <ConfirmationMedium
+                yes={yes}
+                no={no}>
+                Manual operations are for correction of mistakes only
+            </ConfirmationMedium>
+        )
     }
 
     const submitTransfer = (values) => {
         const { amount, currency, reason, operation } = values
-        confirmationModal(balanceOperationConfirm).then(
+        confirmationModal(BalanceOperationConfirm).then(
             () => {
                 API.post({
                     url: apiMethods.accountOperation(accounts[0].id, operation),
@@ -48,6 +55,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                 <div>
                     <h2>Account Operations</h2>
                     <CachedForm
+                        validationSchema={ValidatorTransferBalance}
                         onSubmit={submitTransfer}
                         render={(formik) => (
                             <div className="form">
@@ -111,7 +119,7 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
                                     />
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className="button size-medium">
+                                    <button type="submit" className={`button size-medium ${!formik.isValid && 'disabled'}`}>
                                         Transfer
                                     </button>
                                 </div>

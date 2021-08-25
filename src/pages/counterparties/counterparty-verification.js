@@ -37,6 +37,7 @@ const CounterpartyVerification = ({ match }) => {
     return (
         <div className="buttons" style={{ marginBottom: '10px' }}>
             {counterparty && counterparty.verificationState !== 'FullAccess' &&
+            counterparty.verificationState !== 'ReadOnly' &&
             <div className="vertical-toolbar-element">
                 <button className="button" onClick={verifyReadonly}>Verify Readonly</button>
             </div>}

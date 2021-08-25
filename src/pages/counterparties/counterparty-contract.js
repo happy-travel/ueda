@@ -3,7 +3,7 @@ import NoteCard from 'parts/note';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import ConfirmationSmall from '../../components/confirms/confirmation-small';
 
 
 const CounterpartyContract = ({ match }) => {
@@ -18,16 +18,25 @@ const CounterpartyContract = ({ match }) => {
         });
     }, []);
 
+    const ConfirmationDownloadContract = ({ yes }) => {
+        return (
+            <ConfirmationSmall
+                yes={yes}>
+                The file has been uploaded as a counterparty contract.
+            </ConfirmationSmall>
+        )
+    }
+
     const uploadContract = (e) => {
-        confirmationModal(ConfirmationMedium).then(
+        confirmationModal(ConfirmationDownloadContract).then(
             () => {
-                e.preventDefault();
                 API.put({
                     url: apiMethods.contractFile(match.params.id),
                     formDataBody: new FormData(document.getElementById('formElem')),
                     success: () => setCounterparty({ ...counterparty,
                         isContractUploaded: true })
                 });
+                e.preventDefault();
             }
         );
     }

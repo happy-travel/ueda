@@ -11,8 +11,8 @@ const urlMethods = {
 }
 
 const ReportsPage = () => (
-    <div className="block page-content-no-tabs reports-list">
-        <h1>Download report</h1>
+    <div className="block page-content-no-tabs">
+        <h1 className="no-tabs-header">Download report</h1>
         <ReportCard>
             {urlMethods.supplier}
             <h3>Direct Connectivity Supplier Wise Report</h3>
