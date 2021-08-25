@@ -24,10 +24,10 @@ const CounterpartyAgencies = ({ match }) => {
     }, [])
 
     return (
-        <div className="block list blabla">
+        <div className="block list">
             <div className="admin-tab-element-wrapper block">
                 <h2>Agencies</h2>
-                <div className="table-wrapper">
+                <div className="table-wrapper-tabs">
                     <Table
                     list={agencies}
                     columns={[

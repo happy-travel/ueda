@@ -17,8 +17,8 @@ const AgentsList = ( { id }) => {
     return (
         <div className="block list">
             <div className="admin-tab-element-wrapper block">
-                <h1>Agents list</h1>
-                <div className="table-wrapper">
+                <h2>Agents list</h2>
+                <div className="table-wrapper-tabs">
                     <Table
                         list={list}
                         columns={ [
