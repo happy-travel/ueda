@@ -22,7 +22,7 @@ const AgentChangeAgency = ({ id, agentId }) => {
     }
 
     return (
-        <div className="page-content">
+        <div className="block list">
             <h2>Change Agency</h2>
             <CachedForm
                 enableReinitialize
