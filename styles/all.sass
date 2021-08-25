@@ -82,12 +82,6 @@ $header-element-margin: 15px 0 15px 0
                 bottom: 0
                 left: 0
 .side-bar
-    .content
-        height: 535px
-        padding-left: 50px
-        padding-top: 150px
-        background: white
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), $background-color)
     display: flex
     background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 500px, $background-color 500px)
     flex-direction: column
@@ -95,6 +89,12 @@ $header-element-margin: 15px 0 15px 0
     width: 320px
     min-width: 320px
     top: 72px
+    .content
+        height: 535px
+        padding-left: 50px
+        padding-top: 150px
+        background: white
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), $background-color)
 .selected
     .sidebar-item
         width: 230px
@@ -106,14 +106,15 @@ $header-element-margin: 15px 0 15px 0
     align-items: center
     font-size: 14px
     padding-left: 10px
-    line-height: 50px
+    line-height: 40px
+    margin: 5px 0
+    &:hover
+        width: 230px
+        background: white
+        border-radius: 40px
     span
         margin-left: 10px
         white-space: nowrap
-.sidebar-item:hover
-    width: 230px
-    background: white
-    border-radius: 40px
 .page-content
     margin-left: 70px
 .page-content-no-tabs

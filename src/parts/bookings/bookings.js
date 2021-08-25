@@ -1,21 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { redirect } from 'matsumoto/src/core';
 import { date } from 'matsumoto/src/simple';
 import Table from 'matsumoto/src/components/table';
-import Booking from 'pages/bookings/booking';
 
 const BookingsList = ({ bookings }) => {
-
-    const [booking, setBooking] = useState(null);
-
-    if (booking)
-        return (
-            <Booking
-                booking={booking}
-                onClose={() => setBooking(null)}
-            />
-        );
-
     return (
         <div className="block list booking">
             <h2>Bookings</h2>
@@ -68,11 +56,10 @@ const BookingsList = ({ bookings }) => {
                         }
                     ]}
                     onRowClick={(item) => {
-                        setBooking(item);
-                        redirect(`booking/${item.referenceCode}`)}
-                    }
-                    textEmptyResult="No bookings found"
-                    textEmptyList="No bookings found (empty)"
+                        redirect(`booking/${item.referenceCode}`)
+                    }}
+                    textEmptyResult="No bookings match your search"
+                    textEmptyList="No bookings found"
                     searches={(v) => [
                         String(v.agentId),
                         String(v.agencyId),
@@ -90,6 +77,6 @@ const BookingsList = ({ bookings }) => {
             </div>
         </div>
     );
-}
+};
 
 export default BookingsList;

@@ -2,15 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import { Loader } from 'matsumoto/src/components/simple';
 import Breadcrumbs from 'matsumoto/src/components/breadcrumbs';
 import BookingConfirmationView from './booking-confirmation-view';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationMedium from '../../components/confirms/confirmation-medium';
-import ConfirmationLarge from '../../components/confirms/confirmation-large';
-import ConfirmationHuge from '../../components/confirms/confirmation-huge';
+import ConfirmationLarge from 'components/confirms/confirmation-large';
+import ConfirmationHuge from 'components/confirms/confirmation-huge';
 
 const Booking = ({ match }) => {
     const [booking, setBooking] = useState(null);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        API.get({
+            url: apiMethods.bookingsByReferenceCode(match.params.refCode),
+            success: (booking) => {
+                setBooking(booking);
+            },
+            after: () => {
+                setLoaded(true);
+            }
+        });
+    }, []);
 
     const ConfirmCancelBooking = ({ yes, no }) => {
         return (
@@ -21,7 +34,7 @@ const Booking = ({ match }) => {
                 and permanently cancel the booking *ref_code* in the system in case of success.
             </ConfirmationLarge>
         )
-    }
+    };
 
     const ConfirmCompletePaymentManually = ({ yes, no }) => {
         return (
@@ -31,7 +44,7 @@ const Booking = ({ match }) => {
                 as *paid* in the system.
             </ConfirmationLarge>
         )
-    }
+    };
 
     const ConfirmCreditCardPayment = ({ yes, no }) => {
         return (
@@ -42,7 +55,8 @@ const Booking = ({ match }) => {
                 Before executing this action, make sure the payment was fulfilled by a corresponding payment processor.
             </ConfirmationLarge>
         )
-    }
+    };
+
     const ConfirmationDiscard = ({ yes, no }) => {
         return (
             <ConfirmationHuge
@@ -56,16 +70,7 @@ const Booking = ({ match }) => {
                 Use the discard feature only when you absolutely sure the booking has cancelled on a suppliers's side.
             </ConfirmationHuge>
         )
-    }
-
-   useEffect(() => {
-       API.get({
-           url: apiMethods.bookingsByReferenceCode(match.params.refCode),
-           success: (booking) => {
-               setBooking(booking)
-           }
-       });
-   }, [])
+    };
 
     const bookingCancel = () => {
         confirmationModal(ConfirmCancelBooking).then(
@@ -76,7 +81,7 @@ const Booking = ({ match }) => {
                 });
             }
         )
-    }
+    };
 
     const bookingDiscard = () => {
         confirmationModal(ConfirmationDiscard).then(
@@ -87,7 +92,7 @@ const Booking = ({ match }) => {
                 });
             }
         )
-    }
+    };
 
     const bookingPaymentCompleteManually = () => {
         confirmationModal(ConfirmCompletePaymentManually).then(
@@ -98,7 +103,7 @@ const Booking = ({ match }) => {
                 });
             }
         )
-    }
+    };
 
     const paymentConfirm = () => {
         confirmationModal(ConfirmCreditCardPayment).then(
@@ -109,26 +114,33 @@ const Booking = ({ match }) => {
                 });
             }
         )
-    }
+    };
 
     return (
         <div className="confirmation block page-content-no-tabs">
-            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '50px 0 30px' }}>
-                <div className="buttons">
-                    <button className="button" onClick={bookingCancel}>Cancel</button>
-                    <button className="button" onClick={bookingDiscard}>Discard</button>
-                    <button className="button" onClick={bookingPaymentCompleteManually}>
-                        Manually Complete Payment
-                    </button>
-                    <button className="button" onClick={paymentConfirm}>Confirm Payment</button>
-                </div>
-            </div>
             <Breadcrumbs
                 backText="Back"
             />
-            {booking && <BookingConfirmationView referenceCode={match.params.refCode} /> }
+            { !loaded ?
+                <Loader /> :
+                <>
+                    { Boolean(booking) &&
+                        <div style={{ display: 'flex', justifyContent: 'space-between', margin: '50px 0 30px' }}>
+                            <div className="buttons">
+                                <button className="button" onClick={bookingCancel}>Cancel</button>
+                                <button className="button" onClick={bookingDiscard}>Discard</button>
+                                <button className="button" onClick={bookingPaymentCompleteManually}>
+                                    Manually Complete Payment
+                                </button>
+                                <button className="button" onClick={paymentConfirm}>Confirm Payment</button>
+                            </div>
+                        </div>
+                    }
+                    <BookingConfirmationView referenceCode={match.params.refCode} />
+                </>
+            }
         </div>
     );
-}
+};
 
 export default Booking;

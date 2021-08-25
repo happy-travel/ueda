@@ -25,6 +25,11 @@ import counterPartyTransferBalancePage from 'pages/counterparties/counterparty-t
 const Routes = () => (
     <Switch>
         <Route exact path="/" component={mainPage} />
+        <Route exact path={[
+            '/agency/:id/agents/:agentId/booking/:refCode',
+            '/agency/:id/booking/:refCode',
+            '/booking/:refCode'
+        ]} component={bookingPage} />
         <Route exact path="/counterparties" component={counterpartiesListPage} />
         <Route exact path="/counterparties/:id/transfer-balance" component={counterPartyTransferBalancePage} />
         <Route path="/counterparties/:id" component={counterpartiesItemPage} />
@@ -41,12 +46,6 @@ const Routes = () => (
         <Route exact path="/globalmarkups" component={globalMarkupsPage} />
         <Route path="/signup/invite/:email/:code" component={acceptInvite} title="Sign Up" />
         <Route exact path="/reports" component={reportsPage} />
-        <Route exact path={[
-            '/counterparties/agencies/booking/:refCode',
-            '/counterparties/agencies/:id/booking/:refCode',
-            '/agency/:id/agents/:agentId/booking/:refCode',
-            '/agency/:id/booking/:refCode'
-        ]} component={bookingPage} />
         <Route exact path="/bookings" component={bookingsPage} />
         <Route component={notFoundPage} />
     </Switch>

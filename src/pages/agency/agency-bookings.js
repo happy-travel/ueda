@@ -13,7 +13,7 @@ const AgencyBookings = ({ match }) => {
             url: apiMethods.bookingsByAgency(match.params.id),
             success: (bookings) => {setBookings(bookings)}
         })
-    },[])
+    },[]);
 
     return (
         <div className="page-content">
@@ -24,6 +24,6 @@ const AgencyBookings = ({ match }) => {
             />
         </div>
     )
-}
+};
 
 export default AgencyBookings;

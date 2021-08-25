@@ -1,39 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { API } from 'matsumoto/src/core';
+import React from 'react';
 import { remapStatus } from 'matsumoto/src/simple/formatters/remap-status';
-import { Dual, Loader } from 'matsumoto/src/components/simple';
+import { Dual } from 'matsumoto/src/components/simple';
 import ViewFailed from 'matsumoto/src/parts/view-failed';
-import BookingActionPart from 'matsumoto/src/pages/accommodation/parts/booking-actions';
 import BookingDetailsView from 'matsumoto/src/pages/accommodation/parts/booking-details-view';
-import BookingSummary from 'matsumoto/src/pages/accommodation/parts/booking-summary'
-import apiMethods from 'core/methods';
+import BookingSummary from 'matsumoto/src/pages/accommodation/parts/booking-summary';
 
-const BookingConfirmationView = ({ referenceCode, PaymentInformation, bookingId }) => {
-    const [loading, setLoading] = useState(true);
-    const [booking, setBooking] = useState(null);
-
-    const loadBooking = async() => {
-        const result = await API.get({
-            url: apiMethods.bookingsByReferenceCode(referenceCode)
-        });
-        setBooking(result);
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        loadBooking();
-    }, []);
-
-
-    if (!booking && loading)
-        return <Loader />;
-
+const BookingConfirmationView = ({ PaymentInformation, booking }) => {
     if (!booking)
         return (
             <ViewFailed
                 reason="Unable to load a booking confirmation"
-                button="Back to Booking Management"
-                link="/bookings"
             />
         );
 
@@ -41,8 +17,6 @@ const BookingConfirmationView = ({ referenceCode, PaymentInformation, bookingId 
 
     return (
         <>
-            { loading && <Loader page /> }
-
             <div className="billet-wrapper">
                 <div className="billet">
                     <BookingSummary

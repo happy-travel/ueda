@@ -10,7 +10,6 @@ import AgentBookings from './agent-bookings';
 import AgentSearchOptions from './agent-search-options';
 
 const AgencyPage = ({ match }) => {
-
     const [agent, setAgent] = useState({});
 
     useEffect(() => {
@@ -20,9 +19,9 @@ const AgencyPage = ({ match }) => {
                 setAgent(list.filter((item) => item.agentId === Number(match.params.agentId))[0])
             }
         });
-    }, [])
+    }, []);
 
-
+    // todo: unused. legacy.
     const submitAvailabilitySearchOptions = (values) => {
         API.put({
             url: apiMethods.agentSettingsAvailabilitySearch(match.params.id, match.params.agentId),
@@ -36,7 +35,7 @@ const AgencyPage = ({ match }) => {
             },
             success: () => Notifications.addNotification('Saved', null, 'success')
         });
-    }
+    };
 
     return (
         <div className="settings block page-content">
@@ -80,6 +79,6 @@ const AgencyPage = ({ match }) => {
             </Switch>
         </div>
     );
-}
+};
 
 export default AgencyPage;
