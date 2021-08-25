@@ -82,7 +82,7 @@ const CounterpartyHeader = observer(({ id }) => {
                     {Boolean(balance) &&
                     <div className="text-row">
                         <h3 className="key">Balance:</h3>
-                        <h3 className="status Success value">{price(balance.currency, balance.balance)}</h3>
+                        <h3 className="status Success value">{price(balance[0]?.currency, balance[0]?.balance)}</h3>
                     </div>
                     }
                     {counterparty?.isActive &&
