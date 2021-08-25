@@ -15,8 +15,7 @@ steps:
   image: node:16
   commands:
   - npm install
-  - cd /src/app
-  - npm run build
+
 
 - name: discord-pr
   pull: always
