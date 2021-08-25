@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-import Route from 'matsumoto/src/core/misc/route';
 import notFoundPage from 'matsumoto/src/pages/common/not-found-page';
 import acceptInvite from 'matsumoto/src/pages/signup/accept-invite';
+import Route from './misc/route';
 import mainPage from 'pages/main';
 import counterpartiesListPage from 'pages/counterparties/list';
 import counterpartiesItemPage from 'pages/counterparties/counterparty';
@@ -46,6 +46,7 @@ const Routes = () => (
         <Route exact path={[
             '/counterparties/agencies/booking/:refCode',
             '/counterparties/agencies/:id/booking/:refCode',
+            '/agency/:id/agents/:agentId/booking/:refCode',
             '/agency/:id/booking/:refCode'
         ]} component={bookingPage} />
         <Route exact path="/bookings" component={bookingsPage} />
