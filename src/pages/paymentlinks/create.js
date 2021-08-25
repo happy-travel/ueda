@@ -72,7 +72,7 @@ const CreatePaymentLinkPage = () => {
     return (
         <div className="settings block">
             <div className="page-content-no-tabs">
-                <h1>Create a payment link</h1>
+                <h1 className="no-tabs-header">Create a payment link</h1>
                 <CachedForm
                     onSubmit={submit}
                     validationSchema={ValidatorPaymentLink}

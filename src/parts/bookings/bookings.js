@@ -18,8 +18,8 @@ const BookingsList = ({ bookings }) => {
 
     return (
         <div className="block list booking">
-            <h1>Bookings</h1>
-            <div className="table-wrapper">
+            <h2>Bookings</h2>
+            <div className="table-wrapper-tabs">
                 <Table
                     list={bookings}
                     columns={ [

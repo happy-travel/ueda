@@ -19,7 +19,7 @@ const duplicatesListPage = () => {
 
     return (
         <div className="block duplicates list page-content-no-tabs">
-            <h1>Duplicates list</h1>
+            <h1 className="no-tabs-header">Duplicates list</h1>
             {!err ?
                 <div>
                     <div className="table-wrapper">

@@ -9,7 +9,7 @@ $header-element-margin: 15px 0 15px 0
         margin: 19px 0 10px
 
     h2
-        margin: 40px 0 20px
+        margin: 19px 0 45px
 
 .box
     display: inline-block
@@ -20,6 +20,8 @@ $header-element-margin: 15px 0 15px 0
         margin-right: 20px
 .table-wrapper
     margin-top: -90px
+.table-wrapper-tabs
+    margin-top: -123px
 .block.list.booking
     margin: 0
 .block.list
@@ -43,7 +45,7 @@ $header-element-margin: 15px 0 15px 0
     margin: 0 300px 0 0
 .global-markups
     h2
-        margin-bottom: 25px
+        margin-bottom: 45px
 
 .tabs-navigation
     box-shadow: 0 .5px 0 $color-shadow-border
@@ -113,15 +115,19 @@ $header-element-margin: 15px 0 15px 0
 .page-content
     margin-left: 70px
 .page-content-no-tabs
-    margin: 40px 0 0 50px
+    margin: 40px 0 0 70px
+    .no-tabs-header
+        padding-bottom: 35px
 .counterparty-header
     .header-info
         display: flex
         flex-direction: column
         justify-content: space-between
-        height: 150px
+        min-height: 225px
+        h1
+            padding-bottom: 30px
+            padding-top: 17px
     margin: 0
-    height: 170px
     h4
         margin: $header-element-margin
     button
@@ -192,9 +198,6 @@ $header-element-margin: 15px 0 15px 0
         padding-left: 5px
         border: none
         background-color: inherit
-.reports-list
-    h1
-        margin-bottom: 20px
     display: flex
     flex-direction: column
     margin-top: 20px
