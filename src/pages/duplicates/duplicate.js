@@ -26,10 +26,13 @@ class DuplicatePage extends React.Component {
 
     approve = () => {
         confirmationModal(confirmCancel).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.duplicateApprove(this.props.match.params.id),
-                    success: () => Notifications.addNotification('Approved', null, 'success'),
+                    success: () => {
+                        Notifications.addNotification('Approved', null, 'success');
+                        onClose();
+                    }
                 });
             }
         )
@@ -37,10 +40,13 @@ class DuplicatePage extends React.Component {
 
     disapprove = () => {
         confirmationModal(confirmCancel).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.duplicateApprove(this.props.match.params.id),
-                    success: () => Notifications.addNotification('Approved', null, 'success'),
+                    success: () => {
+                        Notifications.addNotification('Approved', null, 'success');
+                        onClose();
+                    }
                 });
             }
         )

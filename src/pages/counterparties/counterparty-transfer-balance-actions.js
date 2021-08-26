@@ -50,11 +50,14 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
     const submitTransfer = (values) => {
         confirmationModal(BalanceActionConfirm).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.transferFromCounterpartyToAgency(values.counterpartyAccountId),
                     body: values,
-                    success: () => Notifications.addNotification('Done', null, 'success'),
+                    success: () => {
+                        Notifications.addNotification('Done', null, 'success');
+                        onClose();
+                    },
                     error: () => Notifications.addNotification('Error', null, 'warning')
                 })
             }

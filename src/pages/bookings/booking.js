@@ -76,10 +76,13 @@ const Booking = ({ match }) => {
 
     const bookingCancel = () => {
         confirmationModal(ConfirmCancelBooking).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.bookingCancel(booking.bookingId),
-                    success: () => Notifications.addNotification('Cancelled', null, 'success')
+                    success: () => {
+                        Notifications.addNotification('Cancelled', null, 'success');
+                        onClose();
+                    }
                 });
             }
         )
@@ -87,10 +90,13 @@ const Booking = ({ match }) => {
 
     const bookingDiscard = () => {
         confirmationModal(ConfirmationDiscard).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.bookingDiscard(booking.bookingId),
-                    success: () => Notifications.addNotification('Discarded', null, 'success')
+                    success: () => {
+                        Notifications.addNotification('Discarded', null, 'success');
+                        onClose();
+                    }
                 });
             }
         )
@@ -98,10 +104,13 @@ const Booking = ({ match }) => {
 
     const bookingPaymentCompleteManually = () => {
         confirmationModal(ConfirmCompletePaymentManually).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.paymentCompleteManually(booking.bookingId),
-                    success: () => Notifications.addNotification('Success', null, 'success'),
+                    success: () => {
+                        Notifications.addNotification('Success', null, 'success');
+                        onClose();
+                    },
                 });
             }
         )
@@ -109,10 +118,13 @@ const Booking = ({ match }) => {
 
     const paymentConfirm = () => {
         confirmationModal(ConfirmCreditCardPayment).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.paymentConfirm(booking.bookingId),
-                    success: () => Notifications.addNotification('Success', null, 'success'),
+                    success: () => {
+                        Notifications.addNotification('Success', null, 'success');
+                        onClose();
+                    },
                 });
             }
         )

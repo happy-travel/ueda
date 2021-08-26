@@ -29,12 +29,15 @@ const CounterpartyContract = ({ match }) => {
 
     const uploadContract = (e) => {
         confirmationModal(ConfirmationDownloadContract).then(
-            () => {
+            (onClose) => {
                 API.put({
                     url: apiMethods.contractFile(match.params.id),
                     formDataBody: new FormData(document.getElementById('formElem')),
-                    success: () => setCounterparty({ ...counterparty,
-                        isContractUploaded: true })
+                    success: () => {
+                        setCounterparty({ ...counterparty,
+                            isContractUploaded: true });
+                        onClose();
+                    }
                 });
                 e.preventDefault();
             }

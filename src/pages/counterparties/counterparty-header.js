@@ -47,30 +47,36 @@ const CounterpartyHeader = observer(({ id }) => {
 
     const statusChange = () => {
         confirmationModal(ConfirmationActivate).then(
-            () => {
+            (onClose) => {
                 if (counterparty?.isActive) {
-                    return deactivate();
+                    return deactivate(onClose);
                 }
-                return activate();
+                return activate(onClose);
             }
         )
     };
 
-    const activate = () => {
+    const activate = (onClose) => {
         let reason = prompt('Enter a reason');
         API.post({
             url: apiMethods.activateCounterparty(id),
             body: { reason },
-            success: () => Notifications.addNotification('Counterparty activated', null, 'success')
+            success: () => {
+                Notifications.addNotification('Counterparty activated', null, 'success');
+                onClose();
+            }
         });
     };
 
-    const deactivate = () => {
+    const deactivate = (onClose) => {
         let reason = prompt('Enter a reason');
         API.post({
             url: apiMethods.deactivateCounterparty(id),
             body: { reason },
-            success: () => Notifications.addNotification('Counterparty deactivated', null, 'success')
+            success: () => {
+                Notifications.addNotification('Counterparty deactivated', null, 'success');
+                onClose();
+            }
         });
     };
 
