@@ -87,7 +87,7 @@ const Booking = ({ match }) => {
         confirmationModal(ConfirmationDiscard).then(
             () => {
                 API.post({
-                    url: apiMethods.bookingDiscard(this.state.booking.bookingId),
+                    url: apiMethods.bookingDiscard(booking.bookingId),
                     success: () => Notifications.addNotification('Discarded', null, 'success')
                 });
             }
@@ -98,7 +98,7 @@ const Booking = ({ match }) => {
         confirmationModal(ConfirmCompletePaymentManually).then(
             () => {
                 API.post({
-                    url: apiMethods.paymentCompleteManually(this.state.booking.bookingId),
+                    url: apiMethods.paymentCompleteManually(booking.bookingId),
                     success: () => Notifications.addNotification('Success', null, 'success'),
                 });
             }
@@ -109,7 +109,7 @@ const Booking = ({ match }) => {
         confirmationModal(ConfirmCreditCardPayment).then(
             () => {
                 API.post({
-                    url: apiMethods.paymentConfirm(this.state.booking.bookingId),
+                    url: apiMethods.paymentConfirm(booking.bookingId),
                     success: () => Notifications.addNotification('Success', null, 'success'),
                 });
             }
