@@ -10,7 +10,7 @@ import AgentBookings from './agent-bookings';
 import AgentSearchOptions from './agent-search-options';
 
 const AgencyPage = ({ match }) => {
-    const [agent, setAgent] = useState({});
+    const [agent, setAgent] = useState(null);
 
     useEffect(() => {
         API.get({
@@ -38,37 +38,27 @@ const AgencyPage = ({ match }) => {
     };
 
     return (
-        <div className="settings block page-content">
+        <div className="settings block page-content agent-header">
             <div className="header-info">
-                <h1>Agent #{match.params.agentId} (Agency #{match.params.id})</h1>
-                <div className="text">
-                    <div className="text-row">
-                        <h3 className="key">Name:</h3>
-                        <h3 className="value">{agent.name}</h3>
+                <h1>Agent #{match.params.agentId} in Agency #{match.params.id}</h1>
+                { agent && <>
+                    <div>
+                        Name: <span>{agent.name}</span>
                     </div>
-                    <div className="text-row">
-                        {/*<h3 className="key">Created: <h3>{date.format.a(agent.created * 1000)}</h3></h3>*/}
-                        <h3 className="key">Created:</h3>
-                        <h3 className="value">{date.format.a(agent.created * 1000)}</h3>
+                    <div>
+                        Created: <span>{date.format.a(agent.created * 1000)}</span>
                     </div>
-                    {agent.markupSettings &&
-                    <div className="text-row">
-                        <h3 className="key">Markup:</h3>
-                        <h3 className="value">{agent.markupSettings}</h3>
-                    </div>}
-                    {agent.isActive &&
-                    <div className="text-row">
-                        <h3 className="key">Status:</h3>
-                        <h3 className="status Success value">Active</h3>
-                    </div>}
-                    {agent?.isActive === false &&
-                    <div className="text-row">
-                        <h3 className="key">Status:</h3>
-                        <h3 className="status Success value">Inactive</h3>
-                    </div>}
-                </div>
-                <AgentNavigation id={match.params.id} agentId={match.params.agentId} />
+                    { agent.markupSettings &&
+                        <div>
+                            Markup: <span>{agent.markupSettings}</span>
+                        </div>
+                    }
+                    <div>
+                        Status: { agent.isActive ? <span className="green">Active</span> : <strong>Inactive</strong> }
+                    </div>
+                </> }
             </div>
+            <AgentNavigation id={match.params.id} agentId={match.params.agentId} />
             <Switch>
                 <Route path={'/agency/:id/agents/:agentId/change-agency'}
                        render={() => <AgentChangeAgency id={match.params.id} agentId={match.params.agentId} />}/>

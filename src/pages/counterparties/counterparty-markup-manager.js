@@ -4,6 +4,7 @@ import apiMethods from 'core/methods';
 
 const CounterpartyMarkupManager = ({ match }) => (
     <div className="admin-tab-element-wrapper block">
+        <h2>Counterparty Markup Management</h2>
         <Markups
             id={match.params.id}
             emptyText={'No markups'}
@@ -11,7 +12,7 @@ const CounterpartyMarkupManager = ({ match }) => (
             markupRoute={() => apiMethods.counterpartyMarkups(match.params.id)}
         />
     </div>
-)
+);
 
 export default CounterpartyMarkupManager;
 

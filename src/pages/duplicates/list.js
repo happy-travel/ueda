@@ -6,21 +6,27 @@ import { date } from 'matsumoto/src/simple';
 import NoteCard from '../../parts/note';
 
 const duplicatesListPage = () => {
+    const [temporaryMaintenance, setTemporaryMaintenance] = useState(true); //todo: remove
+
     const [list, setList] = useState(null);
-    const [err, setErr] = useState(null);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         API.get({
             url: apiMethods.duplicates,
-            success: (list) => {setList(list)},
-            error: () => {setErr(true)}
+            success: (list) => {
+                setList(list);
+            },
+            after: () => {
+                setLoaded(true);
+            }
         });
-    }, [])
+    }, []);
 
     return (
         <div className="block duplicates list page-content-no-tabs">
             <h1 className="no-tabs-header">Duplicates list</h1>
-            {!err ?
+            {!temporaryMaintenance ?
                 <div>
                     <div className="table-wrapper">
                         <Table
@@ -64,9 +70,10 @@ const duplicatesListPage = () => {
                         />
                     </div>
                 </div> :
-            <NoteCard>
-                Sorry, this page isn't available for a while
-            </NoteCard>}
+                <NoteCard>
+                    Sorry, this page isn't available for a while
+                </NoteCard>
+            }
         </div>
     );
 };

@@ -1,6 +1,5 @@
 $background-color: #F7F8FC
 $primary-color: #FCB700
-$header-element-margin: 15px 0 15px 0
 .block-wrapper
     box-sizing: unset
     margin-bottom: 100px
@@ -86,55 +85,39 @@ $header-element-margin: 15px 0 15px 0
     background: linear-gradient(180.01deg, rgba(255, 255, 255, 0) 500px, $background-color 500px)
     flex-direction: column
     justify-content: flex-start
-    width: 320px
-    min-width: 320px
+    width: 240px
+    min-width: 240px
     top: 72px
     .content
         height: 535px
-        padding-left: 50px
-        padding-top: 150px
+        padding: 150px 30px 50px
         background: white
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0), $background-color)
-.selected
     .sidebar-item
-        width: 230px
-        background: white
-        color: $primary-color
-        border-radius: 40px
-.sidebar-item
-    display: flex
-    align-items: center
-    font-size: 14px
-    padding-left: 10px
-    line-height: 40px
-    margin: 5px 0
-    &:hover
-        width: 230px
-        background: white
-        border-radius: 40px
-    span
-        margin-left: 10px
-        white-space: nowrap
+        display: flex
+        align-items: center
+        font-size: 14px
+        padding-left: 10px
+        line-height: 40px
+        margin: 10px 0
+        &:hover
+            background: white
+            border-radius: 40px
+        span
+            margin-left: 10px
+            white-space: nowrap
+    .selected
+        .sidebar-item
+            background: #ffffff
+            color: $primary-color
+            border-radius: 40px
 .page-content
     margin-left: 70px
 .page-content-no-tabs
     margin: 40px 0 0 70px
     .no-tabs-header
         padding-bottom: 35px
-.counterparty-header
-    .header-info
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        min-height: 225px
-        h1
-            padding-bottom: 30px
-            padding-top: 17px
-    margin: 0
-    h4
-        margin: $header-element-margin
-    button
-        margin: $header-element-margin
+
 .row-group
     display: flex
     .row
@@ -220,30 +203,30 @@ $header-element-margin: 15px 0 15px 0
     .note-wrapper
         width: 370px
         margin: 0 0 320px
-.text
-    .key
-        color: grey
-    .value
-        padding-left: 5px
-    .text-row
-        display: flex
-        padding-bottom: 10px
-    h3
-        font-size: 14px
-.welcome-block, .entitlement
-    display: flex
-    justify-content: space-between
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), $background-color)
+.title-page-block
+    background: linear-gradient(178.54deg, rgba(255, 255, 255, 0) -40.44%, #F7F8FC 31.15%)
     width: 1000px
-    height: 150px
+    min-height: 200px
+    margin-bottom: 30px
+    padding: 0 0 50px 30px
+    border-radius: 8px
+    overflow: hidden
+    font-size: 14px
+    line-height: 19px
+    .background
+        min-height: 200px
+        background: url('./images/welcome-bg.svg') bottom right no-repeat
+        width: 100%
+        margin-bottom: -50px
     h2
         font-size: 20px
         margin: 0
-        padding: 30px
-    div
-        padding: 0 30px 0 30px
-.welcome-block
-    margin-bottom: 30px
+        padding: 30px 0
+    ul
+        padding-left: 20px
+        li
+            list-style: disc outside
+            margin-bottom: 10px
 .confirmation-modal
     display: flex
     padding-left: 10px

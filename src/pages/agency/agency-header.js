@@ -3,7 +3,6 @@ import { price } from 'matsumoto/src/simple';
 import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 
-
 const AgencyHeader = ({ id }) => {
     const [agencyAccounts, setAgencyAccounts] = useState(null);
 
@@ -12,23 +11,21 @@ const AgencyHeader = ({ id }) => {
             url: apiMethods.agenciesAccounts(id),
             success: (agencyAccounts) => setAgencyAccounts(agencyAccounts),
         });
-    }, [])
+    }, []);
 
     return (
-        <div className="settings block">
+        <div className="settings block agency-header">
             <div className="header-info">
                 <h1>Agency #{id}</h1>
-                <div className="text">
-                    {Boolean(agencyAccounts) &&
-                    <div className="text-row">
-                        <h3 className="key">Balance:</h3>
-                        <h3 className="status Success value">{price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount)}
-                        </h3>
+                { Boolean(agencyAccounts) &&
+                    <div>
+                        Balance: <strong className="green">
+                            {price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount)}
+                        </strong>
                     </div>
-                    }
-                </div>
+                }
             </div>
     </div>)
-}
+};
 
 export default AgencyHeader;

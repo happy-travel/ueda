@@ -3,11 +3,8 @@ import apiMethods from 'core/methods';
 import Markups from 'matsumoto/src/parts/markups/markups';
 
 const GlobalMarkups = () => (
-    <div className="global-markups page-content-no-tabs"
-    style={{
-        marginTop: '35px',
-        width: '50%'
-    }}>
+    <div className="global-markups page-content-no-tabs">
+        <h1 className="no-tabs-header">Global Markup Management</h1>
         <Markups
             id={null}
             emptyText={'No markups'}

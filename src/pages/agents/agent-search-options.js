@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import SearchOptionsForm from '../agency/search-options-form';
 import { API } from 'matsumoto/src/core';
-import apiMethods from '../../core/methods';
+import apiMethods from 'core/methods';
+import SearchOptionsForm from '../agency/search-options-form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 
 const AgentSearchOptions = ({ id, agentId }) => {
@@ -12,7 +12,7 @@ const AgentSearchOptions = ({ id, agentId }) => {
             url: apiMethods.agentSettingsAvailabilitySearch(id, agentId),
             success: (availabilitySearchOptions) => {setAvailabilitySearchOptions(availabilitySearchOptions)}
         });
-    }, [])
+    }, []);
 
     const submitAvailabilitySearchOptions = (values) => {
         API.put({
@@ -27,20 +27,20 @@ const AgentSearchOptions = ({ id, agentId }) => {
             },
             success: () => Notifications.addNotification('Saved', null, 'success')
         });
-    }
-
+    };
 
     return (
         <div>
             <h2>Availability Search Options</h2>
-            {availabilitySearchOptions ?
+            { availabilitySearchOptions ?
                 <SearchOptionsForm
                     initialValues={availabilitySearchOptions}
                     onSubmit={submitAvailabilitySearchOptions}
                 /> :
-                <h3>No options found</h3>}
+                <h3>No options found</h3>
+            }
         </div>
     )
-}
+};
 
 export default AgentSearchOptions;

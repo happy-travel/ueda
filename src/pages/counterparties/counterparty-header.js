@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { API } from 'matsumoto/src/core';
-import apiMethods from '../../core/methods';
+import apiMethods from 'core/methods';
 import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
 import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
-import { observer } from 'mobx-react';
-import $auth from 'stores/auth';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationHuge from '../../components/confirms/confirmation-huge';
+import ConfirmationHuge from 'components/confirms/confirmation-huge';
+import $auth from 'stores/auth';
 
 const CounterpartyHeader = observer(({ id }) => {
 
@@ -28,7 +28,7 @@ const CounterpartyHeader = observer(({ id }) => {
                 Please enter a reason to deactivate.
             </ConfirmationHuge>
         )
-    }
+    };
 
     useEffect(() => {
         API.get({
@@ -43,7 +43,7 @@ const CounterpartyHeader = observer(({ id }) => {
                 setBalance(balance);
             }
         });
-    }, [])
+    }, []);
 
     const statusChange = () => {
         confirmationModal(ConfirmationActivate).then(
@@ -54,7 +54,7 @@ const CounterpartyHeader = observer(({ id }) => {
                 return activate();
             }
         )
-    }
+    };
 
     const activate = () => {
         let reason = prompt('Enter a reason');
@@ -63,7 +63,7 @@ const CounterpartyHeader = observer(({ id }) => {
             body: { reason },
             success: () => Notifications.addNotification('Counterparty activated', null, 'success')
         });
-    }
+    };
 
     const deactivate = () => {
         let reason = prompt('Enter a reason');
@@ -72,45 +72,37 @@ const CounterpartyHeader = observer(({ id }) => {
             body: { reason },
             success: () => Notifications.addNotification('Counterparty deactivated', null, 'success')
         });
-    }
+    };
 
     return (
         <div className="settings block counterparty-header">
             <div className="header-info">
                 <h1>{counterparty?.name}</h1>
-                <div className="text">
-                    {Boolean(balance) &&
-                    <div className="text-row">
-                        <h3 className="key">Balance:</h3>
-                        <h3 className="status Success value">{price(balance[0]?.currency, balance[0]?.balance)}</h3>
-                    </div>
+                { Boolean(counterparty) && <>
+                    { Boolean(balance) &&
+                        <div>
+                            Balance: <strong className="green">{price(balance[0]?.currency, balance[0]?.balance)}</strong>
+                        </div>
                     }
-                    {counterparty?.isActive &&
-                    <div className="text-row">
-                        <h3 className="key">Status:</h3>
-                        <h3 className="status Success value">Active</h3>
-                    </div>}
-                    {counterparty?.isActive === false &&
-                    <div className="text-row">
-                        <h3 className="key">Status:</h3>
-                        <h3 className="status Success value">Inactive</h3>
-                    </div>}
-                    <div className="text-row">
-                        <h3 className="key">State:</h3>
-                        <h3 className="value">{remapStatus(counterparty?.verificationState)}</h3>
+                    <div>
+                        State: <strong>{remapStatus(counterparty.verificationState)}</strong>
                     </div>
-                    {$auth.permitted('CounterpartyVerification') &&
-                    <CachedForm
-                        render={(formik) => (
-                            <div className="row">
-                                <FieldSwitch
-                                    formik={formik}
-                                    onChange={statusChange}
-                                    value={counterparty?.isActive}/>
-                            </div>
-                        )}/>
+                    <div>
+                        Status: { counterparty.isActive ? <span className="green">Active</span> : <strong>Inactive</strong> }
+                    </div>
+                    { $auth.permitted('CounterpartyVerification') &&
+                        <CachedForm
+                            render={(formik) => (
+                                <div className="row">
+                                    <FieldSwitch
+                                        formik={formik}
+                                        onChange={statusChange}
+                                        value={counterparty?.isActive}/>
+                                </div>
+                            )}
+                        />
                     }
-                </div>
+                </> }
             </div>
         </div>
     )

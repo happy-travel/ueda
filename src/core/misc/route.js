@@ -5,6 +5,7 @@ import tracker from 'matsumoto/src/core/misc/tracker';
 const Route = (props) => {
     useEffect(() => {
         document.title = ( props.title ? (props.title + ' – ') : '' ) + 'Manage.Happytravel.com';
+        window.scrollTo(0, 0);
         tracker();
     });
 
