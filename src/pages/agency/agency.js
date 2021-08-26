@@ -4,6 +4,11 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import AgencyHeader from './agency-header';
+import { Route, Switch } from 'react-router-dom';
+import AgenciesList from './list';
+import AgencyBalance from './agency-balance';
+import AgencySettings from './agency-settings';
+import AgencyBookings from './agency-bookings';
 
 
 const AgencyPage = ({ match }) => {
@@ -79,9 +84,19 @@ const AgencyPage = ({ match }) => {
         });
     }
     return (
-        <div>
+        <div className="page-content">
             <AgencyHeader id={match.params.id}/>
             <AgencyNavigation match={match} />
+            <Switch>
+                <Route path={'/agency/:id/agents'}
+                       render={() => <AgenciesList match={match} />}/>
+                <Route path={'/agency/:id/transfer-balance'}
+                       render={() => <AgencyBalance match={match} />}/>
+                <Route path={'/agency/:id/settings'}
+                       render={() => <AgencySettings match={match} />}/>
+                <Route path={'/agency/:id/bookings'}
+                       render={() => <AgencyBookings match={match} />}/>
+            </Switch>
         </div>
     );
 }

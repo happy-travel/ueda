@@ -16,9 +16,7 @@ const AgencyBookings = ({ match }) => {
     },[]);
 
     return (
-        <div className="page-content">
-            <AgencyHeader id={match.params.id}/>
-            <AgencyNavigation match={match}/>
+        <div>
             <Bookings
                 bookings={bookings}
             />
