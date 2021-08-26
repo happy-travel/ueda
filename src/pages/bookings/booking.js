@@ -136,7 +136,7 @@ const Booking = ({ match }) => {
                             </div>
                         </div>
                     }
-                    <BookingConfirmationView referenceCode={match.params.refCode} />
+                    <BookingConfirmationView booking={booking} />
                 </>
             }
         </div>

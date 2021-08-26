@@ -5,7 +5,7 @@ import ViewFailed from 'matsumoto/src/parts/view-failed';
 import BookingDetailsView from 'matsumoto/src/pages/accommodation/parts/booking-details-view';
 import BookingSummary from 'matsumoto/src/pages/accommodation/parts/booking-summary';
 
-const BookingConfirmationView = ({ PaymentInformation, booking }) => {
+const BookingConfirmationView = ({ booking }) => {
     if (!booking)
         return (
             <ViewFailed
@@ -34,7 +34,6 @@ const BookingConfirmationView = ({ PaymentInformation, booking }) => {
                     }
                 </div>
                 <div className="another">
-                    { PaymentInformation ? PaymentInformation : null }
                     <div className="accent-frame">
                         <div className="data">
                             <div className="first">
