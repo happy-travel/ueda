@@ -16,9 +16,7 @@ const AgencyBalance = ({ match }) => {
     }, [])
 
     return (
-        <div className="agency-balance page-content">
-            <AgencyHeader id={match.params.id}/>
-            <AgencyNavigation match={match}/>
+        <div className="agency-balance">
             <NoteCard>
                 Sorry, this page isn't available for a while
             </NoteCard>

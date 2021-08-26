@@ -33,12 +33,8 @@ const Routes = () => (
         <Route exact path="/counterparties" component={counterpartiesListPage} />
         <Route exact path="/counterparties/:id/transfer-balance" component={counterPartyTransferBalancePage} />
         <Route path="/counterparties/:id" component={counterpartiesItemPage} />
-        <Route exact path="/agency/:id/transfer-balance" component={agencyBalancePage} />
-        <Route exact path="/agency/:id/settings" component={agencySettingsPage} />
-        <Route exact path="/agency/:id/agents" component={agencyListPage} />
-        <Route exact path="/agency/:id/bookings" component={agencyBookingPage} />
-        <Route exact path="/agency/:id" component={agencyPage} />
         <Route path="/agency/:id/agents/:agentId" component={agentPage} />
+        <Route path="/agency/:id" component={agencyPage} />
         <Route exact path="/paymentlinks" component={createPaymentLinkPage} />
         <Route exact path="/admins" component={inviteAdminPage} />
         <Route exact path="/duplicates/:id" component={duplicatePage} />

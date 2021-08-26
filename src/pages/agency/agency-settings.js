@@ -27,12 +27,10 @@ const AgencySettings = ({ match }) => {
     }, []);
 
     return (
-        <div className="page-content">
-            <AgencyHeader id={match.params.id}/>
-            <AgencyNavigation match={match}/>
-                <SearchOptionsForm
-                    id={match.params.id}
-                />
+        <div>
+            <SearchOptionsForm
+                id={match.params.id}
+            />
         </div>
     )
 }
