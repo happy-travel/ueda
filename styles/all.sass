@@ -1,5 +1,5 @@
-$background-color: #F7F8FC
-$primary-color: #FCB700
+@import "constants"
+
 .block-wrapper
     box-sizing: unset
     margin-bottom: 100px
@@ -227,85 +227,3 @@ $primary-color: #FCB700
         li
             list-style: disc outside
             margin-bottom: 10px
-.confirmation-modal
-    display: flex
-    padding-left: 10px
-    padding-top: 25px
-    .icon-wrapper
-        height: 80px
-        box-shadow: .5px 0 0 $color-shadow-border
-        margin-right: 30px
-    i
-        padding-right: 65px
-        padding-top: 35px
-    h3
-        font-weight: 600
-        padding-bottom: 7px
-    .confirm-actions
-        display: flex
-        justify-content: space-around
-        padding-top: 15px
-        padding-left: 100px
-        div
-            cursor: pointer
-            &:hover
-                color: $primary-color
-.confirmation-modal.confirm-small
-    padding-top: 10px
-    width: 350px
-    .confirm-content
-        padding-top: 10px
-    h3
-        padding-top: 10px
-    .confirm-actions
-        display: flex
-        padding-left: 220px
-        padding-bottom: 15px
-.confirmation-modal.confirm-medium
-    width: 480px
-    height: 120px
-    .confirm-content
-        width: 320px
-    .confirm-actions
-        width: 370px
-.confirmation-modal.confirm-large
-    padding-left: 0
-    .confirm-content
-        width: 480px
-        .header-wrapper
-            box-shadow: 0 .5px 0 $color-shadow-border
-        h2
-            display: flex
-            justify-content: center
-            font-weight: 600
-            padding-bottom: 15px
-        .confirm-text
-            padding: 10px 15px 30px 15px
-            box-shadow: 0 .5px 0 $color-shadow-border
-        .confirm-actions
-            padding: 12px 0 10px 0
-            div
-                font-weight: 600
-                width: 220px
-                height: 30px
-                text-align: center
-                padding-top: 5px
-            div:first-child
-                box-shadow: .5px 0 0 $color-shadow-border
-.confirm-huge
-    .confirm-text
-        box-shadow: none !important
-    .form
-        .field
-            width: 450px
-            margin: -10px 0 0 15px
-    .button
-        margin: 15px 0 15px 15px
-        width: 450px
-        border-radius: 5px
-        background-color: $background-color
-        border: none
-    .footnote
-        font-size: 11px
-        margin-left: 42px
-        margin-bottom: 15px
