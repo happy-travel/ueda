@@ -30,8 +30,8 @@ const Booking = ({ match }) => {
             <ConfirmationLarge yes={yes}
                                no={no}>
                 You are about to cancel a booking.
-                This action *cannot* be undone. This will will request a cancellation on supplier's side
-                and permanently cancel the booking *ref_code* in the system in case of success.
+                This action <span className="point">cannot</span> be undone. This will request a cancellation on supplier's side
+                and permanently cancel the booking <span className="point">{match.params.refCode}</span> in the system in case of success.
             </ConfirmationLarge>
         )
     };
@@ -40,8 +40,8 @@ const Booking = ({ match }) => {
         return (
             <ConfirmationLarge yes={yes}
                                no={no}>
-                This action *cannot* be undone. This will mark a payment for the booking *ref_code*
-                as *paid* in the system.
+                This action <span className="point">cannot</span> be undone. This will mark a payment for the
+                booking <span className="point">{match.params.refCode}</span> as <span className="point">paid</span> in the system.
             </ConfirmationLarge>
         )
     };
@@ -50,8 +50,9 @@ const Booking = ({ match }) => {
         return (
             <ConfirmationLarge yes={yes}
                                no={no}>
-                This action *cannot* be undone. This will mark a payment for the booking *ref_code* as *paid*
-                in the system.
+                This action <span className="point">cannot</span> be undone. This will mark a payment for the
+                booking <span className="point">{match.params.refCode}</span> as <span className="point">paid</span> in
+                the system.
                 Before executing this action, make sure the payment was fulfilled by a corresponding payment processor.
             </ConfirmationLarge>
         )
@@ -66,7 +67,8 @@ const Booking = ({ match }) => {
                 headerText="You are about to discard a booking"
                 validationText={match.params.refCode}
                 inputPlaceholder={`Please type ${match.params.refCode} to discard`}>
-                This action *cannot* be undone. This will permanently close the booking *ref_code* in the system.
+                This action <span className="point">cannot</span> be undone. This will permanently close the
+                booking <span className="point">{match.params.refCode}</span> in the system.
                 Use the discard feature only when you absolutely sure the booking has cancelled on a suppliers's side.
             </ConfirmationHuge>
         )
