@@ -34,10 +34,13 @@ const ReportCard = ({ children }) => {
 
     const downloadReport = (values) => {
         confirmationModal(ConfirmationSmall).then(
-            () => {
+            (onClose) => {
                 API.get({
                     url: apiMethods[children[0]](values.start.toISOString(), values.end.toISOString()),
-                    response: (res) => reportResponse(res, values)
+                    response: (res) => {
+                        reportResponse(res, values);
+                        onClose();
+                    }
                 })
             }
         )

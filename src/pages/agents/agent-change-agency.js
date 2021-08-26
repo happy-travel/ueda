@@ -11,11 +11,14 @@ const AgentChangeAgency = ({ id, agentId }) => {
 
     const changeAgency = (values) => {
         confirmationModal(ConfirmationMedium).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.agentChangeAgency(id, agentId),
                     body: values.newAgencyId,
-                    success: () => Notifications.addNotification('Changed', null, 'success')
+                    success: () => {
+                        Notifications.addNotification('Changed', null, 'success');
+                        onClose();
+                    }
                 })
             }
         )

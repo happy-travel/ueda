@@ -36,14 +36,15 @@ const CounterpartyTransferBalanceAccountOperations = ({ match }) => {
     const submitTransfer = (values) => {
         const { amount, currency, reason, operation } = values
         confirmationModal(BalanceOperationConfirm).then(
-            () => {
+            (onClose) => {
                 API.post({
                     url: apiMethods.accountOperation(accounts[0].id, operation),
                     body: { amount, currency, reason },
                     success: () => {
                         Notifications.addNotification('Done', null, 'success');
+                        onClose();
                     },
-                })
+                });
             }
         );
     }

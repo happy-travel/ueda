@@ -22,11 +22,14 @@ const CounterpartyDetails = ({ match }) => {
 
     const submit = (body) => {
         confirmationModal(ConfirmationMedium).then(
-            () => {
+            (onClose) => {
                 API.put({
                     url: apiMethods.counterparty(match.params.id),
                     body,
-                    success: () => redirect(`/counterparties/${match.params.id}`),
+                    success: () => {
+                        redirect(`/counterparties/${match.params.id}`);
+                        onClose();
+                    },
                     error: ({ errors }) => {
                         Notifications.addNotification(errors.Name.toString(), null, 'warning');
                     }
