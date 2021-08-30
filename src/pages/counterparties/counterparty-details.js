@@ -27,7 +27,7 @@ const CounterpartyDetails = ({ match }) => {
                     url: apiMethods.counterparty(match.params.id),
                     body,
                     success: () => {
-                        redirect(`/counterparties/${match.params.id}`);
+                        Notifications.addNotification('Saved', null, 'success')
                         onClose();
                     },
                     error: ({ errors }) => {

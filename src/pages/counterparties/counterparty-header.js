@@ -4,7 +4,6 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
-import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationHuge from 'components/confirms/confirmation-huge';
@@ -14,6 +13,7 @@ const CounterpartyHeader = observer(({ id }) => {
 
     const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
+    const [status, setStatus] = useState(null);
 
     const ConfirmationActivate = ({ yes, no }) => {
         return (
@@ -34,7 +34,8 @@ const CounterpartyHeader = observer(({ id }) => {
         API.get({
             url: apiMethods.counterparty(id),
             success: (counterparty) => {
-                setCounterparty(counterparty)
+                setStatus(status === null ? counterparty?.isActive : status)
+                setCounterparty(counterparty);
             }
         });
         API.get({
@@ -43,14 +44,16 @@ const CounterpartyHeader = observer(({ id }) => {
                 setBalance(balance);
             }
         });
-    }, []);
+    }, [status]);
 
     const statusChange = () => {
         confirmationModal(ConfirmationActivate).then(
             (onClose) => {
-                if (counterparty?.isActive) {
+                if (status) {
+                    setStatus(false);
                     return deactivate(onClose);
                 }
+                setStatus(true);
                 return activate(onClose);
             }
         )
@@ -94,16 +97,21 @@ const CounterpartyHeader = observer(({ id }) => {
                         State: <strong>{remapStatus(counterparty.verificationState)}</strong>
                     </div>
                     <div>
-                        Status: { counterparty.isActive ? <span className="green">Active</span> : <strong>Inactive</strong> }
+                        Status: { status ? <span className="green">Active</span> : <strong>Inactive</strong> }
                     </div>
                     { $auth.permitted('CounterpartyVerification') &&
                         <CachedForm
+                            onSubmit={statusChange}
                             render={(formik) => (
                                 <div className="row">
-                                    <FieldSwitch
-                                        formik={formik}
-                                        onChange={statusChange}
-                                        value={counterparty?.isActive}/>
+                                    <div className="inner">
+                                        {status !== null &&
+                                        <button type="submit" className="button">
+                                            {(status && 'Deactivate') ||
+                                            (status === false && 'Activate')}
+                                        </button>
+                                        }
+                                    </div>
                                 </div>
                             )}
                         />
