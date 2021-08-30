@@ -4,7 +4,6 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
-// import { FieldSwitch } from 'matsumoto/src/components/form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationHuge from 'components/confirms/confirmation-huge';
@@ -113,10 +112,6 @@ const CounterpartyHeader = observer(({ id }) => {
                                         </button>
                                         }
                                     </div>
-                                    {/*<FieldSwitch*/}
-                                    {/*    formik={formik}*/}
-                                    {/*    onChange={statusChange}*/}
-                                    {/*    value={counterparty?.isActive}/>*/}
                                 </div>
                             )}
                         />
