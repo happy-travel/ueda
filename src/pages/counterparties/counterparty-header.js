@@ -6,7 +6,7 @@ import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationHuge from 'components/confirms/confirmation-huge';
+import ConfirmationCounterpartyActivation from 'components/confirms/confirmation-counterparty-activation';
 import $auth from 'stores/auth';
 
 const CounterpartyHeader = observer(({ id }) => {
@@ -17,16 +17,17 @@ const CounterpartyHeader = observer(({ id }) => {
 
     const ConfirmationActivate = ({ yes, no }) => {
         return (
-            <ConfirmationHuge
+            <ConfirmationCounterpartyActivation
+                id={id}
+                status={status}
                 yes={yes}
                 no={no}
                 submitText="I understand the consequences, deactivate this counterparty"
-                validationText="deactivate"
                 headerText="You are about to deactivate a counterparty access"
-                inputPlaceholder="Please type deactivate">
+                inputPlaceholder="Enter the reason">
                 All its agents loose an ability to use the system until the counterparty will be re-activated.
                 Please enter a reason to deactivate.
-            </ConfirmationHuge>
+            </ConfirmationCounterpartyActivation>
         )
     };
 
@@ -51,36 +52,13 @@ const CounterpartyHeader = observer(({ id }) => {
             (onClose) => {
                 if (status) {
                     setStatus(false);
-                    return deactivate(onClose);
+                    return onClose();
                 }
-                setStatus(true);
-                return activate(onClose);
+                    setStatus(true);
+                    onClose();
+
             }
         )
-    };
-
-    const activate = (onClose) => {
-        let reason = prompt('Enter a reason');
-        API.post({
-            url: apiMethods.activateCounterparty(id),
-            body: { reason },
-            success: () => {
-                Notifications.addNotification('Counterparty activated', null, 'success');
-                onClose();
-            }
-        });
-    };
-
-    const deactivate = (onClose) => {
-        let reason = prompt('Enter a reason');
-        API.post({
-            url: apiMethods.deactivateCounterparty(id),
-            body: { reason },
-            success: () => {
-                Notifications.addNotification('Counterparty deactivated', null, 'success');
-                onClose();
-            }
-        });
     };
 
     return (
