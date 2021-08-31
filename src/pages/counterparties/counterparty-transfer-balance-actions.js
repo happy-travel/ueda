@@ -87,9 +87,9 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
         ));
     }
 
-    const formChanged = (index) => {
+    const formChanged = (id) => {
         API.get({
-            url: apiMethods.agenciesAccounts(index),
+            url: apiMethods.agenciesAccounts(id),
             success: (agency) => {
                 setAgency(agency);
             }
