@@ -29,7 +29,7 @@ const AgencyPage = ({ match }) => {
             url: apiMethods.availabilitySearchOptions(match.params.id),
             success: (availabilitySearchOptions) => {
                 // Убрать условие, когда изменят ответ пустых настроек style={{
-                if(availabilitySearchOptions) {
+                if (availabilitySearchOptions) {
                     setAvailabilitySearchOptions({
                         ...availabilitySearchOptions,
                         enabledSuppliers: Object.keys(availabilitySearchOptions

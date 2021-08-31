@@ -62,7 +62,7 @@ const ReportCard = ({ children }) => {
                             className="size-one"
                             required
                             formik={ formik }
-                            id="dates"
+                            id="range"
                             first="start"
                             second="end"
                             placeholder="Dates"
