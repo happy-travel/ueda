@@ -59,7 +59,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
     }
 
     const submitTransfer = (values) => {
-        if(values) {
+        if (values) {
             values.agency = agencies[0].id;
         }
         confirmationModal(BalanceActionConfirm).then(

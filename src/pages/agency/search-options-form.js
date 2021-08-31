@@ -19,7 +19,7 @@ const SearchOptionsForm = ({ id }) => {
     }, [])
 
     const submitSettings = (values) => {
-        if(defaultSettings) {
+        if (defaultSettings) {
             API.put({
                 url: apiMethods.availabilitySearchOptions(id),
                 body: values,
