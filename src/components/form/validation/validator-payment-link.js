@@ -7,6 +7,6 @@ export const ValidatorPaymentLink = Yup.object().shape({
         .required('*'),
     currency: Yup.string()
         .required('*'),
-    commentary: Yup.string()
+    comment: Yup.string()
         .required('*'),
 })
