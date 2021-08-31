@@ -9,6 +9,7 @@ import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
 import { ValidatorTransferBalanceActions } from '../../components/form/validation/validator-transfer-balance-actions';
+import { price } from 'matsumoto/src/simple';
 
 const CounterpartyTransferBalanceActions = ({ match: id }) => {
 
@@ -48,7 +49,19 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
         )
     }
 
+    const getFormat = (accounts, values) => {
+        return accounts?.map((item) => (
+            {
+                text: `Account #${item.id}: ${price(item.balance)}`,
+                value: item.id
+            }
+        ));
+    }
+
     const submitTransfer = (values) => {
+        if(values) {
+            values.agency = agencies[0].id;
+        }
         confirmationModal(BalanceActionConfirm).then(
             (onClose) => {
                 API.post({
@@ -69,14 +82,14 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
         return agencies?.map((item, index) => (
             {
                 text: `Agency #${item.id}`,
-                value: index
+                value: item.id
             }
         ));
     }
 
     const formChanged = (id) => {
         API.get({
-            url: apiMethods.agency(agencies[id].id),
+            url: apiMethods.agenciesAccounts(id),
             success: (agency) => {
                 setAgency(agency);
             }
@@ -122,7 +135,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
                                         label="To Agency Account"
                                         placeholder="Please Select"
                                         required
-                                        options={FormGetFormat(agency)}
+                                        options={getFormat(agency, formik.values)}
                                     />
                                 </div>
                                 <div className="row-group">
