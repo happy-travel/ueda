@@ -81,7 +81,7 @@ const CounterpartyTransferBalanceActions = ({ match: id }) => {
     const setAgenciesOptions = (agencies) => {
         return agencies?.map((item, index) => (
             {
-                text: `Agency #${item.id}`,
+                text: `Agency #${item.id} ${price(item.balance)}`,
                 value: item.id
             }
         ));

@@ -4,6 +4,7 @@ import { CachedForm, FieldText, FieldSelect, FieldTextarea } from 'matsumoto/src
 import apiMethods from 'core/methods';
 import { copyToClipboard } from 'matsumoto/src/simple/logic';
 import { ValidatorPaymentLink } from 'components/form/validation/validator-payment-link';
+import Notifications from 'matsumoto/src/stores/notifications-store';
 
 const CreatePaymentLinkPage = () => {
     const [result, setResult] = useState(null);
@@ -17,7 +18,10 @@ const CreatePaymentLinkPage = () => {
                 ...values,
                 amount: parseFloat(values.amount)
             },
-            success: (result = true) => setResult(result)
+            success: (result = true) => {
+                setResult(result)
+                Notifications.addNotification(`${values.send ? 'Email was sent' : 'Link was generated'}`, null, 'success')
+            },
         });
     }
 
@@ -46,26 +50,24 @@ const CreatePaymentLinkPage = () => {
 
     if (result)
         return (
-            <div className="block">
-                <section>
-                    <div>
-                        <div className="form">
-                            <h1>Payment link generated</h1>
-                            <br/>
-                            <FieldText
-                                readonly
-                                value={result}
-                            />
-                        </div>
+            <div className="block page-content-no-tabs">
+                <div>
+                    <div className="form">
+                        <h1>Payment link generated</h1>
                         <br/>
-                        <button className="button small" onClick={() => copyToClipboard(result)}>
-                            Copy to Clipboard
-                        </button>
+                        <FieldText
+                            readonly
+                            value={result}
+                        />
                     </div>
-                    <button className="button payment-back" onClick={() => setResult(null)}>
-                        Create one more payment link
+                    <br/>
+                    <button className="button small" onClick={() => copyToClipboard(result)}>
+                        Copy to Clipboard
                     </button>
-                </section>
+                </div>
+                <button className="button payment-back" onClick={() => setResult(null)}>
+                    Create one more payment link
+                </button>
             </div>
         );
 
@@ -126,7 +128,7 @@ const CreatePaymentLinkPage = () => {
                                     <div className="inner">
                                         <button
                                             onClick={(e) => submitButtonClick(e, false, formik)}
-                                            className="button"
+                                            className={`button ${!formik.isValid && 'disabled'}`}
                                         >
                                             Generate
                                         </button>
@@ -136,7 +138,7 @@ const CreatePaymentLinkPage = () => {
                                     <div className="inner">
                                         <button
                                             onClick={(e) => submitButtonClick(e, true, formik)}
-                                            className="button"
+                                            className={`button ${!formik.isValid && 'disabled'}`}
                                         >
                                             Send by Email
                                         </button>
