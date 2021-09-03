@@ -4,8 +4,10 @@ const ConfirmationSmall = ({ yes, children }) => {
     return (
         <div className="confirmation-modal confirm-small">
             <div className="confirm-content">
-                <h3>Are you sure?</h3>
-                <div>{children}</div>
+                <div className="text-space">
+                    <h3>Are you sure?</h3>
+                    <div>{children}</div>
+                </div>
                 <div className="confirm-actions">
                     <div className="accept" onClick={yes}>Confirm</div>
                 </div>
