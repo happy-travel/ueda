@@ -64,8 +64,6 @@ const AgencyPage = ({ match }) => {
                        render={() => <AgentChangeAgency id={match.params.id} agentId={match.params.agentId} />}/>
                 <Route path={'/agency/:id/agents/:agentId/bookings'}
                        render={() => <AgentBookings agentId={match.params.agentId} />}/>
-                <Route path={'/agency/:id/agents/:agentId/search-options'}
-                       render={() => <AgentSearchOptions id={match.params.id} agentId={match.params.agentId} />}/>
             </Switch>
         </div>
     );
