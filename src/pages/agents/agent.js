@@ -7,7 +7,6 @@ import { Route, Switch } from 'react-router-dom';
 import AgentNavigation from './agent-navigation';
 import AgentChangeAgency from './agent-change-agency';
 import AgentBookings from './agent-bookings';
-import AgentSearchOptions from './agent-search-options';
 
 const AgencyPage = ({ match }) => {
     const [agent, setAgent] = useState(null);
