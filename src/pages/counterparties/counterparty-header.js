@@ -37,7 +37,6 @@ const CounterpartyHeader = observer(({ id, verificationState }) => {
             url: apiMethods.counterparty(id),
             success: (counterparty) => {
                 setStatus(status === null ? counterparty?.isActive : status);
-                // setVerificationState(counterparty.verificationState)
                 setCounterparty(counterparty);
             }
         });

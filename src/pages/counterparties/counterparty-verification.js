@@ -16,24 +16,6 @@ const CounterpartyVerification = ({ match, verify, verifyReadonly }) => {
         });
     }, []);
 
-    // const verify = (contractKind) => {
-    //     let reason = prompt('Enter a reason');
-    //     API.post({
-    //         url: apiMethods.verifyCounterparty(match.params.id),
-    //         body: { contractKind, reason },
-    //         success: () => Notifications.addNotification('Counterparty verified', null, 'success')
-    //     });
-    // }
-    //
-    // const verifyReadonly = () => {
-    //     let reason = prompt('Enter a reason');
-    //     API.post({
-    //         url: apiMethods.verifyReadonlyCounterparty(match.params.id),
-    //         body: { reason },
-    //         success: () => Notifications.addNotification('Counterparty verified readonly', null, 'success')
-    //     });
-    // }
-
     return (
         <div className="buttons" style={{ marginBottom: '10px' }}>
             {counterparty && counterparty.verificationState !== 'FullAccess' &&
