@@ -14,7 +14,6 @@ const CounterpartyHeader = observer(({ id, verificationState }) => {
     const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
     const [status, setStatus] = useState(null);
-    // const [verificationState, setVerificationState] = useState(null);
 
     const ConfirmationActivate = ({ yes, no }) => {
         return (
