@@ -31,10 +31,6 @@ const AgencyNavigation = observer(({ match }) => {
             <NavLink to={`/agency/${id}/transfer-balance`}>
                 Balance
             </NavLink>}
-            {availabilitySearchOptions &&
-            <NavLink to={`/agency/${id}/settings`}>
-                Agency Settings
-            </NavLink>}
             {$auth.permitted('BookingManagement') &&
             <NavLink to={`/agency/${id}/bookings`}>
                 Bookings

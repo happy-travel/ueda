@@ -7,7 +7,6 @@ import { Route, Switch } from 'react-router-dom';
 import AgentNavigation from './agent-navigation';
 import AgentChangeAgency from './agent-change-agency';
 import AgentBookings from './agent-bookings';
-import AgentSearchOptions from './agent-search-options';
 
 const AgencyPage = ({ match }) => {
     const [agent, setAgent] = useState(null);
@@ -64,8 +63,6 @@ const AgencyPage = ({ match }) => {
                        render={() => <AgentChangeAgency id={match.params.id} agentId={match.params.agentId} />}/>
                 <Route path={'/agency/:id/agents/:agentId/bookings'}
                        render={() => <AgentBookings agentId={match.params.agentId} />}/>
-                <Route path={'/agency/:id/agents/:agentId/search-options'}
-                       render={() => <AgentSearchOptions id={match.params.id} agentId={match.params.agentId} />}/>
             </Switch>
         </div>
     );

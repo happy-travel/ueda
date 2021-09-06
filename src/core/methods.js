@@ -23,14 +23,12 @@ const apiMethods = {
     adminCurrentAuth: `${a}/administrators/current`,
     adminRoles: `${a}/administrator-roles`,
 
-    availabilitySearchOptions: (agencyId) => `${a}/agencies/${agencyId}/system-settings/availability-search`,
 
     duplicates: `${a}/accommodation-duplicate-reports`,
     duplicate: (id) => `${a}/accommodation-duplicate-reports/${id}`,
     duplicateApprove: (id) => `${a}/accommodation-duplicate-reports/${id}/approve`,
     duplicateDisapprove: (id) => `${a}/accommodation-duplicate-reports/${id}/disapprove`,
 
-    agentSettingsAvailabilitySearch: (agencyId, agentId) => `${a}/agencies/${agencyId}/agents/${agentId}/system-settings/availability-search`,
     agentChangeAgency: (agencyId, agentId) => `${a}/agencies/${agencyId}/agents/${agentId}/change-agency`,
 
     bookingsByReferenceCode: (referenceCode) => `${a}/bookings/${referenceCode}`,
