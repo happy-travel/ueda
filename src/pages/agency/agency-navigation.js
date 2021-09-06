@@ -4,7 +4,6 @@ import { observer } from 'mobx-react';
 import $auth from 'stores/auth';
 
 
-
 const AgencyNavigation = observer(({ match }) => {
     const { id } = match.params
 
