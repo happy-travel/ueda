@@ -4,7 +4,6 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
-import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationCounterpartyActivation from 'components/confirms/confirmation-counterparty-activation';
 import $auth from 'stores/auth';
