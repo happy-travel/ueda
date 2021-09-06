@@ -5,8 +5,6 @@ import FieldDatepicker from 'matsumoto/src/components/form/field-datepicker/fiel
 import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
-import confirmationModal from 'matsumoto/src/components/confirmation-modal';
-import ConfirmationSmall from '../../components/confirms/confirmation-small';
 
 const initialDateValues = {
     start: date.addMonth(new Date(), -1),
@@ -33,17 +31,12 @@ const ReportCard = ({ children }) => {
     }
 
     const downloadReport = (values) => {
-        confirmationModal(ConfirmationSmall).then(
-            (onClose) => {
-                API.get({
-                    url: apiMethods[children[0]](values.start.toISOString(), values.end.toISOString()),
-                    response: (res) => {
-                        reportResponse(res, values);
-                        onClose();
-                    }
-                })
+        API.get({
+            url: apiMethods[children[0]](values.start.toISOString(), values.end.toISOString()),
+            response: (res) => {
+                reportResponse(res, values);
             }
-        )
+        })
     }
 
     return (
