@@ -55,7 +55,6 @@ const CounterpartyHeader = observer(({ id, verificationState }) => {
                 }
                     setStatus(true);
                     onClose();
-
             }
         )
     };
