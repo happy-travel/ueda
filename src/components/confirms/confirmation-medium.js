@@ -9,7 +9,7 @@ const ConfirmationMedium = ({ yes, no, children }) => {
             <div className="confirm-content">
                 <div className="text-space">
                     <h3>Are you sure?</h3>
-                    <div>{children}</div>
+                    <div className="confirm-text">{children}</div>
                 </div>
                 <div className="confirm-actions">
                     <div onClick={no}>Cancel</div>
