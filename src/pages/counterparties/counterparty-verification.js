@@ -3,7 +3,7 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 
-const CounterpartyVerification = ({ match }) => {
+const CounterpartyVerification = ({ match, verify, verifyReadonly }) => {
 
     const [counterparty, setCounterparty] = useState(null);
 
@@ -15,24 +15,6 @@ const CounterpartyVerification = ({ match }) => {
             }
         });
     }, []);
-
-    const verify = (contractKind) => {
-        let reason = prompt('Enter a reason');
-        API.post({
-            url: apiMethods.verifyCounterparty(match.params.id),
-            body: { contractKind, reason },
-            success: () => Notifications.addNotification('Counterparty verified', null, 'success')
-        });
-    }
-
-    const verifyReadonly = () => {
-        let reason = prompt('Enter a reason');
-        API.post({
-            url: apiMethods.verifyReadonlyCounterparty(match.params.id),
-            body: { reason },
-            success: () => Notifications.addNotification('Counterparty verified readonly', null, 'success')
-        });
-    }
 
     return (
         <div className="buttons" style={{ marginBottom: '10px' }}>

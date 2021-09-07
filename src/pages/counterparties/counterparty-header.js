@@ -4,12 +4,11 @@ import { API } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import { price, remapStatus } from 'matsumoto/src/simple';
 import CachedForm from 'matsumoto/src/components/form/cached-form';
-import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationCounterpartyActivation from 'components/confirms/confirmation-counterparty-activation';
 import $auth from 'stores/auth';
 
-const CounterpartyHeader = observer(({ id }) => {
+const CounterpartyHeader = observer(({ id, verificationState }) => {
 
     const [counterparty, setCounterparty] = useState(null);
     const [balance, setBalance] = useState(null);
@@ -35,7 +34,7 @@ const CounterpartyHeader = observer(({ id }) => {
         API.get({
             url: apiMethods.counterparty(id),
             success: (counterparty) => {
-                setStatus(status === null ? counterparty?.isActive : status)
+                setStatus(status === null ? counterparty?.isActive : status);
                 setCounterparty(counterparty);
             }
         });
@@ -45,7 +44,7 @@ const CounterpartyHeader = observer(({ id }) => {
                 setBalance(balance);
             }
         });
-    }, [status]);
+    }, [status, verificationState]);
 
     const statusChange = () => {
         confirmationModal(ConfirmationActivate).then(
@@ -56,7 +55,6 @@ const CounterpartyHeader = observer(({ id }) => {
                 }
                     setStatus(true);
                     onClose();
-
             }
         )
     };
@@ -72,7 +70,7 @@ const CounterpartyHeader = observer(({ id }) => {
                         </div>
                     }
                     <div>
-                        State: <strong>{remapStatus(counterparty.verificationState)}</strong>
+                        State: <strong>{remapStatus(verificationState)}</strong>
                     </div>
                     <div>
                         Status: { status ? <span className="green">Active</span> : <strong>Inactive</strong> }
