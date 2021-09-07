@@ -11,7 +11,7 @@ const initialDateValues = {
     end: new Date()
 }
 
-const ReportCard = ({ children }) => {
+const ReportCard = ({ children, datePickerId }) => {
 
     const reportResponse = (res, values) => {
         if (res.status === 400)
@@ -55,7 +55,7 @@ const ReportCard = ({ children }) => {
                             className="size-one"
                             required
                             formik={ formik }
-                            id="range"
+                            id={datePickerId || 'range'}
                             first="start"
                             second="end"
                             placeholder="Dates"

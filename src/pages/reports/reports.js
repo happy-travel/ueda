@@ -7,7 +7,8 @@ const urlMethods = {
     supplier: 'supplierConnectivityReport',
     agency: 'agencyConnectivityReport',
     agencyProductivity: 'agencyProductivityReport',
-    fullBooking: 'fullBookingsReport'
+    fullBooking: 'fullBookingsReport',
+    salesBooking: 'salesBookingsReport'
 }
 
 const ReportsPage = () => (
@@ -28,6 +29,10 @@ const ReportsPage = () => (
         <ReportCard>
             {urlMethods.fullBooking}
             <h3>Full Bookings Report</h3>
+        </ReportCard>
+        <ReportCard datePickerId="previousDates">
+            {urlMethods.salesBooking}
+            <h3>Sales Bookings Report</h3>
         </ReportCard>
     </div>
 )
