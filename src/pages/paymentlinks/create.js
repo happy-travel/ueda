@@ -67,7 +67,6 @@ const CreatePaymentLinkPage = () => {
                         </div>
                     </div>
                 </div>
-                <br/>
                 <button className="button payment-back" onClick={() => setResult(null)}>
                     Create one more payment link
                 </button>
