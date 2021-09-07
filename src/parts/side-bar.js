@@ -53,6 +53,13 @@ const SideBar = observer(() => {
                     <i className="icon icon-reports" />
                     <span>Reports</span>
                 </SideBarItem>}
+                {$auth.permitted('BookingManagement') &&
+                <Link to="/bookings">
+                    <div className="sidebar-item">
+                        <i className="icon icon-bookings" />
+                        <span>Bookings</span>
+                    </div>
+                </Link>}
             </div>
         </nav>
     )

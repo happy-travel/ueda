@@ -20,22 +20,6 @@ const AgencyPage = ({ match }) => {
         });
     }, []);
 
-    // todo: unused. legacy.
-    const submitAvailabilitySearchOptions = (values) => {
-        API.put({
-            url: apiMethods.agentSettingsAvailabilitySearch(match.params.id, match.params.agentId),
-            body: {
-                values,
-                enabledSuppliers: values
-                    .enabledSuppliers
-                    .keys()
-                    .map((item) => values.enabledSuppliers[item] && item)
-                    .filter((item) => item)
-            },
-            success: () => Notifications.addNotification('Saved', null, 'success')
-        });
-    };
-
     return (
         <div className="settings block page-content agent-header">
             <div className="header-info">
