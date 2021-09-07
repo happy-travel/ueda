@@ -7,8 +7,10 @@ const ConfirmationMedium = ({ yes, no, children }) => {
                 <i className="icon icon-warning"/>
             </div>
             <div className="confirm-content">
-                <h3>Are you sure?</h3>
-                <div>{children || 'Null'}</div>
+                <div className="text-space">
+                    <h3>Are you sure?</h3>
+                    <div className="confirm-text">{children}</div>
+                </div>
                 <div className="confirm-actions">
                     <div onClick={no}>Cancel</div>
                     <div className="accept" onClick={yes}>Confirm</div>

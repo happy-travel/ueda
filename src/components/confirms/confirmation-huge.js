@@ -20,7 +20,7 @@ const ConfirmationHuge = ({ yes, no, children, validationText, submitText, input
                     <div className="confirmation-modal confirm-large confirm-huge">
                         <div className="confirm-content">
                             <div className="header-wrapper"><h2>{headerText}</h2></div>
-                            <div className="confirm-text">{children || 'Null'}</div>
+                            <div className="confirm-text">{children}</div>
                             <div className="form">
                                     <FieldText
                                         id="confirmation"
