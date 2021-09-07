@@ -9,7 +9,7 @@ const BookingsPage = () => {
         API.get({
             url: apiMethods.bookingsByReferenceCode(values.refCode),
             success: () => {
-                redirect(`/counterparties/agencies/booking/${values.refCode}`)
+                redirect(`/booking/${values.refCode}`)
             },
         })
     }
