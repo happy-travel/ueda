@@ -50,21 +50,24 @@ const CreatePaymentLinkPage = () => {
 
     if (result)
         return (
-            <div className="block page-content-no-tabs">
-                <div>
-                    <div className="form">
-                        <h1>Payment link generated</h1>
-                        <br/>
-                        <FieldText
-                            readonly
-                            value={result}
-                        />
+            <div className="block page-content-no-tabs payment-link">
+                <h1 className="no-tabs-header">Payment link generated</h1>
+                <div className="form">
+                    <div className="row-group">
+                        <div className="row wide">
+                            <FieldText
+                                readonly
+                                value={result}
+                            />
+                        </div>
+                        <div className="row slim">
+                            <button className="button small" onClick={() => copyToClipboard(result)}>
+                                Copy to Clipboard
+                            </button>
+                        </div>
                     </div>
-                    <br/>
-                    <button className="button small" onClick={() => copyToClipboard(result)}>
-                        Copy to Clipboard
-                    </button>
                 </div>
+                <br/>
                 <button className="button payment-back" onClick={() => setResult(null)}>
                     Create one more payment link
                 </button>

@@ -40,7 +40,7 @@ const AgentsList = ( { id }) => {
                             },
                             {
                                 header: 'Markup Settings',
-                                cell: 'markupSettings'
+                                cell: (cell) => cell.markupFormula || 'None'
                             }
                         ]}
                         onRowClick={(item) => redirect(`/agency/${id}/agents/${item.agentId}/bookings`)}
