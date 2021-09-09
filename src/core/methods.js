@@ -36,6 +36,7 @@ const apiMethods = {
     bookingsByAgency: (agencyId) => `${a}/agencies/${agencyId}/accommodations/bookings`,
     bookingDiscard: (bookingId) => `${a}/accommodations/bookings/${bookingId}/discard`,
     bookingCancel: (bookingId) => `${a}/accommodations/bookings/${bookingId}/cancel`,
+    bookingRefreshStatus: (bookingId) => `${a}/accommodations/bookings/${bookingId}/refresh-status`,
 
     markupsGlobal: () => `${a}/global-markups`,
     markupGlobal: (id, policyId) => `${a}/global-markups/${policyId}`,

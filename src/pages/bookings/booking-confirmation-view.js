@@ -4,6 +4,8 @@ import { Dual } from 'matsumoto/src/components/simple';
 import ViewFailed from 'matsumoto/src/parts/view-failed';
 import BookingDetailsView from 'matsumoto/src/pages/accommodation/parts/booking-details-view';
 import BookingSummary from 'matsumoto/src/pages/accommodation/parts/booking-summary';
+import { API } from 'matsumoto/src/core';
+import apiMethods from '../../core/methods';
 
 const BookingConfirmationView = ({ booking }) => {
     if (!booking)
@@ -14,6 +16,12 @@ const BookingConfirmationView = ({ booking }) => {
         );
 
     const details = booking.bookingDetails;
+
+    const refreshStatus = () => {
+        API.get({
+            url: apiMethods.bookingRefreshStatus(booking.bookingId)
+        });
+    }
 
     return (
         <>
@@ -43,6 +51,13 @@ const BookingConfirmationView = ({ booking }) => {
                             <div className="second">
                                 Status<br/>
                                 <strong className={'status ' + details.status}>{remapStatus(details.status)}</strong>
+                            </div>
+                        </div>
+                        <div className="after">
+                            <div className="status-updater">
+                                <button className="small button" onClick={refreshStatus}>
+                                    <span className="icon icon-refresh" />
+                                </button>
                             </div>
                         </div>
                     </div>

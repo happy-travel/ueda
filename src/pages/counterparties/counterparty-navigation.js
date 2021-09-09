@@ -28,16 +28,10 @@ const CounterpartyNavigation = observer(({ match }) => {
 
     return (
         <div>
-            {/*<CounterpartyHeader id={id} />*/}
             <div className="tabs-navigation">
                 { $auth.permitted('CounterpartyManagement') &&
                     <NavLink to={`/counterparties/${id}/details`}>
                         Counterparty Details
-                    </NavLink>
-                }
-                { $auth.permitted('CounterpartyManagement') &&
-                    <NavLink to={`/counterparties/${id}/contract`}>
-                        Contract
                     </NavLink>
                 }
                 <NavLink to={`/counterparties/${id}/agencies`}>

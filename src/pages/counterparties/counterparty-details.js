@@ -6,6 +6,7 @@ import { PAYMENT_METHODS } from 'matsumoto/src/enum';
 import Notifications from 'matsumoto/src/stores/notifications-store';
 import confirmationModal from 'matsumoto/src/components/confirmation-modal';
 import ConfirmationMedium from '../../components/confirms/confirmation-medium';
+import CounterpartyContract from './counterparty-contract';
 
 const CounterpartyDetails = ({ match }) => {
 
@@ -118,6 +119,7 @@ const CounterpartyDetails = ({ match }) => {
                     </div>
                 )}
             />
+            <div className="counterparty-contract"><CounterpartyContract match={match}/></div>
         </div>
     )
 }
