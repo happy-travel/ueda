@@ -5,7 +5,7 @@ import ViewFailed from 'matsumoto/src/parts/view-failed';
 import BookingDetailsView from 'matsumoto/src/pages/accommodation/parts/booking-details-view';
 import BookingSummary from 'matsumoto/src/pages/accommodation/parts/booking-summary';
 import { API } from 'matsumoto/src/core';
-import apiMethods from '../../core/methods';
+import apiMethods from 'core/methods';
 
 const BookingConfirmationView = ({ booking }) => {
     if (!booking)
