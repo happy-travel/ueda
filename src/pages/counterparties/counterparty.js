@@ -3,7 +3,6 @@ import CounterpartyNavigation from './counterparty-navigation';
 import CounterpartyHeader from './counterparty-header';
 import { Route, Switch } from 'react-router-dom';
 import CounterpartyDetails from './counterparty-details';
-import CounterpartyContract from './counterparty-contract';
 import CounterpartyAgencies from './counterparty-agencies';
 import CounterpartyMarkupManager from './counterparty-markup-manager';
 import CounterpartyTransferBalanceAccountOperations from './counterparty-transfer-balance-account-operations';
@@ -61,8 +60,6 @@ const CounterpartyPage = ({ match }) => {
             <Switch>
                 <Route path={'/counterparties/:id/details'}
                        render={() => <CounterpartyDetails match={match}/>}/>
-                <Route path={'/counterparties/:id/contract'}
-                       render={() => <CounterpartyContract match={match}/>}/>
                 <Route path={'/counterparties/:id/agencies'}
                        render={() => <CounterpartyAgencies match={match}/>}/>
                 <Route path={'/counterparties/:id/markup-manager'}

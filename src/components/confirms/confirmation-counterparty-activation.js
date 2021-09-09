@@ -44,15 +44,17 @@ const ConfirmationCounterpartyActivation = ({ yes, no, children, submitText, inp
                     <div className="confirmation-modal confirm-large confirm-huge">
                         <div className="confirm-content">
                             <div className="header-wrapper"><h2>{headerText}</h2></div>
-                            <div className="confirm-text">{children}</div>
-                            <div className="form">
-                                <FieldText
-                                    id="confirmation"
-                                    formik={formik}
-                                    placeholdedr="input text"
-                                    label="Confirmation"
-                                />
-                                <div className="footnote">{inputPlaceholder}</div>
+                            <div className="confirm-form-wrapper">
+                                <div className="confirm-text">{children}</div>
+                                <div className="form">
+                                    <FieldText
+                                        id="confirmation"
+                                        formik={formik}
+                                        placeholdedr="input text"
+                                        label="Confirmation"
+                                    />
+                                    <div className="footnote">{inputPlaceholder}</div>
+                                </div>
                             </div>
                             <div>
                                 <button className="button" type="submit">{submitText}</button>
