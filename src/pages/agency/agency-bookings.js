@@ -11,7 +11,10 @@ const AgencyBookings = ({ match }) => {
     useEffect(() => {
         API.get({
             url: apiMethods.bookingsByAgency(match.params.id),
-            success: (bookings) => {setBookings(bookings)}
+            success: (bookings) => {
+                setBookings(bookings.sort((a,b) => {
+                return (new Date(b.created).getTime()) - (new Date(a.created).getTime())
+            }))}
         })
     },[]);
 

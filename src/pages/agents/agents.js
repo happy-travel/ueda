@@ -10,7 +10,9 @@ const AgentsList = ( { id }) => {
     useEffect(()=> {
         API.get({
             url: apiMethods.agencyAgents(id),
-            success: (list) => {setList(list)}
+            success: (list) => {
+                setList(list.reverse())
+            }
         });
     },[])
 
