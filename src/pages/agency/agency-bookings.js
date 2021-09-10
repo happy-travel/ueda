@@ -12,9 +12,9 @@ const AgencyBookings = ({ match }) => {
         API.get({
             url: apiMethods.bookingsByAgency(match.params.id),
             success: (bookings) => {
-                setBookings(bookings.sort((a,b) => {
-                return (new Date(b.created).getTime()) - (new Date(a.created).getTime())
-            }))}
+                setBookings(bookings.sort((a, b) => (
+                    new Date(b.created).getTime() - new Date(a.created).getTime()
+                )))}
         })
     },[]);
 
