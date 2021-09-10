@@ -20,7 +20,7 @@ const AgencyHeader = ({ id }) => {
                 { Boolean(agencyAccounts) &&
                     <div>
                         Balance: <strong className="green">
-                            {price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount)}
+                            {agencyAccounts?.[0]?.balance ? price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount) : 'Unknown'}
                         </strong>
                     </div>
                 }

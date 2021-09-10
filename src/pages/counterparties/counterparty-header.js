@@ -66,7 +66,7 @@ const CounterpartyHeader = observer(({ id, verificationState }) => {
                 { Boolean(counterparty) && <>
                     { Boolean(balance) &&
                         <div>
-                            Balance: <strong className="green">{price(balance[0]?.currency, balance[0]?.balance)}</strong>
+                            Balance: <strong className="green">{balance[0]? price(balance[0]?.currency, balance[0]?.balance) : 'Unknown'}</strong>
                         </div>
                     }
                     <div>
