@@ -35,11 +35,11 @@ const SideBar = observer(() => {
                     <i className="icon icon-admins" />
                     <span>Administrators</span>
                 </SideBarItem>}
-                {$auth.permitted('AccommodationDuplicatesReportApproval') &&
-                <SideBarItem url={'/duplicates'}>
-                    <i className="icon icon-duplicates" />
-                    <span>Duplicates</span>
-                </SideBarItem>}
+                {/*{$auth.permitted('AccommodationDuplicatesReportApproval') &&*/}
+                {/*<SideBarItem url={'/duplicates'}>*/}
+                {/*    <i className="icon icon-duplicates" />*/}
+                {/*    <span>Duplicates</span>*/}
+                {/*</SideBarItem>}*/}
                 {$auth.permitted('MarkupManagement') &&
                 <SideBarItem url={'/globalmarkups'}>
                     <i className="icon icon-markups" />

@@ -18,7 +18,7 @@ const CounterpartyAgencies = ({ match }) => {
         API.get({
             url: apiMethods.agencies(match.params.id),
             success: (agencies) => {
-                setAgencies(agencies);
+                setAgencies(agencies.reverse());
             }
         });
     }, [])
