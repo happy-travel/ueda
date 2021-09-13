@@ -18,7 +18,7 @@ const BookingConfirmationView = ({ booking }) => {
     const details = booking.bookingDetails;
 
     const refreshStatus = () => {
-        API.get({
+        API.post({
             url: apiMethods.bookingRefreshStatus(booking.bookingId)
         });
     }

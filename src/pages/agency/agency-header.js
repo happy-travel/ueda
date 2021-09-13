@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { price } from 'matsumoto/src/simple';
-import { API } from 'matsumoto/src/core';
-import apiMethods from 'core/methods';
 
-const AgencyHeader = ({ id }) => {
-    const [agencyAccounts, setAgencyAccounts] = useState(null);
-
-    useEffect(() => {
-        API.get({
-            url: apiMethods.agenciesAccounts(id),
-            success: (agencyAccounts) => setAgencyAccounts(agencyAccounts),
-        });
-    }, []);
-
+const AgencyHeader = ({ id, accounts }) => {
     return (
         <div className="settings block agency-header">
             <div className="header-info">
                 <h1>Agency #{id}</h1>
-                { Boolean(agencyAccounts) &&
+                { Boolean(accounts) &&
                     <div>
                         Balance: <strong className="green">
-                            {agencyAccounts?.[0]?.balance ? price(agencyAccounts?.[0]?.balance.currency, agencyAccounts?.[0]?.balance.amount) : 'Unknown'}
+                            {accounts?.[0]?.balance ? price(accounts?.[0]?.balance.currency, accounts?.[0]?.balance.amount) : 'Unknown'}
                         </strong>
                     </div>
                 }
