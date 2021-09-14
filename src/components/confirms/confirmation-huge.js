@@ -6,7 +6,7 @@ const ConfirmationHuge = ({ yes, no, children, validationText, submitText, input
 
     const submitConfirm = (values) => {
         console.log(values, submitText, validationText)
-        if ( values.confirmation.toLowerCase().trim() === validationText) {
+        if ( values.confirmation.toLowerCase().trim() === validationText.toLowerCase().trim()) {
             yes();
         } else {
             no();
