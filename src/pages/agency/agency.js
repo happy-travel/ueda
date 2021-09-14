@@ -26,7 +26,7 @@ const AgencyPage = ({ match }) => {
 
     return (
         <div className="page-content">
-            <AgencyHeader id={match.params.id}/>
+            <AgencyHeader id={match.params.id} accounts={agencyAccounts}/>
             <AgencyNavigation match={match} />
             <Switch>
                 <Route path={'/agency/:id/agents'}

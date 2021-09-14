@@ -2,6 +2,7 @@ import React from 'react';
 import { redirect } from 'matsumoto/src/core';
 import { date } from 'matsumoto/src/simple';
 import Table from 'matsumoto/src/components/table';
+import { price } from 'matsumoto/src/simple';
 
 const BookingsList = ({ bookings }) => {
     return (
@@ -52,7 +53,7 @@ const BookingsList = ({ bookings }) => {
                         },
                         {
                             header: 'Total Price',
-                            cell: 'totalPrice'
+                            cell: ((cell) => price(cell.currency, cell.totalPrice))
                         }
                     ]}
                     onRowClick={(item) => {
