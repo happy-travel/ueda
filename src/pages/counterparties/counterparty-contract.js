@@ -17,16 +17,15 @@ const CounterpartyContract = ({ match }) => {
         });
     }, []);
 
-    const ConfirmationDownloadContract = ({ yes }) => {
-        return (
-            <ConfirmationSmall
-                yes={yes}>
-                The file has been uploaded as a counterparty contract.
-            </ConfirmationSmall>
-        )
-    }
-
     const uploadContract = (e) => {
+        const ConfirmationDownloadContract = ({ yes }) => {
+            return (
+                <ConfirmationSmall
+                    yes={yes}>
+                    <div>The <span className="point">{e.currentTarget.files[0].name}</span> will be uploaded as a counterparty contract.</div>
+                </ConfirmationSmall>
+            )
+        }
         confirmationModal(ConfirmationDownloadContract).then(
             (onClose) => {
                 API.put({
