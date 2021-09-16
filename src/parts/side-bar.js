@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import $auth from 'stores/auth';
-import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SideBarItem from './side-bar-item';
 
@@ -31,7 +30,7 @@ const SideBar = observer(() => {
                     <span>Payment Links</span>
                 </SideBarItem>}
                 {$auth.permitted('AdministratorInvitation') &&
-                <SideBarItem url={'/admins'}>
+                <SideBarItem url={'/admins/list'}>
                     <i className="icon icon-admins" />
                     <span>Administrators</span>
                 </SideBarItem>}

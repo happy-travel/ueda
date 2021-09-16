@@ -21,6 +21,7 @@ const apiMethods = {
     adminSendInvitation: `${a}/invitations`,
     adminRegister: `${a}/invitations/accept`,
     adminCurrentAuth: `${a}/administrators/current`,
+    administrators: `${a}/administrators`,
     adminRoles: `${a}/administrator-roles`,
 
 

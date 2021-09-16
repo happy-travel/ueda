@@ -9,7 +9,7 @@ import counterpartiesItemPage from 'pages/counterparties/counterparty';
 import agencyPage from 'pages/agency/agency';
 import agentPage from 'pages/agents/agent';
 import createPaymentLinkPage from 'pages/paymentlinks/create';
-import inviteAdminPage from 'pages/admins/invite';
+import adminsPage from 'pages/admins/admins';
 import duplicatesListPage from 'pages/duplicates/list';
 import globalMarkupsPage from 'pages/global-markups/global-markups';
 import duplicatePage from 'pages/duplicates/duplicate';
@@ -32,12 +32,12 @@ const Routes = () => (
         <Route path="/agency/:id/agents/:agentId" component={agentPage} />
         <Route path="/agency/:id" component={agencyPage} />
         <Route exact path="/paymentlinks" component={createPaymentLinkPage} />
-        <Route exact path="/admins" component={inviteAdminPage} />
         <Route exact path="/duplicates/:id" component={duplicatePage} />
         <Route exact path="/duplicates" component={duplicatesListPage} />
         <Route exact path="/globalmarkups" component={globalMarkupsPage} />
         <Route path="/signup/invite/:email/:code" component={acceptInvite} title="Sign Up" />
         <Route exact path="/reports" component={reportsPage} />
+        <Route path="/admins" component={adminsPage} />
         <Route exact path="/bookings" component={bookingsPage} />
         <Route component={notFoundPage} />
     </Switch>

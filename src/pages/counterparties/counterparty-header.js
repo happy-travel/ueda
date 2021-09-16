@@ -24,8 +24,8 @@ const CounterpartyHeader = observer(({ id, verificationState }) => {
                 submitText={`I understand the consequences, ${status ? 'deactivate' : 'activate'} this counterparty`}
                 headerText={`You are about to ${status ? 'deactivate' : 'activate'} a counterparty access`}
                 inputPlaceholder="Enter the reason">
-                All its agents loose an ability to use the system until the counterparty will be re-activated.
-                Please enter a reason to deactivate.
+                {`All its agents loose an ability to use the system until the counterparty will be re-activated.
+                    Please enter a reason to ${status ? 'deactivate' : 'activate'}.`}
             </ConfirmationCounterpartyActivation>
         )
     };

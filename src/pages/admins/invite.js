@@ -33,10 +33,10 @@ const inviteAdminPage = observer(() => {
     };
 
     return (
-        <div className="settings block page-content-no-tabs">
-            <h1 className="no-tabs-header">
-                <span className="brand">Invite Administrator</span>
-            </h1>
+        <div className="block list">
+            <h2 className="no-tabs-header">
+                Invite Administrator
+            </h2>
             { success === null && <Loader /> }
             { success && <div>
                 {success === true &&
