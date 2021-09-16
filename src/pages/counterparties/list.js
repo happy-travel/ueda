@@ -3,7 +3,6 @@ import { API, redirect } from 'matsumoto/src/core';
 import apiMethods from 'core/methods';
 import Table from 'matsumoto/src/components/table';
 import { remapStatus } from 'matsumoto/src/simple';
-import { Sorters, Searches } from 'matsumoto/src/pages/bookings-management/table-data';
 
 const CounterpartiesList = () => {
 
@@ -25,7 +24,7 @@ const CounterpartiesList = () => {
                 <div className="table-wrapper">
                     <Table
                         list={list}
-                        columns={ [
+                        columns={[
                             {
                                 header: 'ID',
                                 cell: 'id',
