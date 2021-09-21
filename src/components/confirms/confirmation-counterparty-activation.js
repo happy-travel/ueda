@@ -4,6 +4,7 @@ import { FieldText } from 'matsumoto/src/components/form';
 import { API } from 'matsumoto/src/core';
 import apiMethods from '../../core/methods';
 import Notifications from 'matsumoto/src/stores/notifications-store';
+import { ValidatorConfirmReason } from '../form/validation/validation-confirm';
 
 const ConfirmationCounterpartyActivation = ({ yes, no, children, submitText, inputPlaceholder, headerText, status, id }) => {
 
@@ -38,7 +39,9 @@ const ConfirmationCounterpartyActivation = ({ yes, no, children, submitText, inp
     };
 
     return (
-        <Formik initialValues={{}} onSubmit={submitConfirm}>
+        <Formik initialValues={{}}
+                validationSchema={ValidatorConfirmReason}
+                onSubmit={submitConfirm}>
             {(formik) => (
                 <form onSubmit={formik.handleSubmit}>
                     <div className="confirmation-modal confirm-large confirm-huge">
@@ -48,6 +51,7 @@ const ConfirmationCounterpartyActivation = ({ yes, no, children, submitText, inp
                                 <div className="confirm-text">{children}</div>
                                 <div className="form">
                                     <FieldText
+                                        required
                                         id="confirmation"
                                         formik={formik}
                                         placeholdedr="input text"
